@@ -9,24 +9,42 @@ module.exports = {
       colors: {
         'brand-background': '#0D0B14',
         'brand-khaki': '#DDCCAA',
-        'brand-gray': '#D9D9D9',
+        'brand-lightgray': '#D9D9D9',
         'brand-red': '#E31221',
+        'brand-crimson': '#DC3545',
+        'brand-subtitle': '#6C757D',
+        'brand-pale': '#CED4DA',
+        'brand-blue': '#0D6EFD',
+        'brand-modal': '#222030',
       },
       spacing: {
+        5.5: '1.375rem',
         6.5: '1.625rem',
         8.5: '2.125rem',
         9.5: '2.375rem',
+        10.5: '2.625rem',
         15: '3.75rem',
         17.5: '4.375rem',
+        19: '4.75rem',
+        30: '7.5rem',
       },
       fontSize: {
         '2xs': '0.5rem',
+        '3.5xl': '2rem',
       },
       backgroundImage: {
         'gradient-shadow':
           'linear-gradient(90deg, #000000c7 0%, rgb(0 0 0 / 33%) 35%, rgb(0 0 0 / 17%) 70%);',
+        'gradient-modal':
+          'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%);',
+      },
+      borderWidth: {
+        1.5: '1.5px',
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 };
