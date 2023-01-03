@@ -1,9 +1,23 @@
 import Head from 'next/head';
-import { ArrowDown, FeaturedQuote, LoginModal } from 'components';
+import {
+  ArrowDown,
+  FeaturedQuote,
+  ForgotPasswordModal,
+  LoginModal,
+  RegisterModal,
+} from 'components';
 import { useIndexPage } from 'hooks';
 
 const Home = () => {
-  const { loginIsOpen, setLoginIsOpen, modalIsOpen } = useIndexPage();
+  const {
+    loginIsOpen,
+    setLoginIsOpen,
+    registerIsOpen,
+    setRegisterIsOpen,
+    forgotPassIsOpen,
+    setForgotPassIsOpen,
+    modalIsOpen,
+  } = useIndexPage();
 
   return (
     <>
@@ -12,7 +26,27 @@ const Home = () => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      {loginIsOpen && <LoginModal setLoginIsOpen={setLoginIsOpen} />}
+      {loginIsOpen && (
+        <LoginModal
+          setLoginIsOpen={setLoginIsOpen}
+          setRegisterIsOpen={setRegisterIsOpen}
+          setForgotPassIsOpen={setForgotPassIsOpen}
+        />
+      )}
+
+      {registerIsOpen && (
+        <RegisterModal
+          setLoginIsOpen={setLoginIsOpen}
+          setRegisterIsOpen={setRegisterIsOpen}
+        />
+      )}
+
+      {forgotPassIsOpen && (
+        <ForgotPasswordModal
+          setLoginIsOpen={setLoginIsOpen}
+          setForgotPassIsOpen={setForgotPassIsOpen}
+        />
+      )}
 
       <nav
         className={
@@ -30,7 +64,12 @@ const Home = () => {
               <ArrowDown />
             </span>
           </span>
-          <button className='h-9.5 px-6 bg-brand-red rounded hidden lg:inline-block'>
+          <button
+            className='h-9.5 px-6 bg-brand-red rounded hidden lg:inline-block'
+            onClick={() => {
+              setRegisterIsOpen(!registerIsOpen);
+            }}
+          >
             Sign Up
           </button>
           <button
@@ -54,7 +93,12 @@ const Home = () => {
           <h1 className='text-brand-khaki font-bold text-2xl leading-normal text-center lg:text-5xl 2xl:text-6xl lg:leading-normal 2xl:leading-normal'>
             Find any quote in millions of movie lines
           </h1>
-          <button className='bg-brand-red rounded px-3.5 h-9.5 lg:text-xl lg:h-12 lg:px-4'>
+          <button
+            className='bg-brand-red rounded px-3.5 h-9.5 lg:text-xl lg:h-12 lg:px-4'
+            onClick={() => {
+              setRegisterIsOpen(!registerIsOpen);
+            }}
+          >
             Get Started
           </button>
         </div>

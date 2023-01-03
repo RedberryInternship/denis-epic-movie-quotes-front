@@ -8,6 +8,8 @@ import { Dispatch, SetStateAction } from 'react';
 
 const LoginModal = (props: {
   setLoginIsOpen: Dispatch<SetStateAction<boolean>>;
+  setRegisterIsOpen: Dispatch<SetStateAction<boolean>>;
+  setForgotPassIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <ModalWrapper
@@ -29,6 +31,10 @@ const LoginModal = (props: {
           <button
             type='button'
             className='ml-auto underline text-brand-blue hover:text-blue-800'
+            onClick={() => {
+              props.setLoginIsOpen(false);
+              props.setForgotPassIsOpen(true);
+            }}
           >
             Forgot password?
           </button>
@@ -40,6 +46,10 @@ const LoginModal = (props: {
           <button
             className='ml-2 underline text-brand-blue hover:text-blue-800'
             type='button'
+            onClick={() => {
+              props.setLoginIsOpen(false);
+              props.setRegisterIsOpen(true);
+            }}
           >
             Sign up
           </button>
