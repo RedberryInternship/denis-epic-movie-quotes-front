@@ -14,7 +14,7 @@ const FeaturedQuote = ({
           <span className='absolute -left-6 lg:-left-16 font-thin'>—</span>
           {quote}
         </div>
-        <div className='text-brand-gray lg:text-3xl'>{caption}</div>
+        <div className='text-brand-lightgray lg:text-3xl'>{caption}</div>
       </div>
       <div
         className={`${backgroundClass} h-[58vh] lg:h-screen w-full z-0 top-0 absolute bg-cover bg-center lg:bg-fixed`}
