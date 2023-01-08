@@ -1,10 +1,15 @@
 import Head from 'next/head';
 import {
   ArrowDown,
+  EmailSent,
   FeaturedQuote,
   ForgotPasswordModal,
+  FormWrapper,
   LoginModal,
+  ModalButton,
+  ModalSuccess,
   RegisterModal,
+  SplashModalWrapper,
 } from 'components';
 import { useIndexPage } from 'hooks';
 
@@ -16,6 +21,12 @@ const Home = () => {
     setRegisterIsOpen,
     forgotPassIsOpen,
     setForgotPassIsOpen,
+    confirmationSplashIsOpen,
+    setConfirmationSplashIsOpen,
+    verifiedSplashIsOpen,
+    setVerifiedSplashIsOpen,
+    errorSplashMessage,
+    setErrorSplashMessage,
     modalIsOpen,
   } = useIndexPage();
 
@@ -25,6 +36,14 @@ const Home = () => {
         <title>Movie Quotes</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
+
+      {errorSplashMessage && (
+        <SplashModalWrapper
+          title='Error'
+          subtitle={errorSplashMessage}
+          closeModalCallback={() => setErrorSplashMessage('')}
+        />
+      )}
 
       {loginIsOpen && (
         <FormWrapper>
@@ -41,15 +60,46 @@ const Home = () => {
           <RegisterModal
             setLoginIsOpen={setLoginIsOpen}
             setRegisterIsOpen={setRegisterIsOpen}
+            setConfirmationSplashIsOpen={setConfirmationSplashIsOpen}
           />
         </FormWrapper>
       )}
 
       {forgotPassIsOpen && (
-        <ForgotPasswordModal
-          setLoginIsOpen={setLoginIsOpen}
-          setForgotPassIsOpen={setForgotPassIsOpen}
+        <FormWrapper>
+          <ForgotPasswordModal
+            setLoginIsOpen={setLoginIsOpen}
+            setForgotPassIsOpen={setForgotPassIsOpen}
+          />
+        </FormWrapper>
+      )}
+
+      {confirmationSplashIsOpen && (
+        <SplashModalWrapper
+          iconComponent={<EmailSent />}
+          title='Thank you!'
+          subtitle='Please check your email and follow the instructions to activate your account.'
+          closeModalCallback={() => setConfirmationSplashIsOpen(false)}
         />
+      )}
+
+      {verifiedSplashIsOpen && (
+        <SplashModalWrapper
+          iconComponent={<ModalSuccess />}
+          title='Thank you!'
+          subtitle='Your account has been activated.'
+          closeModalCallback={() => setVerifiedSplashIsOpen(false)}
+        >
+          <div className='w-1/2 lg:w-full'>
+            <ModalButton
+              label='Log in'
+              onClick={() => {
+                setVerifiedSplashIsOpen(false);
+                setLoginIsOpen(true);
+              }}
+            />
+          </div>
+        </SplashModalWrapper>
       )}
 
       <nav
