@@ -26,6 +26,7 @@ module.exports = {
         15: '3.75rem',
         17.5: '4.375rem',
         19: '4.75rem',
+        22: '5.5rem',
         30: '7.5rem',
       },
       fontSize: {
@@ -37,9 +38,14 @@ module.exports = {
           'linear-gradient(90deg, #000000c7 0%, rgb(0 0 0 / 33%) 35%, rgb(0 0 0 / 17%) 70%);',
         'gradient-modal':
           'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%);',
+        'gradient-nested-modal':
+          'linear-gradient(90deg, rgba(27,25,38,1) 0%, rgba(39,37,50,1) 100%);',
       },
       borderWidth: {
         1.5: '1.5px',
+      },
+      borderRadius: {
+        '0.5lg': '0.625rem',
       },
     },
   },
