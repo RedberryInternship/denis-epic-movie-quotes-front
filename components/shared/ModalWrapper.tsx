@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { CloseModalButton } from 'components';
-import { useModalWrapper } from './useModalWrapper';
+import { CloseModalButton } from 'components/index';
+import { useModal } from 'hooks';
 
 const ModalWrapper = ({
   children,
@@ -14,7 +14,7 @@ const ModalWrapper = ({
   headingIsBig?: boolean;
   closeModalCallback: () => void;
 }>) => {
-  const modalRef = useModalWrapper(closeModalCallback);
+  const modalRef = useModal(closeModalCallback);
 
   return (
     <div className='h-min w-full flex justify-center'>
