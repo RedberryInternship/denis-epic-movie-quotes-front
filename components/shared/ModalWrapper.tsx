@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { CloseModalButton } from 'components/index';
+import { CloseModalButton } from 'components';
 import { useModal } from 'hooks';
 
 const ModalWrapper = ({

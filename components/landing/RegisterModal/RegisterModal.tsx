@@ -4,7 +4,7 @@ import {
   GoogleAuthButton,
   ModalWrapper,
   TextInput,
-} from 'components/index';
+} from 'components';
 import { Dispatch, SetStateAction } from 'react';
 import { useRegisterModal } from './useRegisterModal';
 
