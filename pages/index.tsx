@@ -27,18 +27,22 @@ const Home = () => {
       </Head>
 
       {loginIsOpen && (
-        <LoginModal
-          setLoginIsOpen={setLoginIsOpen}
-          setRegisterIsOpen={setRegisterIsOpen}
-          setForgotPassIsOpen={setForgotPassIsOpen}
-        />
+        <FormWrapper>
+          <LoginModal
+            setLoginIsOpen={setLoginIsOpen}
+            setRegisterIsOpen={setRegisterIsOpen}
+            setForgotPassIsOpen={setForgotPassIsOpen}
+          />
+        </FormWrapper>
       )}
 
       {registerIsOpen && (
-        <RegisterModal
-          setLoginIsOpen={setLoginIsOpen}
-          setRegisterIsOpen={setRegisterIsOpen}
-        />
+        <FormWrapper>
+          <RegisterModal
+            setLoginIsOpen={setLoginIsOpen}
+            setRegisterIsOpen={setRegisterIsOpen}
+          />
+        </FormWrapper>
       )}
 
       {forgotPassIsOpen && (
