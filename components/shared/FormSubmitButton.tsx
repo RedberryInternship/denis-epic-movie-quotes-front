@@ -1,3 +1,5 @@
+import { ModalButton } from 'components';
+
 const FormSubmitButton = ({
   label,
   isLoading,
@@ -6,12 +8,10 @@ const FormSubmitButton = ({
   isLoading: boolean;
 }) => {
   return (
-    <button
-      className='w-full bg-brand-red h-9.5 mt-1 mb-2 rounded disabled:bg-brand-crimson'
+    <ModalButton
+      label={isLoading ? 'Loading...' : label}
       disabled={isLoading}
-    >
-      {isLoading ? 'Loading...' : label}
-    </button>
+    />
   );
 };
 

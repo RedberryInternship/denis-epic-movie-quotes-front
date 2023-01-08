@@ -11,6 +11,7 @@ import { useRegisterModal } from './useRegisterModal';
 const RegisterModal = (props: {
   setLoginIsOpen: Dispatch<SetStateAction<boolean>>;
   setRegisterIsOpen: Dispatch<SetStateAction<boolean>>;
+  setConfirmationSplashIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   const {
     handleSubmit,
@@ -20,7 +21,10 @@ const RegisterModal = (props: {
     passwordConfirmationValue,
     setError,
     clearErrors,
-  } = useRegisterModal();
+  } = useRegisterModal(
+    () => props.setConfirmationSplashIsOpen(true),
+    () => props.setRegisterIsOpen(false)
+  );
 
   return (
     <ModalWrapper
