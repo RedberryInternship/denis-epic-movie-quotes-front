@@ -5,13 +5,10 @@ import {
   ModalWrapper,
   TextInput,
 } from 'components';
-import { Dispatch, SetStateAction } from 'react';
 import { useLoginModal } from './useLoginModal';
-import { Modals } from 'types';
+import { Modals, SetState } from 'types';
 
-const LoginModal = (props: {
-  setActiveModal: Dispatch<SetStateAction<Modals>>;
-}) => {
+const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
   const { handleSubmit, onSubmit, register, isLoading } = useLoginModal();
 
   return (

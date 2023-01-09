@@ -5,13 +5,10 @@ import {
   ModalWrapper,
   TextInput,
 } from 'components';
-import { Dispatch, SetStateAction } from 'react';
 import { useRegisterModal } from './useRegisterModal';
-import { Modals } from 'types';
+import { Modals, SetState } from 'types';
 
-const RegisterModal = (props: {
-  setActiveModal: Dispatch<SetStateAction<Modals>>;
-}) => {
+const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
     onSubmit,

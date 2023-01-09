@@ -4,12 +4,9 @@ import {
   ModalWrapper,
   TextInput,
 } from 'components';
-import { Dispatch, SetStateAction } from 'react';
-import { Modals } from 'types';
+import { Modals, SetState } from 'types';
 
-const ForgotPasswordModal = (props: {
-  setActiveModal: Dispatch<SetStateAction<Modals>>;
-}) => {
+const ForgotPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
   return (
     <ModalWrapper
       title='Forgot password?'
