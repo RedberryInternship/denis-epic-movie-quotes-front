@@ -15,19 +15,10 @@ import { useIndexPage } from 'hooks';
 
 const Home = () => {
   const {
-    loginIsOpen,
-    setLoginIsOpen,
-    registerIsOpen,
-    setRegisterIsOpen,
-    forgotPassIsOpen,
-    setForgotPassIsOpen,
-    confirmationSplashIsOpen,
-    setConfirmationSplashIsOpen,
-    verifiedSplashIsOpen,
-    setVerifiedSplashIsOpen,
+    activeModal,
+    setActiveModal,
     errorSplashMessage,
     setErrorSplashMessage,
-    modalIsOpen,
   } = useIndexPage();
 
   return (
@@ -45,58 +36,44 @@ const Home = () => {
         />
       )}
 
-      {loginIsOpen && (
+      {activeModal === 'login' && (
         <FormWrapper>
-          <LoginModal
-            setLoginIsOpen={setLoginIsOpen}
-            setRegisterIsOpen={setRegisterIsOpen}
-            setForgotPassIsOpen={setForgotPassIsOpen}
-          />
+          <LoginModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
 
-      {registerIsOpen && (
+      {activeModal === 'register' && (
         <FormWrapper>
-          <RegisterModal
-            setLoginIsOpen={setLoginIsOpen}
-            setRegisterIsOpen={setRegisterIsOpen}
-            setConfirmationSplashIsOpen={setConfirmationSplashIsOpen}
-          />
+          <RegisterModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
 
-      {forgotPassIsOpen && (
+      {activeModal === 'forgot_pass' && (
         <FormWrapper>
-          <ForgotPasswordModal
-            setLoginIsOpen={setLoginIsOpen}
-            setForgotPassIsOpen={setForgotPassIsOpen}
-          />
+          <ForgotPasswordModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
 
-      {confirmationSplashIsOpen && (
+      {activeModal === 'confirm_sent' && (
         <SplashModalWrapper
           iconComponent={<EmailSent />}
           title='Thank you!'
           subtitle='Please check your email and follow the instructions to activate your account.'
-          closeModalCallback={() => setConfirmationSplashIsOpen(false)}
+          closeModalCallback={() => setActiveModal('')}
         />
       )}
 
-      {verifiedSplashIsOpen && (
+      {activeModal === 'verified' && (
         <SplashModalWrapper
           iconComponent={<ModalSuccess />}
           title='Thank you!'
           subtitle='Your account has been activated.'
-          closeModalCallback={() => setVerifiedSplashIsOpen(false)}
+          closeModalCallback={() => setActiveModal('')}
         >
           <div className='w-1/2 lg:w-full'>
             <ModalButton
               label='Log in'
-              onClick={() => {
-                setVerifiedSplashIsOpen(false);
-                setLoginIsOpen(true);
-              }}
+              onClick={() => setActiveModal('login')}
             />
           </div>
         </SplashModalWrapper>
@@ -105,7 +82,9 @@ const Home = () => {
       <nav
         className={
           'items-center w-full text-white justify-between px-9 py-6 lg:px-20 fixed z-50 ' +
-          (modalIsOpen ? 'hidden blur-sm pointer-events-none lg:flex' : 'flex')
+          (activeModal || errorSplashMessage
+            ? 'hidden blur-sm pointer-events-none lg:flex'
+            : 'flex')
         }
       >
         <span className='text-brand-khaki uppercase font-medium'>
@@ -120,17 +99,13 @@ const Home = () => {
           </span>
           <button
             className='h-9.5 px-6 bg-brand-red rounded hidden lg:inline-block'
-            onClick={() => {
-              setRegisterIsOpen(!registerIsOpen);
-            }}
+            onClick={() => setActiveModal('register')}
           >
             Sign Up
           </button>
           <button
             className='h-9.5 px-6.5 border border-white rounded'
-            onClick={() => {
-              setLoginIsOpen(!loginIsOpen);
-            }}
+            onClick={() => setActiveModal('login')}
           >
             Log in
           </button>
@@ -140,7 +115,7 @@ const Home = () => {
       <main
         className={
           'w-full bg-brand-background text-white ' +
-          (modalIsOpen ? 'blur-sm' : '')
+          (activeModal || errorSplashMessage ? 'blur-sm' : '')
         }
       >
         <div className='h-[66vh] w-2/3 flex flex-col items-center pt-[16vh] lg:pt-[26vh] lg:w-1/2 2xl:w-5/12 mx-auto gap-8 lg:h-screen lg:gap-6'>
@@ -149,9 +124,7 @@ const Home = () => {
           </h1>
           <button
             className='bg-brand-red rounded px-3.5 h-9.5 lg:text-xl lg:h-12 lg:px-4'
-            onClick={() => {
-              setRegisterIsOpen(!registerIsOpen);
-            }}
+            onClick={() => setActiveModal('register')}
           >
             Get Started
           </button>

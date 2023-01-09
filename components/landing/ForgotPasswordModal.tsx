@@ -5,28 +5,25 @@ import {
   TextInput,
 } from 'components';
 import { Dispatch, SetStateAction } from 'react';
+import { Modals } from 'types';
 
 const ForgotPasswordModal = (props: {
-  setLoginIsOpen: Dispatch<SetStateAction<boolean>>;
-  setForgotPassIsOpen: Dispatch<SetStateAction<boolean>>;
+  setActiveModal: Dispatch<SetStateAction<Modals>>;
 }) => {
   return (
     <ModalWrapper
       title='Forgot password?'
       subtitle='Enter the email and we’ll send an email with instructions to reset your password'
       headingIsBig={true}
-      closeModalCallback={() => props.setForgotPassIsOpen(false)}
+      closeModalCallback={() => props.setActiveModal('')}
     >
       <form className='flex flex-col w-full items-center'>
         <TextInput name='email' label='Email' placeholder='Enter your email' />
-        <FormSubmitButton label='Send instructions' />
+        <FormSubmitButton label='Send instructions' isLoading={false} />
         <button
           type='button'
           className='mt-6 flex gap-3 items-center text-brand-subtitle'
-          onClick={() => {
-            props.setForgotPassIsOpen(false);
-            props.setLoginIsOpen(true);
-          }}
+          onClick={() => props.setActiveModal('login')}
         >
           <ArrowLeft /> Back to log in
         </button>

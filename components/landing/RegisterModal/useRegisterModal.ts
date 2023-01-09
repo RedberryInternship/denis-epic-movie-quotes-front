@@ -3,10 +3,7 @@ import { ApiResponse, RegisterForm } from 'types';
 import { useState } from 'react';
 import { postRegisterData } from 'services';
 
-export const useRegisterModal = (
-  displayConfirmationsSplash: () => void,
-  hideRegisterForm: () => void
-) => {
+export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
   const { handleSubmit, getValues, setError, clearErrors } =
     useFormContext<RegisterForm>();
 
@@ -22,7 +19,6 @@ export const useRegisterModal = (
     setIsLoading(false);
 
     if (response.success) {
-      hideRegisterForm();
       displayConfirmationsSplash();
     } else {
       if (response.errors) {

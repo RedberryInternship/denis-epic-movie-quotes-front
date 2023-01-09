@@ -7,11 +7,10 @@ import {
 } from 'components';
 import { Dispatch, SetStateAction } from 'react';
 import { useRegisterModal } from './useRegisterModal';
+import { Modals } from 'types';
 
 const RegisterModal = (props: {
-  setLoginIsOpen: Dispatch<SetStateAction<boolean>>;
-  setRegisterIsOpen: Dispatch<SetStateAction<boolean>>;
-  setConfirmationSplashIsOpen: Dispatch<SetStateAction<boolean>>;
+  setActiveModal: Dispatch<SetStateAction<Modals>>;
 }) => {
   const {
     handleSubmit,
@@ -21,16 +20,13 @@ const RegisterModal = (props: {
     passwordConfirmationValue,
     setError,
     clearErrors,
-  } = useRegisterModal(
-    () => props.setConfirmationSplashIsOpen(true),
-    () => props.setRegisterIsOpen(false)
-  );
+  } = useRegisterModal(() => props.setActiveModal('confirm_sent'));
 
   return (
     <ModalWrapper
       title='Create an account'
       subtitle='Start your journey!'
-      closeModalCallback={() => props.setRegisterIsOpen(false)}
+      closeModalCallback={() => props.setActiveModal('')}
     >
       <Form onSubmit={handleSubmit(onSubmit)}>
         <TextInput
@@ -120,10 +116,7 @@ const RegisterModal = (props: {
           <button
             className='ml-2 underline text-brand-blue hover:text-blue-800'
             type='button'
-            onClick={() => {
-              props.setRegisterIsOpen(false);
-              props.setLoginIsOpen(true);
-            }}
+            onClick={() => props.setActiveModal('login')}
           >
             Log in
           </button>

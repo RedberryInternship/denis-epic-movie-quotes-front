@@ -1,24 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { verifyEmail } from '../services';
-import { ApiResponse } from '../types';
+import { verifyEmail } from 'services';
+import { ApiResponse, Modals } from 'types';
 
 export const useIndexPage = () => {
-  const [loginIsOpen, setLoginIsOpen] = useState(false);
-  const [registerIsOpen, setRegisterIsOpen] = useState(false);
-  const [forgotPassIsOpen, setForgotPassIsOpen] = useState(false);
-  const [confirmationSplashIsOpen, setConfirmationSplashIsOpen] =
-    useState(false);
-  const [verifiedSplashIsOpen, setVerifiedSplashIsOpen] = useState(false);
-  const [errorSplashMessage, setErrorSplashMessage] = useState('');
+  const [activeModal, setActiveModal] = useState<Modals>('');
 
-  const modalIsOpen =
-    loginIsOpen ||
-    registerIsOpen ||
-    forgotPassIsOpen ||
-    confirmationSplashIsOpen ||
-    verifiedSplashIsOpen ||
-    errorSplashMessage;
+  const [errorSplashMessage, setErrorSplashMessage] = useState('');
 
   const router = useRouter();
 
@@ -33,7 +21,7 @@ export const useIndexPage = () => {
       )) as ApiResponse<{}>;
 
       if (response.success) {
-        setVerifiedSplashIsOpen(true);
+        setActiveModal('verified');
       } else {
         setErrorSplashMessage(`Email verification failed: ${response.message}`);
       }
@@ -48,17 +36,8 @@ export const useIndexPage = () => {
   }, [emailVerifyURL, router]);
 
   return {
-    loginIsOpen,
-    setLoginIsOpen,
-    registerIsOpen,
-    setRegisterIsOpen,
-    forgotPassIsOpen,
-    setForgotPassIsOpen,
-    confirmationSplashIsOpen,
-    setConfirmationSplashIsOpen,
-    verifiedSplashIsOpen,
-    setVerifiedSplashIsOpen,
-    modalIsOpen,
+    activeModal,
+    setActiveModal,
     errorSplashMessage,
     setErrorSplashMessage,
   };
