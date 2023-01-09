@@ -2,6 +2,7 @@ import { useFormContext, useWatch } from 'react-hook-form';
 import { ApiResponse, RegisterForm } from 'types';
 import { useState } from 'react';
 import { postRegisterData } from 'services';
+import { validationRules } from './validationRules';
 
 export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
   const { handleSubmit, getValues, setError, clearErrors } =
@@ -31,13 +32,16 @@ export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
     }
   };
 
+  validationRules.password_confirmation.validate = (value: string) =>
+    value === passwordValue || 'The passwords do not match';
+
   return {
     handleSubmit,
     onSubmit,
     isLoading,
-    passwordValue,
     passwordConfirmationValue,
     setError,
     clearErrors,
+    validationRules,
   };
 };

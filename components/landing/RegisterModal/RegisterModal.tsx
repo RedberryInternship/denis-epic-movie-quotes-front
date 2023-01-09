@@ -14,7 +14,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     handleSubmit,
     onSubmit,
     isLoading,
-    passwordValue,
+    validationRules,
     passwordConfirmationValue,
     setError,
     clearErrors,
@@ -32,35 +32,14 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           label='Name'
           placeholder='At least 3 & max.15 lower case characters'
           requiredAsterisk={true}
-          validationRules={{
-            required: 'Please enter a username',
-            minLength: {
-              value: 3,
-              message: 'This field should contain at least 3 characters',
-            },
-            maxLength: {
-              value: 15,
-              message: 'This field should contain less than 16 characters',
-            },
-            pattern: {
-              value: /^[a-z0-9_\-]+$/,
-              message:
-                'The username can only contain lowercase characters and numbers',
-            },
-          }}
+          validationRules={validationRules.username}
         />
         <TextInput
           name='email'
           label='Email'
           placeholder='Enter your email'
           requiredAsterisk={true}
-          validationRules={{
-            required: 'Please enter an email',
-            pattern: {
-              value: /^(.+)@(.+)$/,
-              message: 'Please enter a valid email address',
-            },
-          }}
+          validationRules={validationRules.email}
         />
         <TextInput
           type='password'
@@ -68,22 +47,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           label='Password'
           placeholder='At least 8 & max.15 lower case characters'
           requiredAsterisk={true}
-          validationRules={{
-            required: 'Please enter a password',
-            minLength: {
-              value: 8,
-              message: 'The password should contain at least 8 characters',
-            },
-            maxLength: {
-              value: 15,
-              message: 'This field should contain less than 16 characters',
-            },
-            pattern: {
-              value: /^[a-z0-9_\-]+$/,
-              message:
-                'The password can only contain lowercase characters and numbers',
-            },
-          }}
+          validationRules={validationRules.password}
           onChange={async (e) => {
             if (e.target.value !== passwordConfirmationValue) {
               setError('password_confirmation', {
@@ -101,11 +65,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           label='Current Password'
           placeholder='Password'
           requiredAsterisk={true}
-          validationRules={{
-            required: 'Please confirm your password',
-            validate: (value: string) =>
-              value === passwordValue || 'The passwords do not match',
-          }}
+          validationRules={validationRules.password_confirmation}
         />
         <FormSubmitButton label='Get started' isLoading={isLoading} />
         <GoogleAuthButton label='Sign up with Google' />
