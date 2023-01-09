@@ -3,6 +3,7 @@ import {
   FormSubmitButton,
   GoogleAuthButton,
   ModalWrapper,
+  NavButton,
   TextInput,
 } from 'components';
 import { useRegisterModal } from './useRegisterModal';
@@ -110,13 +111,11 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
         <GoogleAuthButton label='Sign up with Google' />
         <span className='mt-5 mb-10 lg:mb-0 text-brand-subtitle'>
           Already have an account?
-          <button
-            className='ml-2 underline text-brand-blue hover:text-blue-800'
-            type='button'
+          <NavButton
+            label='Log in'
+            classNames='ml-2'
             onClick={() => props.setActiveModal('login')}
-          >
-            Log in
-          </button>
+          />
         </span>
       </Form>
     </ModalWrapper>

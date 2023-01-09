@@ -8,3 +8,4 @@ export { default as CloseModalButton } from './CloseModalButton';
 export { default as FormWrapper } from './FormWrapper';
 export { default as Form } from './Form';
 export { default as FormError } from './FormError';
+export { default as NavButton } from './NavButton';

@@ -3,6 +3,7 @@ import {
   FormSubmitButton,
   GoogleAuthButton,
   ModalWrapper,
+  NavButton,
   TextInput,
 } from 'components';
 import { useLoginModal } from './useLoginModal';
@@ -47,25 +48,21 @@ const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
             className='rounded'
           />
           <label htmlFor='remember_me'>Remember me</label>
-          <button
-            type='button'
-            className='ml-auto underline text-brand-blue hover:text-blue-800'
+          <NavButton
+            label='Forgot password?'
+            classNames='ml-auto'
             onClick={() => props.setActiveModal('forgot_pass')}
-          >
-            Forgot password?
-          </button>
+          />
         </div>
         <FormSubmitButton label='Sign in' isLoading={isLoading} />
         <GoogleAuthButton label='Sign in with Google' />
         <span className='mt-5 mb-10 lg:mb-0 text-brand-subtitle'>
           Don&apos;t have an account?
-          <button
-            className='ml-2 underline text-brand-blue hover:text-blue-800'
-            type='button'
+          <NavButton
+            label='Sign up'
+            classNames='ml-2 '
             onClick={() => props.setActiveModal('register')}
-          >
-            Sign up
-          </button>
+          />
         </span>
       </Form>
     </ModalWrapper>
