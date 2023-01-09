@@ -1,16 +1,10 @@
 import { ModalButton } from 'components';
 
-const FormSubmitButton = ({
-  label,
-  isLoading,
-}: {
-  label: string;
-  isLoading: boolean;
-}) => {
+const FormSubmitButton = (props: { label: string; isLoading: boolean }) => {
   return (
     <ModalButton
-      label={isLoading ? 'Loading...' : label}
-      disabled={isLoading}
+      label={props.isLoading ? 'Loading...' : props.label}
+      disabled={props.isLoading}
     />
   );
 };

@@ -1,8 +1,4 @@
-const ModalButton = ({
-  label,
-  disabled,
-  onClick,
-}: {
+const ModalButton = (props: {
   label: string;
   disabled?: boolean;
   onClick?: () => void;
@@ -10,10 +6,10 @@ const ModalButton = ({
   return (
     <button
       className='w-full bg-brand-red h-9.5 mt-1 mb-2 rounded disabled:bg-brand-crimson'
-      disabled={disabled}
-      onClick={onClick}
+      disabled={props.disabled}
+      onClick={props.onClick}
     >
-      {label}
+      {props.label}
     </button>
   );
 };
