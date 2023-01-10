@@ -13,7 +13,7 @@ import {
 } from 'components';
 import { useIndexPage } from 'hooks';
 
-const Home = () => {
+const Landing = () => {
   const {
     activeModal,
     setActiveModal,
@@ -152,4 +152,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Landing;
