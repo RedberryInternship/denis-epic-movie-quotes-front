@@ -15,9 +15,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     onSubmit,
     isLoading,
     validationRules,
-    passwordConfirmationValue,
-    setError,
-    clearErrors,
+    validatePasswordConfirmation,
   } = useRegisterModal(() => props.setActiveModal('confirm_sent'));
 
   return (
@@ -48,16 +46,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           placeholder='At least 8 & max.15 lower case characters'
           requiredAsterisk={true}
           validationRules={validationRules.password}
-          onChange={async (e) => {
-            if (e.target.value !== passwordConfirmationValue) {
-              setError('password_confirmation', {
-                type: 'custom',
-                message: 'The passwords do not match',
-              });
-            } else {
-              clearErrors('password_confirmation');
-            }
-          }}
+          onChange={validatePasswordConfirmation}
         />
         <TextInput
           type='password'

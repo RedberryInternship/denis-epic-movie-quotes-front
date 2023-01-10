@@ -1,6 +1,6 @@
 import { useFormContext, useWatch } from 'react-hook-form';
 import { ApiResponse, RegisterForm } from 'types';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { postRegisterData } from 'services';
 import { validationRules } from './validationRules';
 
@@ -35,13 +35,24 @@ export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
   validationRules.password_confirmation.validate = (value: string) =>
     value === passwordValue || 'The passwords do not match';
 
+  const validatePasswordConfirmation = async (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.target.value !== passwordConfirmationValue) {
+      setError('password_confirmation', {
+        type: 'custom',
+        message: 'The passwords do not match',
+      });
+    } else {
+      clearErrors('password_confirmation');
+    }
+  };
+
   return {
     handleSubmit,
     onSubmit,
     isLoading,
-    passwordConfirmationValue,
-    setError,
-    clearErrors,
     validationRules,
+    validatePasswordConfirmation,
   };
 };
