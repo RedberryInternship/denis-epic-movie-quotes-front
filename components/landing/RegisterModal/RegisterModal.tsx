@@ -16,7 +16,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     isLoading,
     validationRules,
     validatePasswordConfirmation,
-  } = useRegisterModal(() => props.setActiveModal('confirm_sent'));
+  } = useRegisterModal(props.setActiveModal);
 
   return (
     <ModalWrapper

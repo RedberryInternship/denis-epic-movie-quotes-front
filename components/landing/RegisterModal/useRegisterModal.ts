@@ -1,10 +1,10 @@
 import { useFormContext, useWatch } from 'react-hook-form';
-import { ApiResponse, RegisterForm } from 'types';
+import { ApiResponse, Modals, RegisterForm, SetState } from 'types';
 import { ChangeEvent, useState } from 'react';
 import { postRegisterData } from 'services';
 import { validationRules } from './validationRules';
 
-export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
+export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
   const { handleSubmit, getValues, setError, clearErrors } =
     useFormContext<RegisterForm>();
 
@@ -20,7 +20,7 @@ export const useRegisterModal = (displayConfirmationsSplash: () => void) => {
     setIsLoading(false);
 
     if (response.success) {
-      displayConfirmationsSplash();
+      setActiveModal('confirm_sent');
     } else {
       if (response.errors) {
         for (const [fieldName, errors] of Object.entries<any>(response.errors))
