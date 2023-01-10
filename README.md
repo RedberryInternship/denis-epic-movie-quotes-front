@@ -34,7 +34,16 @@
     ```shell
       npm install
     ```
-3. Run the development server:
+
+3. Create the `.env.local` file:
+   ```shell
+      cp .env.example .env.local
+   ```
+   
+   Set the `NEXT_PUBLIC_API_URL` variable inside `.env.local` to the backend's base URL
+
+
+4. Run the development server:
    ```shell
       npm run dev
    ```
