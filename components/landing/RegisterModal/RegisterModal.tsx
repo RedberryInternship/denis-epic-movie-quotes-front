@@ -8,6 +8,7 @@ import {
 } from 'components';
 import { useRegisterModal } from './useRegisterModal';
 import { Modals, SetState } from 'types';
+import { PasswordInput } from 'components';
 
 const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
@@ -16,6 +17,8 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     isLoading,
     validationRules,
     validatePasswordConfirmation,
+    passwordIsHidden,
+    togglePasswordIsHidden,
   } = useRegisterModal(props.setActiveModal);
 
   return (
@@ -39,22 +42,24 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           requiredAsterisk={true}
           validationRules={validationRules.email}
         />
-        <TextInput
-          type='password'
+        <PasswordInput
           name='password'
           label='Password'
           placeholder='At least 8 & max.15 lower case characters'
           requiredAsterisk={true}
           validationRules={validationRules.password}
           onChange={validatePasswordConfirmation}
+          isHidden={passwordIsHidden}
+          toggleIsHidden={togglePasswordIsHidden}
         />
-        <TextInput
-          type='password'
+        <PasswordInput
           name='password_confirmation'
           label='Current Password'
           placeholder='Password'
           requiredAsterisk={true}
           validationRules={validationRules.password_confirmation}
+          isHidden={passwordIsHidden}
+          toggleIsHidden={togglePasswordIsHidden}
         />
         <FormSubmitButton label='Get started' isLoading={isLoading} />
         <GoogleAuthButton label='Sign up with Google' />

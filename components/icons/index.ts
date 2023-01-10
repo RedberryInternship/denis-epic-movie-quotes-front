@@ -6,3 +6,5 @@ export { default as EmailSent } from './EmailSent';
 export { default as ModalSuccess } from './ModalSuccess';
 export { default as Valid } from './Valid';
 export { default as Invalid } from './Invalid';
+export { default as PasswordEye } from './PasswordEye';
+export { default as PasswordEyeCrossed } from './PasswordEyeCrossed';

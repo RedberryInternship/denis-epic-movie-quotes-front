@@ -8,9 +8,17 @@ import {
 } from 'components';
 import { useLoginModal } from './useLoginModal';
 import { Modals, SetState } from 'types';
+import { PasswordInput } from 'components';
 
 const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const { handleSubmit, onSubmit, register, isLoading } = useLoginModal();
+  const {
+    handleSubmit,
+    onSubmit,
+    register,
+    isLoading,
+    passwordIsHidden,
+    togglePasswordIsHidden,
+  } = useLoginModal();
 
   return (
     <ModalWrapper
@@ -31,14 +39,15 @@ const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
             },
           }}
         />
-        <TextInput
-          type='password'
+        <PasswordInput
           name='password'
           label='Password'
           placeholder='Password'
           validationRules={{
             required: 'Please enter your password',
           }}
+          isHidden={passwordIsHidden}
+          toggleIsHidden={togglePasswordIsHidden}
         />
         <div className='flex items-center justify-start w-full gap-2 mb-3'>
           <input

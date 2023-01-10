@@ -3,6 +3,7 @@ import { postLoginData } from 'services';
 import { ApiResponse, LoginForm } from 'types';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useToggle } from 'hooks';
 
 export const useLoginModal = () => {
   const router = useRouter();
@@ -27,5 +28,14 @@ export const useLoginModal = () => {
     }
   };
 
-  return { handleSubmit, onSubmit, register, isLoading };
+  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
+
+  return {
+    handleSubmit,
+    onSubmit,
+    register,
+    isLoading,
+    passwordIsHidden,
+    togglePasswordIsHidden,
+  };
 };

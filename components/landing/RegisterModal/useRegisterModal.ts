@@ -3,6 +3,7 @@ import { ApiResponse, Modals, RegisterForm, SetState } from 'types';
 import { ChangeEvent, useState } from 'react';
 import { postRegisterData } from 'services';
 import { validationRules } from './validationRules';
+import { useToggle } from 'hooks';
 
 export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
   const { handleSubmit, getValues, setError, clearErrors } =
@@ -48,11 +49,15 @@ export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
     }
   };
 
+  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
+
   return {
     handleSubmit,
     onSubmit,
     isLoading,
     validationRules,
     validatePasswordConfirmation,
+    passwordIsHidden,
+    togglePasswordIsHidden,
   };
 };
