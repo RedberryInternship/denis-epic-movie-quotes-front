@@ -14,6 +14,7 @@ const PasswordInput = (props: {
     <div className='relative w-full'>
       <TextInput {...props} type={props.isHidden ? 'password' : 'text'} />
       <button
+        type='button'
         className='absolute top-8 right-12 h-9.5 lg:right-12 flex items-center'
         onClick={props.toggleIsHidden}
       >
