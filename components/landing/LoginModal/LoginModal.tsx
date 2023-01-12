@@ -13,7 +13,6 @@ import { PasswordInput } from 'components';
 const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
-    onSubmit,
     register,
     isLoading,
     passwordIsHidden,
@@ -26,7 +25,7 @@ const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
       subtitle='Welcome back! Please enter your details.'
       closeModalCallback={() => props.setActiveModal('')}
     >
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit}>
         <TextInput
           name='username'
           label='Email'

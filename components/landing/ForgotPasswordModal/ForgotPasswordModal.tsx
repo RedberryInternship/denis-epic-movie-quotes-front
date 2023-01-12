@@ -9,7 +9,7 @@ import { Modals, SetState } from 'types';
 import { useForgotPasswordModal } from './useForgotPasswordModal';
 
 const ForgotPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const { handleSubmit, onSubmit, isLoading } = useForgotPasswordModal(
+  const { handleSubmit, isLoading } = useForgotPasswordModal(
     props.setActiveModal
   );
 
@@ -20,7 +20,7 @@ const ForgotPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
       headingIsBig={true}
       closeModalCallback={() => props.setActiveModal('')}
     >
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit}>
         <TextInput
           name='email'
           label='Email'

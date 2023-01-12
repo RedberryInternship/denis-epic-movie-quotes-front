@@ -11,7 +11,6 @@ import { useResetPasswordModal } from './useResetPasswordModal';
 const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
-    onSubmit,
     isLoading,
     validationRules,
     validatePasswordConfirmation,
@@ -25,7 +24,7 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
       subtitle='Regain access to your account'
       closeModalCallback={() => props.setActiveModal('')}
     >
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit}>
         <PasswordInput
           name='password'
           label='Password'

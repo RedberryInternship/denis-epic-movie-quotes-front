@@ -3,36 +3,33 @@ import { postLoginData } from 'services';
 import { ApiResponse, LoginForm } from 'types';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useToggle } from 'hooks';
+import { useHandleSubmit, useToggle } from 'hooks';
 
 export const useLoginModal = () => {
+  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
+
   const router = useRouter();
-  const { register, handleSubmit, getValues, setError } =
-    useFormContext<LoginForm>();
+  const { register, setError } = useFormContext<LoginForm>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async () => {
-    setIsLoading(true);
-    const response = (await postLoginData(
-      getValues()
-    )) as ApiResponse<LoginForm>;
-    setIsLoading(false);
-
-    if (response.success) {
-      await router.push('/home');
-    } else {
-      setError('username', {
-        type: 'custom',
-        message: response.message,
-      });
-    }
+  const onSubmitSuccess = async () => {
+    await router.push('/home');
   };
-
-  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
+  const onSubmitError = (response: ApiResponse<LoginForm>) => {
+    setError('username', {
+      type: 'custom',
+      message: response.message,
+    });
+  };
+  const handleSubmit = useHandleSubmit<LoginForm>(
+    postLoginData,
+    onSubmitSuccess,
+    onSubmitError,
+    setIsLoading
+  );
 
   return {
     handleSubmit,
-    onSubmit,
     register,
     isLoading,
     passwordIsHidden,

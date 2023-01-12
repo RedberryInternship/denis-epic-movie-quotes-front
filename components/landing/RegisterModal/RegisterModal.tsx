@@ -13,7 +13,6 @@ import { PasswordInput } from 'components';
 const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
-    onSubmit,
     isLoading,
     validationRules,
     validatePasswordConfirmation,
@@ -27,7 +26,7 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
       subtitle='Start your journey!'
       closeModalCallback={() => props.setActiveModal('')}
     >
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit}>
         <TextInput
           name='username'
           label='Name'

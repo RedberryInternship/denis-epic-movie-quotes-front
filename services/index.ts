@@ -51,16 +51,18 @@ export const postForgotPassData = async (formValues: ForgotForm) => {
 
 export const postResetPassData = async (
   formValues: ResetPasswordForm,
-  token: string,
-  email: string
+  params: {
+    token: string;
+    email: string;
+  }
 ) => {
   try {
     await fetchCSRFToken();
     return (await axios.post('/api/reset-password', {
       password: formValues.password,
       password_confirmation: formValues.password_confirmation,
-      token,
-      email,
+      token: params.token,
+      email: params.email,
     })) as ApiResponse<ResetPasswordForm>;
   } catch (error) {
     return error;
