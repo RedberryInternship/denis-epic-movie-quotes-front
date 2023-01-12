@@ -1,5 +1,5 @@
-import { Modals, SetState } from '../../types';
-import { ArrowLeft } from '../icons';
+import { Modals, SetState } from 'types';
+import { ArrowLeft } from 'components';
 
 const BackToLogin = (props: { setActiveModal: SetState<Modals> }) => {
   return (

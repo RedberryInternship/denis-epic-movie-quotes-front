@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { ApiResponse, SetState } from '../types';
+import { ApiResponse, SetState } from 'types';
 import { useFormContext } from 'react-hook-form';
 
 export const useHandleSubmit = <T extends object>(
