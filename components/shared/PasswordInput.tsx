@@ -15,6 +15,7 @@ const PasswordInput = (props: {
       <TextInput {...props} type={props.isHidden ? 'password' : 'text'} />
       <button
         type='button'
+        tabIndex={-1}
         className='absolute top-8 right-12 h-9.5 lg:right-12 flex items-center'
         onClick={props.toggleIsHidden}
       >
