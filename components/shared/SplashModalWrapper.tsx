@@ -30,7 +30,7 @@ const SplashModalWrapper = (
             <h1 className='font-medium mx-auto text-2xl mt-5 lg:text-3.5xl'>
               {props.title}
             </h1>
-            <h4 className='mt-6 mb-8 text-center lg:mt-8 lg:mb-10'>
+            <h4 className='mt-6 mb-8 text-center lg:mt-8 lg:mb-10 px-3'>
               {props.subtitle}
             </h4>
             {props.children}
