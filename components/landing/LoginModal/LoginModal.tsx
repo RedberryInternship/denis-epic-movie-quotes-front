@@ -5,10 +5,10 @@ import {
   ModalWrapper,
   NavButton,
   TextInput,
+  PasswordInput,
 } from 'components';
 import { useLoginModal } from './useLoginModal';
 import { Modals, SetState } from 'types';
-import { PasswordInput } from 'components';
 
 const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
