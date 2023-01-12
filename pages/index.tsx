@@ -54,6 +54,15 @@ const Landing = () => {
         </FormWrapper>
       )}
 
+      {activeModal === 'password_sent' && (
+        <SplashModalWrapper
+          iconComponent={<EmailSent />}
+          title='Check your email'
+          subtitle='We have sent password recovery instructions to your email'
+          closeModalCallback={() => setActiveModal('')}
+        />
+      )}
+
       {activeModal === 'confirm_sent' && (
         <SplashModalWrapper
           iconComponent={<EmailSent />}

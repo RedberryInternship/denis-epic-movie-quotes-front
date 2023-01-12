@@ -4,4 +4,5 @@ export type Modals =
   | 'register'
   | 'forgot_pass'
   | 'confirm_sent'
-  | 'verified';
+  | 'verified'
+  | 'password_sent';

@@ -11,3 +11,4 @@ export { default as FormError } from './FormError';
 export { default as NavButton } from './NavButton';
 export { default as InputIconWrapper } from './InputIconWrapper';
 export { default as PasswordInput } from './PasswordInput';
+export { default as BackToLogin } from './BackToLogin';
