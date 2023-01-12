@@ -11,29 +11,33 @@ export const useIndexPage = () => {
   const router = useRouter();
 
   const emailVerifyURL = router.query.verify_url;
+  const isResettingPassword = router.query.password_reset;
 
   useEffect(() => {
-    if (!emailVerifyURL) return;
+    if (isResettingPassword) {
+      setActiveModal('reset_pass');
+    } else if (emailVerifyURL) {
+      const sendEmailVerifyRequest = async () => {
+        const response = (await verifyEmail(
+          emailVerifyURL.toString()
+        )) as ApiResponse<{}>;
 
-    const sendEmailVerifyRequest = async () => {
-      const response = (await verifyEmail(
-        emailVerifyURL.toString()
-      )) as ApiResponse<{}>;
+        if (response.success) {
+          setActiveModal('verified');
+        } else {
+          setErrorSplashMessage(
+            `Email verification failed: ${response.message}`
+          );
+        }
 
-      if (response.success) {
-        setActiveModal('verified');
-      } else {
-        setErrorSplashMessage(`Email verification failed: ${response.message}`);
-      }
-
-      delete router.query.verify_url;
-      await router.replace({ query: router.query }, undefined, {
-        shallow: true,
-      });
-    };
-
-    sendEmailVerifyRequest();
-  }, [emailVerifyURL, router]);
+        delete router.query.verify_url;
+        await router.replace({ query: router.query }, undefined, {
+          shallow: true,
+        });
+      };
+      sendEmailVerifyRequest();
+    }
+  }, [emailVerifyURL, isResettingPassword, router]);
 
   return {
     activeModal,

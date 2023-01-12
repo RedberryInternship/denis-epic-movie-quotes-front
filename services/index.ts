@@ -1,5 +1,11 @@
 import axios from './axios';
-import { ApiResponse, ForgotForm, LoginForm, RegisterForm } from 'types';
+import {
+  ApiResponse,
+  ForgotForm,
+  LoginForm,
+  RegisterForm,
+  ResetPasswordForm,
+} from 'types';
 
 export const fetchCSRFToken = async () => {
   return await axios.get('/sanctum/csrf-cookie');
@@ -43,6 +49,24 @@ export const postForgotPassData = async (formValues: ForgotForm) => {
   }
 };
 
+export const postResetPassData = async (
+  formValues: ResetPasswordForm,
+  token: string,
+  email: string
+) => {
+  try {
+    await fetchCSRFToken();
+    return (await axios.post('/api/reset-password', {
+      password: formValues.password,
+      password_confirmation: formValues.password_confirmation,
+      token,
+      email,
+    })) as ApiResponse<ResetPasswordForm>;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const verifyEmail = async (url: string) => {
   try {
     return await axios.get(url, {
@@ -51,4 +75,9 @@ export const verifyEmail = async (url: string) => {
   } catch (error) {
     return error;
   }
+};
+
+export const getUser = async () => {
+  const response = await axios.get('/api/user', { withCredentials: true });
+  console.log(response);
 };

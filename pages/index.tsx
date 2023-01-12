@@ -10,6 +10,7 @@ import {
   ModalSuccess,
   RegisterModal,
   SplashModalWrapper,
+  ResetPasswordModal,
 } from 'components';
 import { useIndexPage } from 'hooks';
 
@@ -63,6 +64,12 @@ const Landing = () => {
         />
       )}
 
+      {activeModal === 'reset_pass' && (
+        <FormWrapper>
+          <ResetPasswordModal setActiveModal={setActiveModal} />
+        </FormWrapper>
+      )}
+
       {activeModal === 'confirm_sent' && (
         <SplashModalWrapper
           iconComponent={<EmailSent />}
@@ -77,6 +84,22 @@ const Landing = () => {
           iconComponent={<ModalSuccess />}
           title='Thank you!'
           subtitle='Your account has been activated.'
+          closeModalCallback={() => setActiveModal('')}
+        >
+          <div className='w-1/2 lg:w-full'>
+            <ModalButton
+              label='Log in'
+              onClick={() => setActiveModal('login')}
+            />
+          </div>
+        </SplashModalWrapper>
+      )}
+
+      {activeModal === 'password_changed' && (
+        <SplashModalWrapper
+          iconComponent={<ModalSuccess />}
+          title='Success!'
+          subtitle='Your password has been changed.'
           closeModalCallback={() => setActiveModal('')}
         >
           <div className='w-1/2 lg:w-full'>
