@@ -1,17 +1,14 @@
-import { useFormContext, useWatch } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { ApiResponse, Modals, RegisterForm, SetState } from 'types';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { postRegisterData } from 'services';
 import { validationRules } from './validationRules';
-import { useToggle } from 'hooks';
+import { useToggle, useValidatePasswordConfirmation } from 'hooks';
 
 export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
-  const { handleSubmit, getValues, setError, clearErrors } =
-    useFormContext<RegisterForm>();
+  const { handleSubmit, getValues, setError } = useFormContext<RegisterForm>();
 
   const [isLoading, setIsLoading] = useState(false);
-  const passwordValue = useWatch({ name: 'password' });
-  const passwordConfirmationValue = useWatch({ name: 'password_confirmation' });
 
   const onSubmit = async () => {
     setIsLoading(true);
@@ -33,21 +30,9 @@ export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
     }
   };
 
-  validationRules.password_confirmation.validate = (value: string) =>
-    value === passwordValue || 'The passwords do not match';
-
-  const validatePasswordConfirmation = async (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    if (e.target.value !== passwordConfirmationValue) {
-      setError('password_confirmation', {
-        type: 'custom',
-        message: 'The passwords do not match',
-      });
-    } else {
-      clearErrors('password_confirmation');
-    }
-  };
+  const validatePasswordConfirmation = useValidatePasswordConfirmation(
+    validationRules.password_confirmation
+  );
 
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
 
