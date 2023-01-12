@@ -78,8 +78,3 @@ export const verifyEmail = async (url: string) => {
     return error;
   }
 };
-
-export const getUser = async () => {
-  const response = await axios.get('/api/user', { withCredentials: true });
-  console.log(response);
-};
