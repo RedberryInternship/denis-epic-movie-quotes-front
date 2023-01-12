@@ -1,15 +1,7 @@
 import { PasswordEye, PasswordEyeCrossed, TextInput } from 'components';
+import { PropsType } from './types';
 
-const PasswordInput = (props: {
-  name: string;
-  label: string;
-  requiredAsterisk?: boolean;
-  placeholder: string;
-  validationRules?: object;
-  onChange?: (arg0: any) => void;
-  isHidden: boolean;
-  toggleIsHidden: () => void;
-}) => {
+const PasswordInput = (props: PropsType) => {
   return (
     <div className='relative w-full'>
       <TextInput {...props} type={props.isHidden ? 'password' : 'text'} />

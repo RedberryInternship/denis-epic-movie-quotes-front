@@ -1,16 +1,8 @@
-import { PropsWithChildren } from 'react';
 import { CloseModalButton } from 'components';
 import { useModal } from 'hooks';
+import { PropsType } from './types';
 
-const SplashModalWrapper = (
-  props: PropsWithChildren<{
-    iconComponent?: JSX.Element;
-    title: string;
-    subtitle: string;
-    headingIsBig?: boolean;
-    closeModalCallback: () => void;
-  }>
-) => {
+const SplashModalWrapper = (props: PropsType) => {
   const modalRef = useModal(props.closeModalCallback);
 
   return (

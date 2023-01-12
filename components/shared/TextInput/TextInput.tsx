@@ -1,15 +1,8 @@
 import { FormError, InputIconWrapper, Invalid, Valid } from 'components';
 import { useTextInput } from './useTextInput';
+import { PropsType } from './types';
 
-const TextInput = (props: {
-  name: string;
-  type?: 'text' | 'password';
-  label: string;
-  requiredAsterisk?: boolean;
-  placeholder: string;
-  validationRules?: object;
-  onChange?: (arg0: any) => void;
-}) => {
+const TextInput = (props: PropsType) => {
   const { register, inputIsValid, inputError, inputClassNames } = useTextInput(
     props.name
   );
