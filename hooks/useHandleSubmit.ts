@@ -9,29 +9,25 @@ export const useHandleSubmit = <T extends object>(
   setIsLoading: SetState<boolean>,
   submitArg?: {}
 ) => {
-  const { handleSubmit, getValues } = useFormContext<T>();
+  const { handleSubmit } = useFormContext<T>();
 
-  const onSubmit = useCallback(async () => {
-    setIsLoading(true);
-    const response = (await submitRequest(
-      getValues(),
-      submitArg
-    )) as ApiResponse<T>;
-    setIsLoading(false);
+  const onSubmit = useCallback(
+    async (formValues: T) => {
+      setIsLoading(true);
+      const response = (await submitRequest(
+        formValues,
+        submitArg
+      )) as ApiResponse<T>;
+      setIsLoading(false);
 
-    if (response.success) {
-      successCallback();
-    } else {
-      errorCallback(response);
-    }
-  }, [
-    errorCallback,
-    getValues,
-    setIsLoading,
-    submitArg,
-    submitRequest,
-    successCallback,
-  ]);
+      if (response.success) {
+        successCallback();
+      } else {
+        errorCallback(response);
+      }
+    },
+    [errorCallback, setIsLoading, submitArg, submitRequest, successCallback]
+  );
 
   return handleSubmit(onSubmit);
 };
