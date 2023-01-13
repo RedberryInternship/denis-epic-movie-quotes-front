@@ -38,6 +38,6 @@ export const validationRules = {
   },
   password_confirmation: {
     required: 'Please confirm your password',
-    validate: (value: string) => {},
+    validate: () => {},
   },
 };
