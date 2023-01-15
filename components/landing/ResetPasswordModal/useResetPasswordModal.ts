@@ -38,12 +38,14 @@ export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
         });
     }
   };
+  const submitRequest = (formValues: ResetPasswordForm) =>
+    postResetPassData(formValues, { token, email });
+
   const handleSubmit = useHandleSubmit<ResetPasswordForm>(
-    postResetPassData,
+    submitRequest,
     onSubmitSuccess,
     onSubmitError,
-    setIsLoading,
-    { token, email }
+    setIsLoading
   );
 
   return {
