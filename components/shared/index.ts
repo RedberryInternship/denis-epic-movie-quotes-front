@@ -1,8 +1,8 @@
 export * from './SplashModalWrapper';
 export * from './TextInput';
 export * from './PasswordInput';
+export * from './GoogleAuthButton';
 export { default as ModalWrapper } from './ModalWrapper';
-export { default as GoogleAuthButton } from './GoogleAuthButton';
 export { default as FormSubmitButton } from './FormSubmitButton';
 export { default as ModalButton } from './ModalButton';
 export { default as CloseModalButton } from './CloseModalButton';

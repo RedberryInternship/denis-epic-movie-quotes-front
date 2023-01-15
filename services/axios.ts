@@ -18,6 +18,12 @@ instance.interceptors.response.use(
   },
 
   async (error) => {
+    if (!error.response) {
+      return Promise.reject({
+        success: false,
+        message: 'Failed to connect. Please try again',
+      });
+    }
     error.response.data.success = false;
     return Promise.reject(error.response.data);
   }

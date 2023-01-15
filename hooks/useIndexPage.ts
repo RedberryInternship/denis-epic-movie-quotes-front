@@ -12,10 +12,14 @@ export const useIndexPage = () => {
 
   const emailVerifyURL = router.query.verify_url;
   const isResettingPassword = router.query.password_reset;
+  const hasOAuthError = router.query.oauth_error;
 
   useEffect(() => {
     if (isResettingPassword) {
       setActiveModal('reset_pass');
+    } else if (hasOAuthError) {
+      const errorMessage = router.query.message as string;
+      setErrorSplashMessage(errorMessage);
     } else if (emailVerifyURL) {
       const sendEmailVerifyRequest = async () => {
         const response = (await verifyEmail(
