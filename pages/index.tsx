@@ -26,7 +26,6 @@ const Landing = () => {
     <>
       <Head>
         <title>Movie Quotes</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
       {errorSplashMessage && (
