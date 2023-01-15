@@ -1,5 +1,11 @@
 import axios from './axios';
-import { ApiResponse, LoginForm, RegisterForm } from 'types';
+import {
+  ApiResponse,
+  ForgotForm,
+  LoginForm,
+  RegisterForm,
+  ResetPasswordForm,
+} from 'types';
 
 export const fetchCSRFToken = async () => {
   return await axios.get('/sanctum/csrf-cookie');
@@ -27,6 +33,37 @@ export const postRegisterData = async (formValues: RegisterForm) => {
       password: formValues.password,
       password_confirmation: formValues.password_confirmation,
     })) as ApiResponse<RegisterForm>;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const postForgotPassData = async (formValues: ForgotForm) => {
+  try {
+    await fetchCSRFToken();
+    return (await axios.post('/api/forgot-password', {
+      email: formValues.email,
+    })) as ApiResponse<ForgotForm>;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const postResetPassData = async (
+  formValues: ResetPasswordForm,
+  params: {
+    token: string;
+    email: string;
+  }
+) => {
+  try {
+    await fetchCSRFToken();
+    return (await axios.post('/api/reset-password', {
+      password: formValues.password,
+      password_confirmation: formValues.password_confirmation,
+      token: params.token,
+      email: params.email,
+    })) as ApiResponse<ResetPasswordForm>;
   } catch (error) {
     return error;
   }

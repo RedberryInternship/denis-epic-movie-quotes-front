@@ -32,7 +32,7 @@ const ModalWrapper = (
           >
             {props.title}
           </h1>
-          <h4 className='text-brand-subtitle mt-2 mb-10.5 text-center'>
+          <h4 className='text-brand-subtitle mt-3 mb-10.5 text-center'>
             {props.subtitle}
           </h4>
           {props.children}

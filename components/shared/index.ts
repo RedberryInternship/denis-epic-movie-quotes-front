@@ -1,6 +1,7 @@
+export * from './SplashModalWrapper';
+export * from './TextInput';
+export * from './PasswordInput';
 export { default as ModalWrapper } from './ModalWrapper';
-export { default as SplashModalWrapper } from './SplashModalWrapper';
-export { default as TextInput } from './TextInput';
 export { default as GoogleAuthButton } from './GoogleAuthButton';
 export { default as FormSubmitButton } from './FormSubmitButton';
 export { default as ModalButton } from './ModalButton';
@@ -9,3 +10,5 @@ export { default as FormWrapper } from './FormWrapper';
 export { default as Form } from './Form';
 export { default as FormError } from './FormError';
 export { default as NavButton } from './NavButton';
+export { default as InputIconWrapper } from './InputIconWrapper';
+export { default as BackToLogin } from './BackToLogin';

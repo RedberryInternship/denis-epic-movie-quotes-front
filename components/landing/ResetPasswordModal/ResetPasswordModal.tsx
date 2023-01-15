@@ -1,16 +1,14 @@
 import {
+  BackToLogin,
   Form,
   FormSubmitButton,
-  GoogleAuthButton,
   ModalWrapper,
-  NavButton,
-  TextInput,
   PasswordInput,
 } from 'components';
-import { useRegisterModal } from './useRegisterModal';
 import { Modals, SetState } from 'types';
+import { useResetPasswordModal } from './useResetPasswordModal';
 
-const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
+const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
     isLoading,
@@ -18,29 +16,15 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
-  } = useRegisterModal(props.setActiveModal);
+  } = useResetPasswordModal(props.setActiveModal);
 
   return (
     <ModalWrapper
-      title='Create an account'
-      subtitle='Start your journey!'
+      title='Create new password'
+      subtitle='Regain access to your account'
       closeModalCallback={() => props.setActiveModal('')}
     >
       <Form onSubmit={handleSubmit}>
-        <TextInput
-          name='username'
-          label='Name'
-          placeholder='At least 3 & max.15 lower case characters'
-          requiredAsterisk={true}
-          validationRules={validationRules.username}
-        />
-        <TextInput
-          name='email'
-          label='Email'
-          placeholder='Enter your email'
-          requiredAsterisk={true}
-          validationRules={validationRules.email}
-        />
         <PasswordInput
           name='password'
           label='Password'
@@ -60,19 +44,11 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />
-        <FormSubmitButton label='Get started' isLoading={isLoading} />
-        <GoogleAuthButton label='Sign up with Google' />
-        <span className='mt-5 mb-10 lg:mb-0 text-brand-subtitle'>
-          Already have an account?
-          <NavButton
-            label='Log in'
-            classNames='ml-2'
-            onClick={() => props.setActiveModal('login')}
-          />
-        </span>
+        <FormSubmitButton label='Reset password' isLoading={isLoading} />
+        <BackToLogin setActiveModal={props.setActiveModal} />
       </Form>
     </ModalWrapper>
   );
 };
 
-export default RegisterModal;
+export default ResetPasswordModal;
