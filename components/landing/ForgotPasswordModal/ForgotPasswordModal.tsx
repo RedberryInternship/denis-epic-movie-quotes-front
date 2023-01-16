@@ -9,31 +9,31 @@ import { Modals, SetState } from 'types';
 import { useForgotPasswordModal } from './useForgotPasswordModal';
 
 const ForgotPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const { handleSubmit, isLoading } = useForgotPasswordModal(
+  const { handleSubmit, isLoading, t } = useForgotPasswordModal(
     props.setActiveModal
   );
 
   return (
     <ModalWrapper
-      title='Forgot password?'
-      subtitle='Enter the email and we’ll send an email with instructions to reset your password'
+      title={t('forgot_title')}
+      subtitle={t('forgot_description')}
       headingIsBig={true}
       closeModalCallback={() => props.setActiveModal('')}
     >
       <Form onSubmit={handleSubmit}>
         <TextInput
           name='email'
-          label='Email'
-          placeholder='Enter your email'
+          label={t('email')}
+          placeholder={t('email_placeholder')}
           validationRules={{
-            required: 'Please enter your email address',
+            required: t('email_required'),
             pattern: {
               value: /^(.+)@(.+)$/,
-              message: 'Please enter a valid email address',
+              message: t('email_invalid'),
             },
           }}
         />
-        <FormSubmitButton label='Send instructions' isLoading={isLoading} />
+        <FormSubmitButton label={t('forgot_submit')} isLoading={isLoading} />
         <BackToLogin setActiveModal={props.setActiveModal} />
       </Form>
     </ModalWrapper>

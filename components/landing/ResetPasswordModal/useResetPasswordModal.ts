@@ -9,6 +9,7 @@ import {
 import { validationRules } from './validationRules';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
@@ -48,6 +49,8 @@ export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
     setIsLoading
   );
 
+  const { t } = useTranslation('auth');
+
   return {
     handleSubmit,
     isLoading,
@@ -55,5 +58,6 @@ export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
     validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
+    t,
   };
 };

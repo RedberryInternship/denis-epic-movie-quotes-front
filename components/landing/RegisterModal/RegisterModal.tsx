@@ -18,33 +18,34 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
     validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
+    t,
   } = useRegisterModal(props.setActiveModal);
 
   return (
     <ModalWrapper
-      title='Create an account'
-      subtitle='Start your journey!'
+      title={t('register_title')}
+      subtitle={t('register_description')}
       closeModalCallback={() => props.setActiveModal('')}
     >
       <Form onSubmit={handleSubmit}>
         <TextInput
           name='username'
-          label='Name'
-          placeholder='At least 3 & max.15 lower case characters'
+          label={t('name')}
+          placeholder={t('name_placeholder')}
           requiredAsterisk={true}
           validationRules={validationRules.username}
         />
         <TextInput
           name='email'
-          label='Email'
-          placeholder='Enter your email'
+          label={t('email')}
+          placeholder={t('email_placeholder')}
           requiredAsterisk={true}
           validationRules={validationRules.email}
         />
         <PasswordInput
           name='password'
-          label='Password'
-          placeholder='At least 8 & max.15 lower case characters'
+          label={t('password')}
+          placeholder={t('password_placeholder')}
           requiredAsterisk={true}
           validationRules={validationRules.password}
           onChange={validatePasswordConfirmation}
@@ -53,19 +54,19 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
         />
         <PasswordInput
           name='password_confirmation'
-          label='Current Password'
-          placeholder='Password'
+          label={t('password_confirmation')}
+          placeholder={t('password')}
           requiredAsterisk={true}
           validationRules={validationRules.password_confirmation}
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />
-        <FormSubmitButton label='Get started' isLoading={isLoading} />
-        <GoogleAuthButton label='Sign up with Google' />
+        <FormSubmitButton label={t('register_submit')} isLoading={isLoading} />
+        <GoogleAuthButton label={t('google_register')} />
         <span className='mt-5 mb-10 lg:mb-0 text-brand-subtitle'>
-          Already have an account?
+          {t('login_suggestion')}
           <NavButton
-            label='Log in'
+            label={t('login')}
             classNames='ml-2'
             onClick={() => props.setActiveModal('login')}
           />
