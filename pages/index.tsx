@@ -5,6 +5,7 @@ import {
   FeaturedQuote,
   ForgotPasswordModal,
   FormWrapper,
+  LanguageSelector,
   LoginModal,
   ModalButton,
   ModalSuccess,
@@ -122,12 +123,7 @@ const Landing = () => {
           Movie Quotes
         </span>
         <div className='flex gap-4'>
-          <span className='hidden lg:flex items-center gap-2.5 px-6 cursor-pointer'>
-            Eng
-            <span className='h-4 w-4 flex justify-center items-center pt-1'>
-              <ArrowDown />
-            </span>
-          </span>
+          <LanguageSelector />
           <button
             className='h-9.5 px-6 bg-brand-red rounded hidden lg:inline-block'
             onClick={() => setActiveModal('register')}
