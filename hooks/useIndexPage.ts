@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { verifyEmail } from 'services';
 import { ApiResponse, Modals } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useIndexPage = () => {
+  const { t } = useTranslation(['landing', 'common', 'auth']);
   const [activeModal, setActiveModal] = useState<Modals>('');
 
   const [errorSplashMessage, setErrorSplashMessage] = useState('');
@@ -30,7 +32,7 @@ export const useIndexPage = () => {
           setActiveModal('verified');
         } else {
           setErrorSplashMessage(
-            `Email verification failed: ${response.message}`
+            `${t('auth:verification_failed')}: ${response.message}`
           );
         }
 
@@ -41,12 +43,13 @@ export const useIndexPage = () => {
       };
       sendEmailVerifyRequest();
     }
-  }, [emailVerifyURL, isResettingPassword, router]);
+  }, [emailVerifyURL, hasOAuthError, isResettingPassword, router, t]);
 
   return {
     activeModal,
     setActiveModal,
     errorSplashMessage,
     setErrorSplashMessage,
+    t,
   };
 };

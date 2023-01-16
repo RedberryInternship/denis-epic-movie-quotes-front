@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { ApiResponse, ForgotForm, Modals, SetState } from 'types';
 import { postForgotPassData } from 'services';
 import { useHandleSubmit } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useForgotPasswordModal = (setActiveModal: SetState<Modals>) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,5 +32,7 @@ export const useForgotPasswordModal = (setActiveModal: SetState<Modals>) => {
     setIsLoading
   );
 
-  return { handleSubmit, isLoading };
+  const { t } = useTranslation('auth');
+
+  return { handleSubmit, isLoading, t };
 };

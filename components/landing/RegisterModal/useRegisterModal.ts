@@ -8,6 +8,7 @@ import {
   useToggle,
   useValidatePasswordConfirmation,
 } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
@@ -38,6 +39,8 @@ export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
     setIsLoading
   );
 
+  const { t } = useTranslation('auth');
+
   return {
     handleSubmit,
     isLoading,
@@ -45,5 +48,6 @@ export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
     validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
+    t,
   };
 };

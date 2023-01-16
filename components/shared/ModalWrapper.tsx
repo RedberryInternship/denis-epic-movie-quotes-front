@@ -26,7 +26,7 @@ const ModalWrapper = (
         >
           <h1
             className={
-              'font-medium mx-auto ' +
+              'font-medium mx-auto text-center ' +
               (props.headingIsBig ? 'text-3.5xl' : 'text-2xl lg:text-3.5xl')
             }
           >

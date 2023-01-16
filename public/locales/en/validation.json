@@ -1,0 +1,13 @@
+{
+  "username_required": "Please enter a username",
+  "min_length_3": "This field should contain at least 3 characters",
+  "max_length_16": "This field should contain less than 16 characters",
+  "only_lowercase_and_numbers": "The username can only contain lowercase characters and numbers",
+  "email_required": "Please enter an email",
+  "email_invalid": "Please enter a valid email address",
+  "password_required": "Please enter a password",
+  "password_length": "The password should contain at least 8 characters",
+  "password_only_lowercase": "The password can only contain lowercase characters and numbers",
+  "password_confirmation_required": "Please confirm your password",
+  "password_no_match": "The passwords do not match"
+}

@@ -4,6 +4,7 @@ import { ApiResponse, LoginForm } from 'types';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useHandleSubmit, useToggle } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useLoginModal = () => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
@@ -28,11 +29,14 @@ export const useLoginModal = () => {
     setIsLoading
   );
 
+  const { t } = useTranslation('auth');
+
   return {
     handleSubmit,
     register,
     isLoading,
     passwordIsHidden,
     togglePasswordIsHidden,
+    t,
   };
 };

@@ -1,43 +1,43 @@
 export const validationRules = {
   username: {
-    required: 'Please enter a username',
+    required: 'username_required',
     minLength: {
       value: 3,
-      message: 'This field should contain at least 3 characters',
+      message: 'min_length_3',
     },
     maxLength: {
       value: 15,
-      message: 'This field should contain less than 16 characters',
+      message: 'max_length_16',
     },
     pattern: {
       value: /^[a-z0-9_\-]+$/,
-      message: 'The username can only contain lowercase characters and numbers',
+      message: 'only_lowercase_and_numbers',
     },
   },
   email: {
-    required: 'Please enter an email',
+    required: 'email_required',
     pattern: {
       value: /^(.+)@(.+)$/,
-      message: 'Please enter a valid email address',
+      message: 'email_invalid',
     },
   },
   password: {
-    required: 'Please enter a password',
+    required: 'password_required',
     minLength: {
       value: 8,
-      message: 'The password should contain at least 8 characters',
+      message: 'password_length',
     },
     maxLength: {
       value: 15,
-      message: 'This field should contain less than 16 characters',
+      message: 'max_length_16',
     },
     pattern: {
       value: /^[a-z0-9_\-]+$/,
-      message: 'The password can only contain lowercase characters and numbers',
+      message: 'password_only_lowercase',
     },
   },
   password_confirmation: {
-    required: 'Please confirm your password',
+    required: 'password_confirmation_required',
     validate: () => {},
   },
 };

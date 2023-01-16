@@ -1,21 +1,21 @@
 export const validationRules = {
   password: {
-    required: 'Please enter a password',
+    required: 'password_required',
     minLength: {
       value: 8,
-      message: 'The password should contain at least 8 characters',
+      message: 'password_length',
     },
     maxLength: {
       value: 15,
-      message: 'This field should contain less than 16 characters',
+      message: 'max_length_16',
     },
     pattern: {
       value: /^[a-z0-9_\-]+$/,
-      message: 'The password can only contain lowercase characters and numbers',
+      message: 'password_only_lowercase',
     },
   },
   password_confirmation: {
-    required: 'Please confirm your password',
+    required: 'password_confirmation_required',
     validate: () => {},
   },
 };

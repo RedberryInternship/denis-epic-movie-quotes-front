@@ -16,19 +16,20 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
     validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
+    t,
   } = useResetPasswordModal(props.setActiveModal);
 
   return (
     <ModalWrapper
-      title='Create new password'
-      subtitle='Regain access to your account'
+      title={t('reset_pass_title')}
+      subtitle={t('reset_pass_description')}
       closeModalCallback={() => props.setActiveModal('')}
     >
       <Form onSubmit={handleSubmit}>
         <PasswordInput
           name='password'
-          label='Password'
-          placeholder='At least 8 & max.15 lower case characters'
+          label={t('password')}
+          placeholder={t('password_placeholder')}
           requiredAsterisk={true}
           validationRules={validationRules.password}
           onChange={validatePasswordConfirmation}
@@ -37,14 +38,17 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
         />
         <PasswordInput
           name='password_confirmation'
-          label='Current Password'
-          placeholder='Password'
+          label={t('password_confirmation')}
+          placeholder={t('password')}
           requiredAsterisk={true}
           validationRules={validationRules.password_confirmation}
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />
-        <FormSubmitButton label='Reset password' isLoading={isLoading} />
+        <FormSubmitButton
+          label={t('reset_pass_submit')}
+          isLoading={isLoading}
+        />
         <BackToLogin setActiveModal={props.setActiveModal} />
       </Form>
     </ModalWrapper>

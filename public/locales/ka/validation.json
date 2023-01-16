@@ -1,0 +1,13 @@
+{
+  "username_required": "ჩაწერეთ მომხმარებლის სახელი",
+  "min_length_3": "ჩაწერეთ მინიმუმ 3 სიმბოლო",
+  "max_length_16": "გამოიყენეთ მაქსიმუმ 15 სიმბოლო",
+  "only_lowercase_and_numbers": "გამოიყენეთ მხოლოდ დაბალი რეგისტრის ასოები და რიცხვები",
+  "email_required": "ჩაწერეთ ელ-ფოსტა",
+  "email_invalid": "ელ-ფოსტის ფორმატი არასწორია",
+  "password_required": "ჩაწერეთ პაროლი",
+  "password_length": "ჩაწერეთ მინიმუმ 8 სიმბოლო",
+  "password_only_lowercase": "გამოიყენეთ მხოლოდ დაბალი რეგისტრის ასოები და რიცხვები",
+  "password_confirmation_required": "გაიმეორეთ პაროლი",
+  "password_no_match": "პაროლები არ ემთხვევა ერთმანეთს"
+}
