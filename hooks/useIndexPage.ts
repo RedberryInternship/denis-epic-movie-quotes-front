@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { verifyEmail } from 'services';
+import { getUser, verifyEmail } from 'services';
 import { ApiResponse, Modals } from 'types';
 import { useTranslation } from 'next-i18next';
 
@@ -44,6 +44,15 @@ export const useIndexPage = () => {
       sendEmailVerifyRequest();
     }
   }, [emailVerifyURL, hasOAuthError, isResettingPassword, router, t]);
+
+  useEffect(() => {
+    const redirectIfLoggedIn = async () => {
+      try {
+        if (await getUser()) await router.push('/home');
+      } catch (error) {}
+    };
+    redirectIfLoggedIn();
+  }, [router]);
 
   return {
     activeModal,
