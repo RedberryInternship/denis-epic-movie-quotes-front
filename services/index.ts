@@ -3,8 +3,10 @@ import {
   ApiResponse,
   ForgotForm,
   LoginForm,
+  NewsfeedQuote,
   RegisterForm,
   ResetPasswordForm,
+  CursorPaginatedResponse,
 } from 'types';
 
 export const fetchCSRFToken = async () => {
@@ -90,4 +92,17 @@ export const getUser = async (cookies?: string, origin?: string) => {
 
 export const sendLogoutRequest = async () => {
   return await axios.get('/api/logout');
+};
+
+export const getNewsfeedQuotes = async (
+  cursor: string,
+  cookies?: string,
+  origin?: string
+) => {
+  return (await axios.get(`/api/newsfeed-quotes?cursor=${cursor || ''}`, {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+  })) as CursorPaginatedResponse<NewsfeedQuote[] | []>;
 };

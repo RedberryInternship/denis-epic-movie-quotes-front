@@ -1,14 +1,21 @@
-import { getUser } from 'services';
+import { getNewsfeedQuotes, getUser } from 'services';
 import Head from 'next/head';
 import { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
-import { UserFromDatabase } from 'types';
 import { useNewsfeedPage } from 'hooks';
 import { Navbar, Pencil, Search, SideMenu } from 'components';
+import {
+  CursorPaginatedResponse,
+  NewsfeedQuote as NewsfeedQuoteType,
+  UserFromDatabase,
+} from 'types';
 
-const Home = (props: { user: UserFromDatabase }) => {
-  const { user, logout, toggleSideMenuIsOpen, sideMenuRef, sideMenuIsOpen } =
+const Home = (props: {
+  user: UserFromDatabase;
+  initialQuotes: CursorPaginatedResponse<NewsfeedQuoteType[] | []>;
+}) => {
+  const { user, logout, sideMenuRef, sideMenuIsOpen, toggleSideMenuIsOpen } =
     useNewsfeedPage(props.user);
 
   return (
@@ -54,9 +61,11 @@ export const getServerSideProps = async (
 
   try {
     const user = await getUser(cookies, origin);
+    const initialQuotes = await getNewsfeedQuotes('', cookies, origin);
     return {
       props: {
         user,
+        initialQuotes,
         ...(await serverSideTranslations(context.locale ?? 'en', ['common'])),
       },
     };
