@@ -14,3 +14,4 @@ export { default as NavButton } from './NavButton';
 export { default as InputIconWrapper } from './InputIconWrapper';
 export { default as BackToLogin } from './BackToLogin';
 export { default as LanguageSelectorItem } from './LanguageSelectorItem';
+export { default as RedButton } from './RedButton';
