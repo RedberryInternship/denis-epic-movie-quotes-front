@@ -6,3 +6,4 @@ export * from './useToggle';
 export * from './useValidatePasswordConfirmation';
 export * from './useHandleSubmit';
 export * from './useNewsfeedPage';
+export * from './useLocale';
