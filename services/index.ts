@@ -78,3 +78,12 @@ export const verifyEmail = async (url: string) => {
     return error;
   }
 };
+
+export const getUser = async (cookies?: string, origin?: string) => {
+  return await axios.get('/api/user', {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+  });
+};
