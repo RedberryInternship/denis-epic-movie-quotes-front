@@ -17,3 +17,7 @@ export { default as BackToLogin } from './BackToLogin';
 export { default as LanguageSelectorItem } from './LanguageSelectorItem';
 export { default as RedButton } from './RedButton';
 export { default as HeaderTitle } from './HeaderTitle';
+export { default as ProfilePicture } from './ProfilePicture';
+export { default as SelfProfilePicture } from './SelfProfilePicture';
+export { default as Navbar } from './Navbar';
+export { default as SideMenu } from './SideMenu';

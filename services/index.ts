@@ -87,3 +87,7 @@ export const getUser = async (cookies?: string, origin?: string) => {
     },
   });
 };
+
+export const sendLogoutRequest = async () => {
+  return await axios.get('/api/logout');
+};
