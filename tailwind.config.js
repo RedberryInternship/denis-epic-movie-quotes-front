@@ -47,7 +47,7 @@ module.exports = {
         1.5: '1.5px',
       },
       borderRadius: {
-        '0.5lg': '0.625rem',
+        '1.5lg': '0.625rem',
       },
     },
   },
