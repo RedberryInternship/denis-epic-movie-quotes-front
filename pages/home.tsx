@@ -1,10 +1,10 @@
 import { getNewsfeedQuotes, getUser } from 'services';
+import { Navbar, NewsfeedQuote, Pencil, Search, SideMenu } from 'components';
 import Head from 'next/head';
+import { useNewsfeedPage } from 'hooks';
 import { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
-import { useNewsfeedPage } from 'hooks';
-import { Navbar, Pencil, Search, SideMenu } from 'components';
 import {
   CursorPaginatedResponse,
   NewsfeedQuote as NewsfeedQuoteType,
@@ -15,8 +15,15 @@ const Home = (props: {
   user: UserFromDatabase;
   initialQuotes: CursorPaginatedResponse<NewsfeedQuoteType[] | []>;
 }) => {
-  const { user, logout, sideMenuRef, sideMenuIsOpen, toggleSideMenuIsOpen } =
-    useNewsfeedPage(props.user);
+  const {
+    user,
+    logout,
+    paginatedQuotes,
+    bottomRef,
+    sideMenuRef,
+    sideMenuIsOpen,
+    toggleSideMenuIsOpen,
+  } = useNewsfeedPage(props.user, props.initialQuotes);
 
   return (
     <>
@@ -46,7 +53,22 @@ const Home = (props: {
             </button>
           </div>
 
-          <div className='flex flex-col gap-8 lg:gap-10'></div>
+          <div className='flex flex-col gap-8 lg:gap-10'>
+            {!paginatedQuotes?.pages[0].data.length && (
+              <div className='text-2xl lg:text-4xl text-center mt-5 p-8 lg:p-12'>
+                There are no quotes yet!
+              </div>
+            )}
+            {paginatedQuotes?.pages.map(({ data }, index) => (
+              <div key={index} className='flex flex-col gap-8 lg:gap-10'>
+                {data.map((quote) => {
+                  return <NewsfeedQuote key={quote.id} {...quote} />;
+                })}
+              </div>
+            ))}
+          </div>
+
+          <div ref={bottomRef} className='h-1'></div>
         </section>
       </main>
     </>
