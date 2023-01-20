@@ -3,5 +3,11 @@
   "error_occurred": "Error",
   "thanks": "Thank you!",
   "password_success": "Success!",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "forbidden_login": "Sorry, but you have to sign in to access this page",
+  "forbidden_button": "Return home",
+  "forbidden_page_title": "Please Sign In",
+  "whoops": "Whoops!",
+  "404_subtitle": "We can't see the page you are looking for",
+  "404_page_title": "Page Not Found"
 }

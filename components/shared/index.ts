@@ -3,6 +3,7 @@ export * from './TextInput';
 export * from './PasswordInput';
 export * from './GoogleAuthButton';
 export * from './LanguageSelector';
+export * from './ErrorPage';
 export { default as ModalWrapper } from './ModalWrapper';
 export { default as FormSubmitButton } from './FormSubmitButton';
 export { default as ModalButton } from './ModalButton';
