@@ -5,3 +5,5 @@ export * from './modals';
 export * from './setState';
 export * from './forgotForm';
 export * from './resetPasswordForm';
+export * from './user';
+export * from './email';
