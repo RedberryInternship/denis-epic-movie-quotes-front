@@ -12,6 +12,7 @@ import {
   SplashModalWrapper,
   ResetPasswordModal,
   RedButton,
+  HeaderTitle,
 } from 'components';
 import { useIndexPage } from 'hooks';
 import { GetStaticProps } from 'next';
@@ -122,9 +123,7 @@ const Landing = () => {
             : 'flex')
         }
       >
-        <span className='text-brand-khaki uppercase font-medium'>
-          Movie Quotes
-        </span>
+        <HeaderTitle />
         <div className='flex gap-4'>
           <LanguageSelector />
           <button
