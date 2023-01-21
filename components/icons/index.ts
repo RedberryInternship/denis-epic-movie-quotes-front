@@ -8,3 +8,5 @@ export { default as Valid } from './Valid';
 export { default as Invalid } from './Invalid';
 export { default as PasswordEye } from './PasswordEye';
 export { default as PasswordEyeCrossed } from './PasswordEyeCrossed';
+export { default as Gandalf } from './Gandalf';
+export { default as Ghost } from './Ghost';

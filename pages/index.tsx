@@ -11,6 +11,8 @@ import {
   RegisterModal,
   SplashModalWrapper,
   ResetPasswordModal,
+  RedButton,
+  HeaderTitle,
 } from 'components';
 import { useIndexPage } from 'hooks';
 import { GetStaticProps } from 'next';
@@ -121,9 +123,7 @@ const Landing = () => {
             : 'flex')
         }
       >
-        <span className='text-brand-khaki uppercase font-medium'>
-          Movie Quotes
-        </span>
+        <HeaderTitle />
         <div className='flex gap-4'>
           <LanguageSelector />
           <button
@@ -151,12 +151,11 @@ const Landing = () => {
           <h1 className='text-brand-khaki font-bold text-2xl leading-normal text-center lg:text-5xl 2xl:text-6xl lg:leading-normal 2xl:leading-normal'>
             {t('landing:heading')}
           </h1>
-          <button
-            className='bg-brand-red rounded px-3.5 h-9.5 lg:text-xl lg:h-12 lg:px-4'
+          <RedButton
             onClick={() => setActiveModal('register')}
-          >
-            {t('auth:get_started')}
-          </button>
+            label={t('auth:get_started')}
+            classNames='px-3.5 lg:px-4'
+          />
         </div>
         <FeaturedQuote
           backgroundClass='bg-[url("/assets/interstellar.png")]'
