@@ -1,13 +1,13 @@
 import { Camera, House, SelfProfilePicture } from 'components';
 import { MutableRefObject } from 'react';
-import { useRouter } from 'next/router';
+import { useSideMenu } from './useSideMenu';
 
 const SideMenu = (props: {
   sideMenuIsOpen: boolean;
   sideMenuRef: MutableRefObject<null>;
   username: string;
 }) => {
-  const router = useRouter();
+  const router = useSideMenu();
 
   return (
     <aside
