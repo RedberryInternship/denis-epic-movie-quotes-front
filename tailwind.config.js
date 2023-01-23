@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'brand-btn-background': '#1E1D2A',
+        'brand-lightbackground': '#181724',
+        'brand-article': '#11101A',
         'brand-background': '#0D0B14',
         'brand-khaki': '#DDCCAA',
         'brand-lightgray': '#D9D9D9',
@@ -16,14 +19,21 @@ module.exports = {
         'brand-subtitle': '#6C757D',
         'brand-pale': '#CED4DA',
         'brand-blue': '#0D6EFD',
+        'brand-lightmodal': '#24222F',
         'brand-modal': '#222030',
+        'brand-darkmodal': '#11101A',
+        'brand-darkblue': '#1C1A26',
+        'brand-divide': '#EFEFEF4D',
       },
       spacing: {
+        4.5: '1.125rem',
         5.5: '1.375rem',
         6.5: '1.625rem',
+        7.5: '2.875rem',
         8.5: '2.125rem',
         9.5: '2.375rem',
         10.5: '2.625rem',
+        13: '3.25rem',
         15: '3.75rem',
         17.5: '4.375rem',
         18: '4.5rem',
@@ -47,7 +57,7 @@ module.exports = {
         1.5: '1.5px',
       },
       borderRadius: {
-        '0.5lg': '0.625rem',
+        '1.5lg': '0.625rem',
       },
     },
   },

@@ -15,7 +15,7 @@ const SplashModalWrapper = (props: PropsType) => {
                      lg:h-auto lg:w-[538px] lg:max-h-[80vh] 2xl:max-h-[75vh] lg:px-22 lg:py-14 lg:bg-brand-modal lg:bg-none lg:rounded-xl lg:scrollbar-thin lg:scrollbar-thumb-brand-subtitle'
         >
           <div
-            className='flex flex-col justify-center items-center mt-20 bg-gradient-nested-modal h-[360px] w-full rounded-0.5lg
+            className='flex flex-col justify-center items-center mt-20 bg-gradient-nested-modal h-[360px] w-full rounded-1.5lg
                        lg:m-0 lg:bg-none lg:h-auto'
           >
             {props.iconComponent}
