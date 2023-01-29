@@ -1,4 +1,4 @@
-import { FormError, InputIconWrapper, Invalid, Valid } from 'components';
+import { FormError, InputValidityIcon } from 'components';
 import { useTextInput } from './useTextInput';
 import { PropsType } from './types';
 
@@ -26,16 +26,7 @@ const TextInput = (props: PropsType) => {
           type={props.type || 'text'}
           className={inputClassNames}
         />
-        {inputIsValid && (
-          <InputIconWrapper>
-            <Valid />
-          </InputIconWrapper>
-        )}
-        {inputError && (
-          <InputIconWrapper>
-            <Invalid />
-          </InputIconWrapper>
-        )}
+        <InputValidityIcon isValid={inputIsValid} isInvalid={inputError} />
       </div>
 
       <FormError error={(inputError || '') as string} />
