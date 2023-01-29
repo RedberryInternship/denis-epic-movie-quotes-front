@@ -1,23 +1,18 @@
 import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
-import { RootState, setUser } from 'store';
 import { getNewsfeedQuotes } from 'services';
 import {
   CursorPaginatedResponse,
   NewsfeedQuote as NewsfeedQuoteType,
   UserFromDatabase,
 } from 'types';
+import { useUserStore } from 'hooks';
 
 export const useNewsfeedPage = (
   userData: UserFromDatabase,
   initialQuotes: CursorPaginatedResponse<NewsfeedQuoteType[] | []>
 ) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setUser(userData));
-  }, [dispatch, userData]);
-  const user = useSelector((state: RootState) => state.user);
+  const user = useUserStore(userData);
 
   const fetchQuotes = async ({ pageParam }: QueryFunctionContext) => {
     return await getNewsfeedQuotes(pageParam);
