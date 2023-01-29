@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
-import { useOutsideClickListener, useToggle } from 'hooks';
 import { RootState, setUser } from 'store';
-import { getNewsfeedQuotes, sendLogoutRequest } from 'services';
+import { getNewsfeedQuotes } from 'services';
 import {
   CursorPaginatedResponse,
   NewsfeedQuote as NewsfeedQuoteType,
@@ -20,18 +18,6 @@ export const useNewsfeedPage = (
     dispatch(setUser(userData));
   }, [dispatch, userData]);
   const user = useSelector((state: RootState) => state.user);
-
-  const router = useRouter();
-  const logout = async () => {
-    await sendLogoutRequest();
-    await router.push('/');
-  };
-
-  const [sideMenuIsOpen, toggleSideMenuIsOpen] = useToggle(false);
-  const sideMenuRef = useRef(null);
-  useOutsideClickListener(sideMenuRef, () => {
-    if (sideMenuIsOpen) toggleSideMenuIsOpen();
-  });
 
   const fetchQuotes = async ({ pageParam }: QueryFunctionContext) => {
     return await getNewsfeedQuotes(pageParam);
@@ -77,11 +63,7 @@ export const useNewsfeedPage = (
 
   return {
     user,
-    logout,
     paginatedQuotes,
     bottomRef,
-    sideMenuRef,
-    sideMenuIsOpen,
-    toggleSideMenuIsOpen,
   };
 };

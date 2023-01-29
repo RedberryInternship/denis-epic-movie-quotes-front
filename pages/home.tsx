@@ -1,5 +1,5 @@
 import { getNewsfeedQuotes, getUser } from 'services';
-import { Navbar, NewsfeedQuote, Pencil, Search, SideMenu } from 'components';
+import { NewsfeedQuote, PageWrapper, Pencil, Search } from 'components';
 import Head from 'next/head';
 import { useNewsfeedPage } from 'hooks';
 import { GetServerSidePropsContext } from 'next';
@@ -15,15 +15,10 @@ const Home = (props: {
   user: UserFromDatabase;
   initialQuotes: CursorPaginatedResponse<NewsfeedQuoteType[] | []>;
 }) => {
-  const {
-    user,
-    logout,
-    paginatedQuotes,
-    bottomRef,
-    sideMenuRef,
-    sideMenuIsOpen,
-    toggleSideMenuIsOpen,
-  } = useNewsfeedPage(props.user, props.initialQuotes);
+  const { user, paginatedQuotes, bottomRef } = useNewsfeedPage(
+    props.user,
+    props.initialQuotes
+  );
 
   return (
     <>
@@ -31,14 +26,7 @@ const Home = (props: {
         <title>Newsfeed - Movie Quotes</title>
       </Head>
 
-      <Navbar logout={logout} toggleSideMenuIsOpen={toggleSideMenuIsOpen} />
-
-      <main className='bg-brand-lightbackground text-white min-h-screen pt-8 lg:flex pb-32'>
-        <SideMenu
-          sideMenuIsOpen={sideMenuIsOpen}
-          sideMenuRef={sideMenuRef}
-          username={user.username}
-        />
+      <PageWrapper user={user} displaySearchButton={true}>
         <section className='lg:w-1/2'>
           <div className='flex lg:h-13 lg:mb-5.5'>
             <button className='flex gap-3 mb-10.5 ml-9 lg:bg-brand-btn-background lg:h-full lg:w-full lg:ml-0 lg:rounded-1.5lg lg:pl-4.5 items-center'>
@@ -70,7 +58,7 @@ const Home = (props: {
 
           <div ref={bottomRef} className='h-1'></div>
         </section>
-      </main>
+      </PageWrapper>
     </>
   );
 };
