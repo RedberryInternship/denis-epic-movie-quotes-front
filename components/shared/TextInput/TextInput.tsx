@@ -24,7 +24,11 @@ const TextInput = (props: PropsType) => {
           id={props.name}
           placeholder={props.placeholder}
           type={props.type || 'text'}
-          className={inputClassNames}
+          className={
+            'w-full pl-3.5 pr-18 lg:pr-18 bg-brand-pale text-black placeholder:text-brand-subtitle rounded ' +
+            inputClassNames +
+            (props.isBig ? 'h-12' : 'h-9.5')
+          }
         />
         <InputValidityIcon isValid={inputIsValid} isInvalid={inputError} />
       </div>

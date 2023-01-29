@@ -8,7 +8,10 @@ const PasswordInput = (props: PropsType) => {
       <button
         type='button'
         tabIndex={-1}
-        className='absolute top-8 right-12 h-9.5 lg:right-12 flex items-center'
+        className={
+          'absolute top-8 right-12 h-9.5 lg:right-12 flex items-center ' +
+          (props.isBig ? 'h-12' : 'h-9.5')
+        }
         onClick={props.toggleIsHidden}
       >
         {props.isHidden ? <PasswordEyeCrossed /> : <PasswordEye />}

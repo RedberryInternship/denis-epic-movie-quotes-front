@@ -9,4 +9,5 @@ export type PropsType = {
   onChange?: (arg0: ChangeEvent<HTMLInputElement>) => void;
   isHidden: boolean;
   toggleIsHidden: () => void;
+  isBig?: true;
 };

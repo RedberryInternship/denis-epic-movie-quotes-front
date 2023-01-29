@@ -6,4 +6,5 @@ export type PropsType = {
   placeholder: string;
   validationRules?: object;
   onChange?: (arg0: any) => void;
+  isBig?: boolean;
 };
