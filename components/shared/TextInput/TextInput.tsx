@@ -1,4 +1,4 @@
-import { FormError, InputIconWrapper, Invalid, Valid } from 'components';
+import { FormError, InputValidityIcon } from 'components';
 import { useTextInput } from './useTextInput';
 import { PropsType } from './types';
 
@@ -24,18 +24,13 @@ const TextInput = (props: PropsType) => {
           id={props.name}
           placeholder={props.placeholder}
           type={props.type || 'text'}
-          className={inputClassNames}
+          className={
+            'w-full pl-3.5 pr-18 lg:pr-18 bg-brand-pale text-black placeholder:text-brand-subtitle rounded ' +
+            inputClassNames +
+            (props.isBig ? 'h-12' : 'h-9.5')
+          }
         />
-        {inputIsValid && (
-          <InputIconWrapper>
-            <Valid />
-          </InputIconWrapper>
-        )}
-        {inputError && (
-          <InputIconWrapper>
-            <Invalid />
-          </InputIconWrapper>
-        )}
+        <InputValidityIcon isValid={inputIsValid} isInvalid={inputError} />
       </div>
 
       <FormError error={(inputError || '') as string} />

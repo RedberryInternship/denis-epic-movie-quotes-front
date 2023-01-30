@@ -14,11 +14,13 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<UserFromDatabase>) => {
       state.username = action.payload.username;
+      action.payload.emails.sort((a) => (a.is_primary ? -1 : 1));
       state.emails = action.payload.emails.map((email) => {
         return {
+          id: email.id,
           address: email.address,
           isVerified: Boolean(email.verified_at),
-          isPrimary: email.is_primary,
+          isPrimary: Boolean(email.is_primary),
         };
       });
       state.profilePicture = action.payload.profile_picture;
