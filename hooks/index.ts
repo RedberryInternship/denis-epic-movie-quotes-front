@@ -9,3 +9,5 @@ export * from './useNewsfeedPage';
 export * from './useLocale';
 export * from './useInputStatusAndClassnames';
 export * from './useUserStore';
+export * from './useProfilePage';
+export * from './useProfileModalSubmit';

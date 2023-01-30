@@ -16,6 +16,18 @@ const nextConfig = {
         port: '',
         pathname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.redberryinternship.ge',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
   i18n,

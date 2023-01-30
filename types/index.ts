@@ -11,3 +11,5 @@ export * from './translatable';
 export * from './comment';
 export * from './newsfeedQuote';
 export * from './cursorPaginatedResponse';
+export * from './addEmailForm';
+export * from './profileForm';

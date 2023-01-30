@@ -18,3 +18,8 @@ export { default as House } from './House';
 export { default as Camera } from './Camera';
 export { default as Heart } from './Heart';
 export { default as TextBubble } from './TextBubble';
+export { default as ArrowBack } from './ArrowBack';
+export { default as ArrowSmallRight } from './ArrowSmallRight';
+export { default as PlusButton } from './PlusButton';
+export { default as GreenCheckmark } from './GreenCheckmark';
+export { default as InfoCircle } from './InfoCircle';
