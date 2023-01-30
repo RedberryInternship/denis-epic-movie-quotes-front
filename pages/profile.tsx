@@ -6,6 +6,7 @@ import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
+  ChangePasswordModal,
   EditUsernameModal,
   FormWrapper,
   PageWrapper,
@@ -13,9 +14,13 @@ import {
 } from 'components';
 
 const Profile = (props: { user: UserFromDatabase }) => {
-  const { user, usernameModalIsOpen, setUsernameModalIsOpen } = useProfilePage(
-    props.user
-  );
+  const {
+    user,
+    usernameModalIsOpen,
+    setUsernameModalIsOpen,
+    setPasswordModalIsOpen,
+    passwordModalIsOpen,
+  } = useProfilePage(props.user);
 
   return (
     <>
@@ -29,6 +34,14 @@ const Profile = (props: { user: UserFromDatabase }) => {
         </FormWrapper>
       )}
 
+      {passwordModalIsOpen && (
+        <FormWrapper>
+          <ChangePasswordModal
+            setPasswordModalIsOpen={setPasswordModalIsOpen}
+          />
+        </FormWrapper>
+      )}
+
       <div>
         <PageWrapper user={user} displaySearchButton={false}>
           <FormWrapper
@@ -37,6 +50,7 @@ const Profile = (props: { user: UserFromDatabase }) => {
             <ProfileForm
               user={user}
               setUsernameModalIsOpen={setUsernameModalIsOpen}
+              setPasswordModalIsOpen={setPasswordModalIsOpen}
             />
           </FormWrapper>
         </PageWrapper>

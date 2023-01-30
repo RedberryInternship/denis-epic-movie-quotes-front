@@ -3,6 +3,7 @@ import {
   ArrowSmallRight,
   ProfileFormActions,
   ProfileImageInput,
+  ProfilePasswordSection,
   ProfileUsernameSection,
 } from 'components';
 import { useProfileForm } from './useProfileForm';
@@ -16,6 +17,7 @@ const ProfileForm = (props: PropsType) => {
     isEditingUsername,
     setIsEditingImage,
     isEditingImage,
+    setIsEditingPassword,
     isEditingPassword,
     disableEditing,
     goBack,
@@ -48,9 +50,17 @@ const ProfileForm = (props: PropsType) => {
             setUsernameModalIsOpen={props.setUsernameModalIsOpen}
           />
           <hr className='hidden lg:block mt-6 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
+          <hr className='hidden lg:block mt-9 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
+          <ProfilePasswordSection
+            isEditingPassword={isEditingPassword}
+            setIsEditingPassword={setIsEditingPassword}
+            setPasswordModalIsOpen={props.setPasswordModalIsOpen}
+          />
           <div className='flex justify-between items-center uppercase lg:hidden'>
             Email
-            <button type='button'>
+            <button
+              type='button'
+            >
               <ArrowSmallRight />
             </button>
           </div>

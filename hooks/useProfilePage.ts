@@ -18,10 +18,13 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
   }, [dispatch, userData]);
 
   const [usernameModalIsOpen, setUsernameModalIsOpen] = useState(false);
+  const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
 
   return {
     user,
     usernameModalIsOpen,
     setUsernameModalIsOpen,
+    passwordModalIsOpen,
+    setPasswordModalIsOpen,
   };
 };
