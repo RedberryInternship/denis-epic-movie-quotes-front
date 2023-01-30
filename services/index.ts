@@ -171,3 +171,13 @@ export const sendLikeRequest = async (
     quote_id: quoteID,
   });
 };
+
+export const sendStoreCommentRequest = async (
+  body: string,
+  quoteID: number
+) => {
+  return await axios.post(`/api/comment`, {
+    quote_id: quoteID,
+    body: body,
+  });
+};
