@@ -2,13 +2,14 @@ import { UserFromDatabase } from 'types';
 import { useUserStore } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { useQuery } from 'react-query';
-import { getUser } from 'services';
+import { getUser, verifyEmail } from 'services';
 import { useEffect, useState } from 'react';
 import { setUser } from 'store';
+import { useRouter } from 'next/router';
 
 export const useProfilePage = (initialUser: UserFromDatabase) => {
   const user = useUserStore(initialUser);
-  const { data: userData } = useQuery('user', () => getUser(), {
+  const { data: userData, refetch } = useQuery('user', () => getUser(), {
     initialData: initialUser,
   });
 
@@ -19,6 +20,28 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
 
   const [usernameModalIsOpen, setUsernameModalIsOpen] = useState(false);
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
+  const [isAddingEmail, setIsAddingEmail] = useState(false);
+  const [isManagingEmails, setIsManagingEmails] = useState(false);
+
+  const router = useRouter();
+  const emailVerifyURL = router.query.verify_url;
+  useEffect(() => {
+    if (emailVerifyURL) {
+      const sendEmailVerifyRequest = async () => {
+        await verifyEmail(emailVerifyURL.toString());
+
+        setIsManagingEmails(true);
+
+        delete router.query.verify_url;
+        await router.replace({ query: router.query }, undefined, {
+          shallow: true,
+        });
+
+        await refetch();
+      };
+      sendEmailVerifyRequest();
+    }
+  }, [emailVerifyURL, refetch, router]);
 
   return {
     user,
@@ -26,5 +49,9 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
     setUsernameModalIsOpen,
     passwordModalIsOpen,
     setPasswordModalIsOpen,
+    isAddingEmail,
+    setIsAddingEmail,
+    isManagingEmails,
+    setIsManagingEmails,
   };
 };

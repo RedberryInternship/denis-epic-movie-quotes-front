@@ -6,11 +6,13 @@ import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
+  AddEmailModal,
   ChangePasswordModal,
   EditUsernameModal,
   FormWrapper,
   PageWrapper,
   ProfileForm,
+  ProfileManageEmailsModal,
 } from 'components';
 
 const Profile = (props: { user: UserFromDatabase }) => {
@@ -20,6 +22,10 @@ const Profile = (props: { user: UserFromDatabase }) => {
     setUsernameModalIsOpen,
     setPasswordModalIsOpen,
     passwordModalIsOpen,
+    isAddingEmail,
+    setIsAddingEmail,
+    isManagingEmails,
+    setIsManagingEmails,
   } = useProfilePage(props.user);
 
   return (
@@ -27,6 +33,21 @@ const Profile = (props: { user: UserFromDatabase }) => {
       <Head>
         <title>Profile - Movie Quotes</title>
       </Head>
+
+      {isManagingEmails && (
+        <FormWrapper>
+          <ProfileManageEmailsModal
+            emails={user.emails}
+            setIsAddingEmail={setIsAddingEmail}
+          />
+        </FormWrapper>
+      )}
+
+      {isAddingEmail && (
+        <FormWrapper>
+          <AddEmailModal setIsAddingEmail={setIsAddingEmail} />
+        </FormWrapper>
+      )}
 
       {usernameModalIsOpen && (
         <FormWrapper>
@@ -42,13 +63,16 @@ const Profile = (props: { user: UserFromDatabase }) => {
         </FormWrapper>
       )}
 
-      <div>
+      <div className={isAddingEmail ? 'lg:blur-sm lg:opacity-95' : ''}>
         <PageWrapper user={user} displaySearchButton={false}>
           <FormWrapper
             defaultValues={{ username: user.username, current_password: '' }}
           >
             <ProfileForm
               user={user}
+              isManagingEmails={isManagingEmails}
+              setIsAddingEmail={setIsAddingEmail}
+              setIsManagingEmails={setIsManagingEmails}
               setUsernameModalIsOpen={setUsernameModalIsOpen}
               setPasswordModalIsOpen={setPasswordModalIsOpen}
             />

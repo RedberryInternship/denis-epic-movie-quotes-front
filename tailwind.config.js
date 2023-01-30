@@ -21,9 +21,9 @@ module.exports = {
         'brand-blue': '#0D6EFD',
         'brand-lightmodal': '#24222F',
         'brand-modal': '#222030',
-        'brand-darkmodal': '#11101A',
         'brand-darkblue': '#1C1A26',
         'brand-divide': '#EFEFEF4D',
+        'brand-yellow': '#EC9524',
       },
       spacing: {
         4.5: '1.125rem',
@@ -38,7 +38,9 @@ module.exports = {
         17.5: '4.375rem',
         18: '4.5rem',
         19: '4.75rem',
+        21: '5.25rem',
         22: '5.5rem',
+        22.5: '5.625rem',
         30: '7.5rem',
       },
       fontSize: {
@@ -52,6 +54,8 @@ module.exports = {
           'linear-gradient(187.16deg, #181623 0.07%, #191725 51.65%, #0D0B14 98.75%);',
         'gradient-nested-modal':
           'linear-gradient(90deg, rgba(27,25,38,1) 0%, rgba(39,37,50,1) 100%);',
+        'gradient-profile':
+          'linear-gradient(90deg, rgba(24,23,36,1) 0%, rgba(16,14,24,1) 100%);',
       },
       borderWidth: {
         1.5: '1.5px',

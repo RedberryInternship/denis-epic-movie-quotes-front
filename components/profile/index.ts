@@ -1,4 +1,6 @@
 export * from './ProfilePasswordSection';
+export * from './ProfileEmailSection';
+export * from './EmailSideButtons';
 export * from './EditUsernameModal';
 export * from './ChangePasswordModal';
 export * from './ProfileUsernameSection';
@@ -9,3 +11,4 @@ export * from './ProfileInput';
 export * from './ProfileImageInput';
 export * from './ProfileFormActions';
 export { default as InputSideButton } from './InputSideButton';
+export { default as EmailStatusIcon } from './EmailStatusIcon';

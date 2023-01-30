@@ -1,6 +1,7 @@
 import {
   ArrowBack,
   ArrowSmallRight,
+  ProfileEmailSection,
   ProfileFormActions,
   ProfileImageInput,
   ProfilePasswordSection,
@@ -21,7 +22,7 @@ const ProfileForm = (props: PropsType) => {
     isEditingPassword,
     disableEditing,
     goBack,
-  } = useProfileForm();
+  } = useProfileForm(props.isManagingEmails, props.setIsManagingEmails);
 
   return (
     <form
@@ -50,6 +51,10 @@ const ProfileForm = (props: PropsType) => {
             setUsernameModalIsOpen={props.setUsernameModalIsOpen}
           />
           <hr className='hidden lg:block mt-6 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
+          <ProfileEmailSection
+            emails={props.user.emails}
+            setIsAddingEmail={props.setIsAddingEmail}
+          />
           <hr className='hidden lg:block mt-9 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
           <ProfilePasswordSection
             isEditingPassword={isEditingPassword}
@@ -60,6 +65,7 @@ const ProfileForm = (props: PropsType) => {
             Email
             <button
               type='button'
+              onClick={() => props.setIsManagingEmails(true)}
             >
               <ArrowSmallRight />
             </button>

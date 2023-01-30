@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useFormContext, useFormState } from 'react-hook-form';
-import { ApiResponse, ProfileForm } from 'types';
+import { ApiResponse, ProfileForm, SetState } from 'types';
 import { useQueryClient } from 'react-query';
 import { sendUpdateProfileRequest } from 'services';
 
-export const useProfileForm = () => {
+export const useProfileForm = (
+  isManagingEmails: boolean,
+  setIsManagingEmails: SetState<boolean>
+) => {
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -17,7 +20,9 @@ export const useProfileForm = () => {
   };
 
   const router = useRouter();
-  const goBack = router.back;
+  const goBack = isManagingEmails
+    ? () => setIsManagingEmails(false)
+    : router.back;
 
   const { handleSubmit, setError } = useFormContext<ProfileForm>();
 
