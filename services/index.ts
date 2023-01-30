@@ -161,3 +161,13 @@ export const sendUpdateProfileRequest = async (formFields: ProfileForm) => {
     return error;
   }
 };
+
+export const sendLikeRequest = async (
+  isUnlikeAttempt: boolean,
+  quoteID: number
+) => {
+  return await axios.post(`/api/like`, {
+    is_unlike_attempt: isUnlikeAttempt,
+    quote_id: quoteID,
+  });
+};

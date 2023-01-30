@@ -10,6 +10,7 @@ import {
   NewsfeedQuote as NewsfeedQuoteType,
   UserFromDatabase,
 } from 'types';
+import { Fragment } from 'react';
 
 const Home = (props: {
   user: UserFromDatabase;
@@ -48,11 +49,13 @@ const Home = (props: {
               </div>
             )}
             {paginatedQuotes?.pages.map(({ data }, index) => (
-              <div key={index} className='flex flex-col gap-8 lg:gap-10'>
+              <Fragment key={index}>
                 {data.map((quote) => {
-                  return <NewsfeedQuote key={quote.id} {...quote} />;
+                  return (
+                    <NewsfeedQuote key={quote.id} {...quote} page={index} />
+                  );
                 })}
-              </div>
+              </Fragment>
             ))}
           </div>
 

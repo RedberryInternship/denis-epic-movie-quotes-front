@@ -1,16 +1,20 @@
 import {
   Heart,
-  SelfProfilePicture,
-  ProfilePicture,
-  TextBubble,
   NewsfeedComment,
+  ProfilePicture,
+  SelfProfilePicture,
+  TextBubble,
 } from 'components';
 import Image from 'next/image';
 import { NewsfeedQuote as NewsfeedQuoteType } from 'types';
-import { useLocale } from 'hooks';
+import { useNewsfeedQuote } from './useNewsfeedQuote';
 
-const NewsfeedQuote = (props: NewsfeedQuoteType) => {
-  const locale = useLocale();
+const NewsfeedQuote = (props: NewsfeedQuoteType & { page: number }) => {
+  const { locale, isLiked, submitLikeOrUnlike } = useNewsfeedQuote(
+    props.page,
+    props.id,
+    props.likes
+  );
 
   return (
     <article className='bg-brand-article py-7 px-9 lg:px-6 lg:pt-6 lg:pb-10 lg:rounded-xl'>
@@ -44,8 +48,8 @@ const NewsfeedQuote = (props: NewsfeedQuoteType) => {
         </div>
         <div className='flex gap-3'>
           <span className='mb-1'>{props.likes_count}</span>
-          <button>
-            <Heart />
+          <button onClick={submitLikeOrUnlike}>
+            <Heart isActive={isLiked} />
           </button>
         </div>
       </div>
