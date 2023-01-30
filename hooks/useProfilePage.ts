@@ -3,7 +3,7 @@ import { useUserStore } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { useQuery } from 'react-query';
 import { getUser } from 'services';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setUser } from 'store';
 
 export const useProfilePage = (initialUser: UserFromDatabase) => {
@@ -17,7 +17,11 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
     dispatch(setUser(userData as UserFromDatabase));
   }, [dispatch, userData]);
 
+  const [usernameModalIsOpen, setUsernameModalIsOpen] = useState(false);
+
   return {
     user,
+    usernameModalIsOpen,
+    setUsernameModalIsOpen,
   };
 };

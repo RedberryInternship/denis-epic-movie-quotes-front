@@ -8,7 +8,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { FormWrapper, PageWrapper, ProfileForm } from 'components';
 
 const Profile = (props: { user: UserFromDatabase }) => {
-  const { user } = useProfilePage(props.user);
+  const { user, usernameModalIsOpen, setUsernameModalIsOpen } = useProfilePage(
+    props.user
+  );
 
   return (
     <>
@@ -21,7 +23,10 @@ const Profile = (props: { user: UserFromDatabase }) => {
           <FormWrapper
             defaultValues={{ username: user.username, current_password: '' }}
           >
-            <ProfileForm user={user} />
+            <ProfileForm
+              user={user}
+              setUsernameModalIsOpen={setUsernameModalIsOpen}
+            />
           </FormWrapper>
         </PageWrapper>
       </div>

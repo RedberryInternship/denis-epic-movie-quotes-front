@@ -3,6 +3,7 @@ import {
   ArrowSmallRight,
   ProfileFormActions,
   ProfileImageInput,
+  ProfileUsernameSection,
 } from 'components';
 import { useProfileForm } from './useProfileForm';
 import { PropsType } from './types';
@@ -11,6 +12,7 @@ const ProfileForm = (props: PropsType) => {
   const {
     handleSubmit,
     isLoading,
+    setIsEditingUsername,
     isEditingUsername,
     setIsEditingImage,
     isEditingImage,
@@ -39,6 +41,12 @@ const ProfileForm = (props: PropsType) => {
           />
         </div>
         <div className='mt-15 lg:-mt-8'>
+          <ProfileUsernameSection
+            username={props.user.username}
+            isEditingUsername={isEditingUsername}
+            setIsEditingUsername={setIsEditingUsername}
+            setUsernameModalIsOpen={props.setUsernameModalIsOpen}
+          />
           <hr className='hidden lg:block mt-6 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
           <div className='flex justify-between items-center uppercase lg:hidden'>
             Email
