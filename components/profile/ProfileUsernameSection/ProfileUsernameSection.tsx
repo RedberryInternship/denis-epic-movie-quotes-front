@@ -19,7 +19,10 @@ const ProfileUsernameSection = (props: PropsType) => {
             />
           </div>
           <div className='flex lg:hidden'>
-            <InputSideButton label='Edit' />
+            <InputSideButton
+              label='Edit'
+              onClick={() => props.setUsernameModalIsOpen(true)}
+            />
           </div>
         </>
       }

@@ -5,7 +5,12 @@ import { GetServerSidePropsContext } from 'next';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { FormWrapper, PageWrapper, ProfileForm } from 'components';
+import {
+  EditUsernameModal,
+  FormWrapper,
+  PageWrapper,
+  ProfileForm,
+} from 'components';
 
 const Profile = (props: { user: UserFromDatabase }) => {
   const { user, usernameModalIsOpen, setUsernameModalIsOpen } = useProfilePage(
@@ -17,6 +22,12 @@ const Profile = (props: { user: UserFromDatabase }) => {
       <Head>
         <title>Profile - Movie Quotes</title>
       </Head>
+
+      {usernameModalIsOpen && (
+        <FormWrapper>
+          <EditUsernameModal setUsernameModalIsOpen={setUsernameModalIsOpen} />
+        </FormWrapper>
+      )}
 
       <div>
         <PageWrapper user={user} displaySearchButton={false}>
