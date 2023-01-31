@@ -103,13 +103,18 @@ export const sendLogoutRequest = async () => {
 
 export const getNewsfeedQuotes = async (
   cursor: string,
+  searchQuery: string,
   cookies?: string,
   origin?: string
 ) => {
-  return (await axios.get(`/api/newsfeed-quotes?cursor=${cursor || ''}`, {
+  return (await axios.get(`/api/newsfeed-quotes`, {
     headers: {
       origin: origin,
       Cookie: cookies,
+    },
+    params: {
+      cursor,
+      search_query: searchQuery,
     },
   })) as CursorPaginatedResponse<NewsfeedQuote[] | []>;
 };

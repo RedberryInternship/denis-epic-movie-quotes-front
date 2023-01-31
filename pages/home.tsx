@@ -1,5 +1,5 @@
 import { getNewsfeedQuotes, getUser } from 'services';
-import { NewsfeedQuote, PageWrapper, Pencil, Search } from 'components';
+import { NewsfeedInputs, NewsfeedQuote, PageWrapper } from 'components';
 import Head from 'next/head';
 import { useNewsfeedPage } from 'hooks';
 import { GetServerSidePropsContext } from 'next';
@@ -16,10 +16,15 @@ const Home = (props: {
   user: UserFromDatabase;
   initialQuotes: CursorPaginatedResponse<NewsfeedQuoteType[] | []>;
 }) => {
-  const { user, paginatedQuotes, bottomRef } = useNewsfeedPage(
-    props.user,
-    props.initialQuotes
-  );
+  const {
+    user,
+    paginatedQuotes,
+    bottomRef,
+    searchIsActive,
+    setSearchIsActive,
+    searchQuery,
+    setSearchQuery,
+  } = useNewsfeedPage(props.user, props.initialQuotes);
 
   return (
     <>
@@ -29,23 +34,18 @@ const Home = (props: {
 
       <PageWrapper user={user} displaySearchButton={true}>
         <section className='lg:w-1/2'>
-          <div className='flex lg:h-13 lg:mb-5.5'>
-            <button className='flex gap-3 mb-10.5 ml-9 lg:bg-brand-btn-background lg:h-full lg:w-full lg:ml-0 lg:rounded-1.5lg lg:pl-4.5 items-center'>
-              <Pencil />
-              <span>Write new quote</span>
-            </button>
-            <button className='hidden lg:flex gap-4 opacity-70 pl-6 pr-2 min-w-max items-center text-xl'>
-              <div className='w-5 h-5'>
-                <Search />
-              </div>
-              Search by
-            </button>
-          </div>
-
+          <NewsfeedInputs
+            searchIsActive={searchIsActive}
+            setSearchIsActive={setSearchIsActive}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
           <div className='flex flex-col gap-8 lg:gap-10'>
             {!paginatedQuotes?.pages[0].data.length && (
-              <div className='text-2xl lg:text-4xl text-center mt-5 p-8 lg:p-12'>
-                There are no quotes yet!
+              <div className='text-xl lg:text-3xl text-center mt-5 p-8 lg:p-12'>
+                {searchQuery
+                  ? 'No quotes match your search query!'
+                  : 'There are no quotes yet!'}
               </div>
             )}
             {paginatedQuotes?.pages.map(({ data }, index) => (
@@ -74,7 +74,7 @@ export const getServerSideProps = async (
 
   try {
     const user = await getUser(cookies, origin);
-    const initialQuotes = await getNewsfeedQuotes('', cookies, origin);
+    const initialQuotes = await getNewsfeedQuotes('', '', cookies, origin);
     return {
       props: {
         user,
