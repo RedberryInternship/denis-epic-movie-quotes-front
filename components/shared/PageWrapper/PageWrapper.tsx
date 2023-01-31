@@ -1,11 +1,8 @@
-import { SideMenu, Navbar } from 'components';
-import { PropsWithChildren } from 'react';
+import { Navbar, SideMenu } from 'components';
 import { usePageWrapper } from './usePageWrapper';
-import { User } from 'types';
+import { PropsType } from './types';
 
-const PageWrapper = (
-  props: PropsWithChildren<{ user: User; displaySearchButton: boolean }>
-) => {
+const PageWrapper = (props: PropsType) => {
   const { sideMenuRef, sideMenuIsOpen, toggleSideMenuIsOpen } =
     usePageWrapper();
 
@@ -13,7 +10,7 @@ const PageWrapper = (
     <>
       <Navbar
         toggleSideMenuIsOpen={toggleSideMenuIsOpen}
-        displaySearchButton={props.displaySearchButton}
+        searchBarProps={props.searchBarProps}
       />
 
       <main className='bg-brand-lightbackground bg-gradient-newsfeed text-white min-h-screen pt-8 lg:flex pb-32'>

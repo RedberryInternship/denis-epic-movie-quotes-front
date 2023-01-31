@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
 import { getNewsfeedQuotes } from 'services';
 import {
@@ -14,16 +14,20 @@ export const useNewsfeedPage = (
 ) => {
   const user = useUserStore(userData);
 
+  const [searchIsActive, setSearchIsActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const fetchQuotes = async ({ pageParam }: QueryFunctionContext) => {
-    return await getNewsfeedQuotes(pageParam);
+    return await getNewsfeedQuotes(pageParam, searchQuery);
   };
 
   const {
     data: paginatedQuotes,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery('quotes', fetchQuotes, {
-    initialData: {
+    refetch,
+  } = useInfiniteQuery(['quotes', searchQuery], fetchQuotes, {
+    placeholderData: {
       pages: [initialQuotes],
       pageParams: [],
     },
@@ -40,6 +44,10 @@ export const useNewsfeedPage = (
       return lastPage.next_cursor;
     },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, searchQuery]);
 
   const bottomRef = useRef(null);
   useEffect(() => {
@@ -60,5 +68,9 @@ export const useNewsfeedPage = (
     user,
     paginatedQuotes,
     bottomRef,
+    searchIsActive,
+    setSearchIsActive,
+    searchQuery,
+    setSearchQuery,
   };
 };

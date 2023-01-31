@@ -103,13 +103,18 @@ export const sendLogoutRequest = async () => {
 
 export const getNewsfeedQuotes = async (
   cursor: string,
+  searchQuery: string,
   cookies?: string,
   origin?: string
 ) => {
-  return (await axios.get(`/api/newsfeed-quotes?cursor=${cursor || ''}`, {
+  return (await axios.get(`/api/newsfeed-quotes`, {
     headers: {
       origin: origin,
       Cookie: cookies,
+    },
+    params: {
+      cursor,
+      search_query: searchQuery,
     },
   })) as CursorPaginatedResponse<NewsfeedQuote[] | []>;
 };
@@ -160,4 +165,24 @@ export const sendUpdateProfileRequest = async (formFields: ProfileForm) => {
   } catch (error) {
     return error;
   }
+};
+
+export const sendLikeRequest = async (
+  isUnlikeAttempt: boolean,
+  quoteID: number
+) => {
+  return await axios.post(`/api/like`, {
+    is_unlike_attempt: isUnlikeAttempt,
+    quote_id: quoteID,
+  });
+};
+
+export const sendStoreCommentRequest = async (
+  body: string,
+  quoteID: number
+) => {
+  return await axios.post(`/api/comment`, {
+    quote_id: quoteID,
+    body: body,
+  });
 };

@@ -1,16 +1,23 @@
 import {
   Heart,
-  SelfProfilePicture,
-  ProfilePicture,
-  TextBubble,
   NewsfeedComment,
+  ProfilePicture,
+  SelfProfilePicture,
+  TextBubble,
 } from 'components';
 import Image from 'next/image';
 import { NewsfeedQuote as NewsfeedQuoteType } from 'types';
-import { useLocale } from 'hooks';
+import { useNewsfeedQuote } from './useNewsfeedQuote';
 
-const NewsfeedQuote = (props: NewsfeedQuoteType) => {
-  const locale = useLocale();
+const NewsfeedQuote = (props: NewsfeedQuoteType & { page: number }) => {
+  const {
+    locale,
+    isLiked,
+    submitLikeOrUnlike,
+    commentSubmitHandler,
+    register,
+    setFocusOnComment,
+  } = useNewsfeedQuote(props.page, props.id, props.likes);
 
   return (
     <article className='bg-brand-article py-7 px-9 lg:px-6 lg:pt-6 lg:pb-10 lg:rounded-xl'>
@@ -36,16 +43,16 @@ const NewsfeedQuote = (props: NewsfeedQuoteType) => {
         />
       </div>
       <div className='flex text-xl gap-6 mb-5 lg:mb-6'>
-        <div className='flex gap-3'>
+        <button className='flex gap-3 items-center' onClick={setFocusOnComment}>
           <span className='mb-1'>{props.comments.length}</span>
-          <button>
+          <div className='flex items-center'>
             <TextBubble />
-          </button>
-        </div>
+          </div>
+        </button>
         <div className='flex gap-3'>
           <span className='mb-1'>{props.likes_count}</span>
-          <button>
-            <Heart />
+          <button onClick={submitLikeOrUnlike}>
+            <Heart isActive={isLiked} />
           </button>
         </div>
       </div>
@@ -55,14 +62,19 @@ const NewsfeedQuote = (props: NewsfeedQuoteType) => {
         <NewsfeedComment key={comment.id} {...comment} />
       ))}
 
-      <div className='flex gap-3 mt-4 lg:mt-6'>
+      <form className='flex gap-3 mt-4 lg:mt-6' onSubmit={commentSubmitHandler}>
         <SelfProfilePicture size={52} />
-        <label className='sr-only'>Write a comment</label>
+        <label className='sr-only' htmlFor='comment'>
+          Write a comment
+        </label>
         <input
+          {...register('comment', {
+            required: true,
+          })}
           placeholder='Write a comment'
           className='bg-brand-darkblue placeholder:text-brand-pale pl-4 w-full rounded-1.5lg lg:pl-7'
         />
-      </div>
+      </form>
     </article>
   );
 };
