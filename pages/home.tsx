@@ -32,7 +32,15 @@ const Home = (props: {
         <title>Newsfeed - Movie Quotes</title>
       </Head>
 
-      <PageWrapper user={user} displaySearchButton={true}>
+      <PageWrapper
+        user={user}
+        searchBarProps={{
+          searchIsActive,
+          setSearchIsActive,
+          searchQuery,
+          setSearchQuery,
+        }}
+      >
         <section className='lg:w-1/2'>
           <NewsfeedInputs
             searchIsActive={searchIsActive}
