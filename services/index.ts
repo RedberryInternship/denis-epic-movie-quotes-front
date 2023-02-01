@@ -1,10 +1,12 @@
 import axios from './axios';
 import {
   AddEmailForm,
+  ApiDataResponse,
   ApiResponse,
   CursorPaginatedResponse,
   ForgotForm,
   LoginForm,
+  MovieWithQuoteCount,
   NewsfeedQuote,
   ProfileForm,
   RegisterForm,
@@ -117,6 +119,22 @@ export const getNewsfeedQuotes = async (
       search_query: searchQuery,
     },
   })) as CursorPaginatedResponse<NewsfeedQuote[] | []>;
+};
+
+export const getMovies = async (
+  searchQuery: string,
+  cookies?: string,
+  origin?: string
+) => {
+  return (await axios.get('/api/movie', {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+    params: {
+      search_query: searchQuery,
+    },
+  })) as ApiDataResponse<MovieWithQuoteCount[]>;
 };
 
 export const sendAddEmailRequest = async (formValues: AddEmailForm) => {
