@@ -1,4 +1,4 @@
-import { Comment, Translatable, UserFromDatabase } from 'types';
+import { Comment, Movie, Translatable, UserFromDatabase } from 'types';
 
 export type NewsfeedQuote = {
   id: number;
@@ -6,10 +6,7 @@ export type NewsfeedQuote = {
   image: string;
   likes_count: number;
   user: Omit<UserFromDatabase, 'emails' | 'google_id'>;
-  movie: {
-    id: number;
-    title: Translatable;
-  };
+  movie: Movie;
   comments: Comment[];
   likes: object[] | [];
 };
