@@ -27,7 +27,7 @@ export const useNewsfeedPage = (
     hasNextPage,
     refetch,
   } = useInfiniteQuery(['quotes', searchQuery], fetchQuotes, {
-    placeholderData: {
+    initialData: {
       pages: [initialQuotes],
       pageParams: [],
     },

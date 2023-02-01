@@ -5,10 +5,11 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { store } from 'store';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient();
+import { useState } from 'react';
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <>
       <Head>
