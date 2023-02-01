@@ -11,3 +11,4 @@ export * from './useInputStatusAndClassnames';
 export * from './useUserStore';
 export * from './useProfilePage';
 export * from './useProfileModalSubmit';
+export * from './useSearchBar';

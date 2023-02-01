@@ -1,2 +1,2 @@
-export * from './NewsfeedInputs';
 export * from './SearchModal';
+export { default as NewsfeedInputs } from './NewsfeedInputs';
