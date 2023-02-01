@@ -58,6 +58,18 @@ const Movies = (props: {
           <div className='mt-2 font-medium max-w-[358px] mx-auto lg:hidden'>
             (Total {props.movies.length})
           </div>
+          <div className='flex flex-col items-center gap-15 mt-8.5 lg:flex-wrap lg:grid lg:grid-cols-2 2xl:grid-cols-3 lg:gap-10 2xl:gap-12.5 lg:items-start lg:justify-around'>
+            {movies?.map((movie) => (
+              <MovieItem
+                key={movie.id}
+                image={movie.image}
+                title={movie.title}
+                id={movie.id}
+                quoteCount={movie.quotes_count}
+                releaseYear={movie.release_year}
+              />
+            ))}
+          </div>
         </section>
       </PageWrapper>
     </>
