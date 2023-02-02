@@ -64,7 +64,7 @@ const Profile = (props: { user: UserFromDatabase }) => {
       )}
 
       <div className={isAddingEmail ? 'lg:blur-sm lg:opacity-95' : ''}>
-        <PageWrapper user={user} displaySearchButton={false}>
+        <PageWrapper user={user}>
           <FormWrapper
             defaultValues={{ username: user.username, current_password: '' }}
           >
