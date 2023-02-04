@@ -4,7 +4,14 @@ import { GetServerSidePropsContext } from 'next';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getGenres, getMovies, getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { MovieItem, PageWrapper, PlusButton, SearchBar } from 'components';
+import {
+  AddMovieModal,
+  FormWrapper,
+  MovieItem,
+  PageWrapper,
+  PlusButton,
+  SearchBar,
+} from 'components';
 import { useMoviesPage } from 'hooks';
 
 const Movies = (props: {
@@ -20,6 +27,8 @@ const Movies = (props: {
     setSearchIsActive,
     searchQuery,
     searchIsActive,
+    addMovieModalIsOpen,
+    setAddMovieModalIsOpen,
   } = useMoviesPage(props.user, props.movies);
 
   return (
@@ -28,8 +37,23 @@ const Movies = (props: {
         <title>Movie List - Movie Quotes</title>
       </Head>
 
+      {addMovieModalIsOpen && (
+        <FormWrapper>
+          <AddMovieModal
+            user={user}
+            genres={props.genres}
+            setAddMovieModalIsOpen={setAddMovieModalIsOpen}
+          />
+        </FormWrapper>
+      )}
+
       <PageWrapper user={user}>
-        <section className='px-[35px] lg:pl-12 2xl:pl-0 lg:pr-17.5 lg:w-full'>
+        <section
+          className={
+            'px-[35px] lg:pl-12 2xl:pl-0 lg:pr-17.5 lg:w-full ' +
+            (addMovieModalIsOpen ? 'lg:opacity-50' : '')
+          }
+        >
           <div className='-mt-4 flex justify-between items-center gap-4 max-w-[358px] lg:max-w-none mx-auto lg:mt-0'>
             <h1 className='text-2xl font-medium'>
               My list of movies
@@ -49,7 +73,7 @@ const Movies = (props: {
               <button
                 type='button'
                 className='flex items-center px-[13px] gap-2 bg-brand-red rounded min-h-[38px] h-full lg:text-xl lg:h-12 min-w-max'
-                onClick={() => {}}
+                onClick={() => setAddMovieModalIsOpen(true)}
               >
                 <PlusButton />
                 Add Movie
@@ -70,6 +94,16 @@ const Movies = (props: {
                 releaseYear={movie.release_year}
               />
             ))}
+            {!movies?.length &&
+              (searchQuery ? (
+                <div className='text-xl mt-10'>
+                  No quotes match your search query!
+                </div>
+              ) : (
+                <div className='text-xl mt-10'>
+                  You haven&apos;t added any movies yet!
+                </div>
+              ))}
           </div>
         </section>
       </PageWrapper>
