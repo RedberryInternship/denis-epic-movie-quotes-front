@@ -5,7 +5,9 @@ import {
   ApiResponse,
   CursorPaginatedResponse,
   ForgotForm,
+  Genre,
   LoginForm,
+  MovieForm,
   MovieWithQuoteCount,
   NewsfeedQuote,
   ProfileForm,
@@ -135,6 +137,31 @@ export const getMovies = async (
       search_query: searchQuery,
     },
   })) as ApiDataResponse<MovieWithQuoteCount[]>;
+};
+
+export const sendAddMovieRequest = async (formValues: MovieForm) => {
+  try {
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(formValues)) {
+      if (key === 'image') {
+        formData.append(key, value[0]);
+      } else if (key === 'genres') {
+        formData.append(
+          key,
+          formValues.genres.map((genre) => genre.id)
+        );
+      } else {
+        formData.append(key, value);
+      }
+    }
+    return await axios.post('/api/movie', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    return error;
+  }
 };
 
 export const sendAddEmailRequest = async (formValues: AddEmailForm) => {

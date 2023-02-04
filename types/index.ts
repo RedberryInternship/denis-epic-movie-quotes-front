@@ -17,3 +17,4 @@ export * from './movie';
 export * from './apiDataResponse';
 export * from './movieWithQuoteCount';
 export * from './genre';
+export * from './movieForm';
