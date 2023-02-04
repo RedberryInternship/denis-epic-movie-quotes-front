@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import { MovieWithQuoteCount, UserFromDatabase } from 'types';
+import { Genre, MovieWithQuoteCount, UserFromDatabase } from 'types';
 import { GetServerSidePropsContext } from 'next';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
-import { getMovies, getUser } from 'services';
+import { getGenres, getMovies, getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { MovieItem, PageWrapper, PlusButton, SearchBar } from 'components';
 import { useMoviesPage } from 'hooks';
@@ -10,6 +10,7 @@ import { useMoviesPage } from 'hooks';
 const Movies = (props: {
   user: UserFromDatabase;
   movies: MovieWithQuoteCount[];
+  genres: Genre[];
 }) => {
   const {
     user,
@@ -85,9 +86,11 @@ export const getServerSideProps = async (
   try {
     const user = await getUser(cookies, origin);
     const moviesResponse = await getMovies('', cookies, origin);
+    const genreResponse = await getGenres(cookies, origin);
     return {
       props: {
         user,
+        genres: genreResponse.data,
         movies: moviesResponse.data,
         ...(await serverSideTranslations(context.locale ?? 'en', [
           'common',

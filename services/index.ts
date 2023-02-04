@@ -147,6 +147,15 @@ export const sendAddEmailRequest = async (formValues: AddEmailForm) => {
   }
 };
 
+export const getGenres = async (cookies?: string, origin?: string) => {
+  return (await axios.get('/api/genre', {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+  })) as ApiDataResponse<Genre[]>;
+};
+
 export const sendDeleteEmailRequest = async (id: number) => {
   try {
     return await axios.delete(`/api/emails/${id}`);
