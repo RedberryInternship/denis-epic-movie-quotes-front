@@ -24,6 +24,7 @@ module.exports = {
         'brand-darkblue': '#1C1A26',
         'brand-divide': '#EFEFEF4D',
         'brand-yellow': '#EC9524',
+        'brand-purple': '#462676',
       },
       spacing: {
         4.5: '1.125rem',
@@ -39,7 +40,9 @@ module.exports = {
         17.5: '4.375rem',
         18: '4.5rem',
         19: '4.75rem',
+        20.5: '5.125rem',
         21: '5.25rem',
+        21.5: '5.375rem',
         22: '5.5rem',
         22.5: '5.625rem',
         30: '7.5rem',
