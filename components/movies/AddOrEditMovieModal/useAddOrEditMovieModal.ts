@@ -5,7 +5,11 @@ import { useHandleSubmit } from 'hooks';
 import { sendAddMovieRequest } from 'services';
 import { useQueryClient } from 'react-query';
 
-export const useAddMovieModal = (closeModalCallback: () => void) => {
+export const useAddOrEditMovieModal = (
+  isEditing: boolean | undefined,
+  closeModalCallback: () => void,
+  movieID?: number
+) => {
   const { setError } = useFormContext();
 
   const queryClient = useQueryClient();
