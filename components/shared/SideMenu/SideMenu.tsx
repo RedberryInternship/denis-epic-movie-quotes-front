@@ -13,7 +13,7 @@ const SideMenu = (props: {
     <aside
       className={
         'fixed top-0 w-[87vw] h-screen p-11 bg-brand-article text-white rounded-r-xl ' +
-        'lg:block lg:static lg:w-[28vw] lg:bg-brand-lightbackground lg:pt-0 lg:pl-17.5 z-50' +
+        'lg:block lg:static lg:w-[28vw] lg:bg-transparent lg:pt-0 lg:pl-17.5 z-50' +
         (props.sideMenuIsOpen ? '' : ' hidden')
       }
       ref={props.sideMenuRef}
@@ -38,13 +38,13 @@ const SideMenu = (props: {
       </button>
       <nav className='pl-2 text-xl'>
         <button
-          className='flex gap-7.5 items-center mt-10'
+          className='flex gap-7.5 lg:gap-11.5 items-center mt-10'
           onClick={() => router.push('/home')}
         >
           <House isActive={router.pathname === '/home'} /> News feed
         </button>
         <button
-          className='flex gap-7.5 items-center mt-10'
+          className='flex gap-7.5 lg:gap-11.5 items-center mt-10'
           onClick={() => router.push('/movies')}
         >
           <Camera isActive={router.pathname === '/movies'} /> List of movies
