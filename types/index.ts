@@ -18,3 +18,6 @@ export * from './apiDataResponse';
 export * from './movieWithQuoteCount';
 export * from './genre';
 export * from './movieForm';
+export * from './movieWithGenres';
+export * from './fullMovieData';
+export * from './movieQuote';

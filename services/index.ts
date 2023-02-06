@@ -5,6 +5,7 @@ import {
   ApiResponse,
   CursorPaginatedResponse,
   ForgotForm,
+  FullMovieData,
   Genre,
   LoginForm,
   MovieForm,
@@ -137,6 +138,27 @@ export const getMovies = async (
       search_query: searchQuery,
     },
   })) as ApiDataResponse<MovieWithQuoteCount[]>;
+};
+
+export const getMovie = async (
+  id: number | string,
+  cookies?: string,
+  origin?: string
+) => {
+  return (await axios.get(`/api/movie/${id}`, {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+  })) as ApiDataResponse<FullMovieData>;
+};
+
+export const deleteMovie = async (id: number) => {
+  return await axios.delete(`/api/movie/${id}`);
+};
+
+export const deleteQuote = async (id: number) => {
+  return await axios.delete(`/api/quote/${id}`);
 };
 
 export const sendAddMovieRequest = async (formValues: MovieForm) => {
