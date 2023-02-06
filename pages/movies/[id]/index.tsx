@@ -4,7 +4,14 @@ import { GetServerSidePropsContext } from 'next';
 import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getGenres, getMovie, getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Bin, EditPencil, PageWrapper, PlusButton } from 'components';
+import {
+  AddOrEditMovieModal,
+  Bin,
+  EditPencil,
+  FormWrapper,
+  PageWrapper,
+  PlusButton,
+} from 'components';
 import { useMoviePage } from 'hooks';
 import Image from 'next/image';
 
@@ -14,11 +21,15 @@ const Movie = (props: {
   quotes: MovieQuote[];
   genres: Genre[];
 }) => {
-  const { user, movie, quotes, deleteHandler, locale } = useMoviePage(
-    props.user,
-    props.movie,
-    props.quotes
-  );
+  const {
+    user,
+    isEditing,
+    setIsEditing,
+    movie,
+    quotes,
+    currentFormValues,
+    locale,
+  } = useMoviePage(props.user, props.movie, props.quotes);
 
   return (
     <>
@@ -26,8 +37,24 @@ const Movie = (props: {
         <title>Movie List - Movie Quotes</title>
       </Head>
 
+      {isEditing && (
+        <FormWrapper defaultValues={currentFormValues}>
+          <AddOrEditMovieModal
+            user={user}
+            genres={props.genres}
+            setModalIsOpen={setIsEditing}
+            movieID={movie?.id}
+            isEditing={true}
+          />
+        </FormWrapper>
+      )}
+
       <PageWrapper user={user}>
-        <div className='w-full'>
+        <div
+          className={
+            'w-full ' + (isEditing ? 'lg:opacity-50 pointer-events-none' : '')
+          }
+        >
           <section className='px-9 w-full'>
             <h1 className='hidden lg:block font-medium text-2xl mb-8'>
               Movie description
@@ -47,14 +74,14 @@ const Movie = (props: {
                     {movie?.title[locale]} ({movie?.release_year})
                   </h2>
                   <div className='hidden lg:flex bg-[#1F1C2A] items-center justify-evenly rounded-lg mr-1 min-w-[144px] w-36 h-10'>
-                    <button className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'>
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'
+                    >
                       <EditPencil />
                     </button>
                     <span className='bg-brand-subtitle h-4 w-px'></span>
-                    <button
-                      onClick={deleteHandler}
-                      className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'
-                    >
+                    <button className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'>
                       <Bin />
                     </button>
                   </div>
