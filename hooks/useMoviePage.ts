@@ -1,6 +1,7 @@
 import { useLocale, useUserStore } from 'hooks';
-import { getMovie } from 'services';
+import { deleteMovie, getMovie } from 'services';
 import { useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import {
   Genre,
@@ -31,6 +32,13 @@ export const useMoviePage = (
   const movie = data?.movie;
   const quotes = data?.quotes;
 
+  const router = useRouter();
+
+  const deleteHandler = async () => {
+    await deleteMovie(movie?.id as number);
+    await router.replace('/movies');
+  };
+
   const currentFormValues = {
     title_en: movie?.title.en,
     title_ka: movie?.title.ka,
@@ -53,6 +61,7 @@ export const useMoviePage = (
     setIsEditing,
     movie,
     quotes,
+    deleteHandler,
     currentFormValues,
     locale,
   };

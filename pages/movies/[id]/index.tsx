@@ -27,6 +27,7 @@ const Movie = (props: {
     setIsEditing,
     movie,
     quotes,
+    deleteHandler,
     currentFormValues,
     locale,
   } = useMoviePage(props.user, props.movie, props.quotes);
@@ -81,7 +82,10 @@ const Movie = (props: {
                       <EditPencil />
                     </button>
                     <span className='bg-brand-subtitle h-4 w-px'></span>
-                    <button className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'>
+                    <button
+                      onClick={deleteHandler}
+                      className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'
+                    >
                       <Bin />
                     </button>
                   </div>
