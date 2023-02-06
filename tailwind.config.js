@@ -68,6 +68,20 @@ module.exports = {
       borderRadius: {
         '1.5lg': '0.625rem',
       },
+      animation: {
+        grow: 'grow 200ms ease-out forwards',
+        'grow-x': 'grow-x 200ms ease-out forwards',
+      },
+      keyframes: {
+        grow: {
+          '0%': { transform: 'scale(0)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+        'grow-x': {
+          '0%': { transform: 'scaleX(0)', opacity: 0 },
+          '100%': { transform: 'scaleX  (1)', opacity: 1 },
+        },
+      },
     },
   },
   plugins: [
