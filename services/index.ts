@@ -1,10 +1,14 @@
 import axios from './axios';
 import {
   AddEmailForm,
+  ApiDataResponse,
   ApiResponse,
   CursorPaginatedResponse,
   ForgotForm,
+  Genre,
   LoginForm,
+  MovieForm,
+  MovieWithQuoteCount,
   NewsfeedQuote,
   ProfileForm,
   RegisterForm,
@@ -119,6 +123,47 @@ export const getNewsfeedQuotes = async (
   })) as CursorPaginatedResponse<NewsfeedQuote[] | []>;
 };
 
+export const getMovies = async (
+  searchQuery: string,
+  cookies?: string,
+  origin?: string
+) => {
+  return (await axios.get('/api/movie', {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+    params: {
+      search_query: searchQuery,
+    },
+  })) as ApiDataResponse<MovieWithQuoteCount[]>;
+};
+
+export const sendAddMovieRequest = async (formValues: MovieForm) => {
+  try {
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(formValues)) {
+      if (key === 'image') {
+        formData.append(key, value[0]);
+      } else if (key === 'genres') {
+        formData.append(
+          key,
+          formValues.genres.map((genre) => genre.id)
+        );
+      } else {
+        formData.append(key, value);
+      }
+    }
+    return await axios.post('/api/movie', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
 export const sendAddEmailRequest = async (formValues: AddEmailForm) => {
   try {
     return await axios.post('/api/emails', {
@@ -127,6 +172,15 @@ export const sendAddEmailRequest = async (formValues: AddEmailForm) => {
   } catch (error) {
     return error;
   }
+};
+
+export const getGenres = async (cookies?: string, origin?: string) => {
+  return (await axios.get('/api/genre', {
+    headers: {
+      origin: origin,
+      Cookie: cookies,
+    },
+  })) as ApiDataResponse<Genre[]>;
 };
 
 export const sendDeleteEmailRequest = async (id: number) => {

@@ -8,6 +8,7 @@ export * from './NewsfeedQuote';
 export * from './Navbar';
 export * from './PageWrapper';
 export * from './SideMenu';
+export * from './SearchBar';
 export { default as ModalWrapper } from './ModalWrapper';
 export { default as FormSubmitButton } from './FormSubmitButton';
 export { default as ModalButton } from './ModalButton';

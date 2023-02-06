@@ -23,3 +23,5 @@ export { default as ArrowSmallRight } from './ArrowSmallRight';
 export { default as PlusButton } from './PlusButton';
 export { default as GreenCheckmark } from './GreenCheckmark';
 export { default as InfoCircle } from './InfoCircle';
+export { default as QuoteIcon } from './QuoteIcon';
+export { default as PhotoCamera } from './PhotoCamera';

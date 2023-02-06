@@ -13,3 +13,8 @@ export * from './newsfeedQuote';
 export * from './cursorPaginatedResponse';
 export * from './addEmailForm';
 export * from './profileForm';
+export * from './movie';
+export * from './apiDataResponse';
+export * from './movieWithQuoteCount';
+export * from './genre';
+export * from './movieForm';

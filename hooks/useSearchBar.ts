@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react';
 import { debounce } from 'helpers';
 import { SetState } from 'types';
 
-export const useNewsfeedInputs = (
+export const useSearchBar = (
   setSearchQuery: SetState<string>,
   setSearchIsActive: SetState<boolean>
 ) => {
