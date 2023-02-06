@@ -8,5 +8,5 @@ export type MovieForm = {
   director_en: string;
   director_ka: string;
   genres: Genre[];
-  image: FileList;
+  image: FileList | null;
 };

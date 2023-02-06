@@ -165,7 +165,7 @@ export const sendAddMovieRequest = async (formValues: MovieForm) => {
   try {
     const formData = new FormData();
     for (const [key, value] of Object.entries(formValues)) {
-      if (key === 'image') {
+      if (key === 'image' && value) {
         formData.append(key, value[0]);
       } else if (key === 'genres') {
         formData.append(
@@ -177,6 +177,35 @@ export const sendAddMovieRequest = async (formValues: MovieForm) => {
       }
     }
     return await axios.post('/api/movie', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const sendEditMovieRequest = async (
+  id: number,
+  formValues: MovieForm
+) => {
+  try {
+    const formData = new FormData();
+    formData.append('_method', 'PUT');
+    for (const [key, value] of Object.entries(formValues)) {
+      if (key === 'image') {
+        if (value) formData.append(key, value[0]);
+      } else if (key === 'genres') {
+        formData.append(
+          key,
+          formValues.genres.map((genre) => genre.id)
+        );
+      } else {
+        formData.append(key, value);
+      }
+    }
+    return await axios.post(`/api/movie/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
