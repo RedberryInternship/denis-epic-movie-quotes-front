@@ -91,6 +91,18 @@ const AddOrEditMovieModal = (props: {
           }}
         />
 
+        <MovieTextInput
+          name='budget'
+          placeholder='Budget in USD'
+          displayErrors={true}
+          validationRules={{
+            pattern: {
+              value: /^[0-9]+$/,
+              message: 'Please enter a number',
+            },
+          }}
+        />
+
         <MovieImageUploadInput isEditing={props.isEditing} />
 
         <div className='mt-1'>

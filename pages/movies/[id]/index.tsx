@@ -112,7 +112,13 @@ const Movie = (props: {
                     </div>
                     <div className='flex flex-col gap-5'>
                       <span>{movie?.director[locale]}</span>
-                      <span>$2.000.000</span>
+                      <span>
+                        {movie?.budget.toLocaleString('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                          maximumFractionDigits: 0,
+                        })}
+                      </span>
                     </div>
                   </div>
                   <p className='text-brand-pale mt-5'>

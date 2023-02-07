@@ -53,6 +53,7 @@ export const useMoviePage = (
     })),
     image: null,
     release_year: movie?.release_year,
+    budget: movie?.budget,
   } as MovieForm;
 
   return {

@@ -7,4 +7,5 @@ export type Movie = {
   director: Translatable;
   image: string;
   release_year: number;
+  budget: number;
 };

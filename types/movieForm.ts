@@ -9,4 +9,6 @@ export type MovieForm = {
   director_ka: string;
   genres: Genre[];
   image: FileList | null;
+  release_year: number;
+  budget: number;
 };
