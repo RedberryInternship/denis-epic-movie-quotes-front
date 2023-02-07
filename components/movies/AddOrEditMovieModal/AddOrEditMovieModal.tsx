@@ -21,7 +21,7 @@ const AddOrEditMovieModal = (props: {
 }) => {
   const { handleSubmit, isLoading } = useAddOrEditMovieModal(
     props.isEditing,
-    () => props.setModalIsOpen(false),
+    props.setModalIsOpen,
     props.movieID
   );
 

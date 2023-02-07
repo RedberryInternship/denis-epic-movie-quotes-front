@@ -1,13 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 import { useState } from 'react';
-import { ApiResponse, MovieForm, RegisterForm } from 'types';
+import { ApiResponse, MovieForm, RegisterForm, SetState } from 'types';
 import { useHandleSubmit } from 'hooks';
 import { sendAddMovieRequest, sendEditMovieRequest } from 'services';
 import { useQueryClient } from 'react-query';
 
 export const useAddOrEditMovieModal = (
   isEditing: boolean | undefined,
-  closeModalCallback: () => void,
+  setModalIsOpen: SetState<boolean>,
   movieID?: number
 ) => {
   const { setError } = useFormContext();
@@ -16,7 +16,7 @@ export const useAddOrEditMovieModal = (
 
   const [isLoading, setIsLoading] = useState(false);
   const onSubmitSuccess = async () => {
-    closeModalCallback();
+    setModalIsOpen(false);
     if (isEditing) {
       await queryClient.refetchQueries(['movie', movieID]);
     } else {
