@@ -97,7 +97,7 @@ const Movies = (props: {
             {!movies?.length &&
               (searchQuery ? (
                 <div className='text-xl mt-10'>
-                  No quotes match your search query!
+                  No movies match your search query!
                 </div>
               ) : (
                 <div className='text-xl mt-10'>
