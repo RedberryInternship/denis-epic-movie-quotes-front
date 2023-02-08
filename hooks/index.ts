@@ -13,3 +13,5 @@ export * from './useProfilePage';
 export * from './useProfileModalSubmit';
 export * from './useSearchBar';
 export * from './useMoviesPage';
+export * from './useMoviePage';
+export * from './useLanguageValidator';

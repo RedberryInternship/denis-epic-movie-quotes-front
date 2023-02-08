@@ -10,22 +10,26 @@ import {
   TextAreaWithLanguage,
 } from 'components';
 import { Genre, SetState, User } from 'types';
-import { useAddMovieModal } from './useAddMovieModal';
+import { useAddOrEditMovieModal } from './useAddOrEditMovieModal';
 
-const AddMovieModal = (props: {
+const AddOrEditMovieModal = (props: {
   user: User;
   genres: Genre[];
-  setAddMovieModalIsOpen: SetState<boolean>;
+  setModalIsOpen: SetState<boolean>;
+  isEditing?: boolean;
+  movieID?: number;
 }) => {
-  const { handleSubmit, isLoading } = useAddMovieModal(() =>
-    props.setAddMovieModalIsOpen(false)
+  const { handleSubmit, isLoading } = useAddOrEditMovieModal(
+    props.isEditing,
+    props.setModalIsOpen,
+    props.movieID
   );
 
   return (
     <MovieModalWrapper
-      title='Add Movie'
+      title={props.isEditing ? 'Edit Movie' : 'Add Movie'}
       rightIcon={<Close />}
-      onRightIconClick={() => props.setAddMovieModalIsOpen(false)}
+      onRightIconClick={() => props.setModalIsOpen(false)}
     >
       <form onSubmit={handleSubmit}>
         <div className='flex gap-4 text-xl items-center mb-9 lg:mb-7'>
@@ -73,7 +77,6 @@ const AddMovieModal = (props: {
         <MovieTextInput
           name='release_year'
           placeholder='Release year'
-          displayErrors={true}
           validationRules={{
             validate: {
               validYear: (value: number) =>
@@ -87,14 +90,28 @@ const AddMovieModal = (props: {
           }}
         />
 
-        <MovieImageUploadInput />
+        <MovieTextInput
+          name='budget'
+          placeholder='Budget in USD'
+          validationRules={{
+            pattern: {
+              value: /^[0-9]+$/,
+              message: 'Please enter a number',
+            },
+          }}
+        />
+
+        <MovieImageUploadInput isEditing={props.isEditing} />
 
         <div className='mt-1'>
-          <FormSubmitButton label='Add movie' isLoading={isLoading} />
+          <FormSubmitButton
+            label={props.isEditing ? 'Update Movie' : 'Add Movie'}
+            isLoading={isLoading}
+          />
         </div>
       </form>
     </MovieModalWrapper>
   );
 };
 
-export default AddMovieModal;
+export default AddOrEditMovieModal;

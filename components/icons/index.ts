@@ -25,3 +25,5 @@ export { default as GreenCheckmark } from './GreenCheckmark';
 export { default as InfoCircle } from './InfoCircle';
 export { default as QuoteIcon } from './QuoteIcon';
 export { default as PhotoCamera } from './PhotoCamera';
+export { default as Bin } from './Bin';
+export { default as EditPencil } from './EditPencil';

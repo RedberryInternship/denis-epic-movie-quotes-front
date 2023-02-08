@@ -1,8 +1,14 @@
 import { useFormContext, useFormState } from 'react-hook-form';
+import { useLanguageValidator } from 'hooks';
 
-export const useTextAreaWithLanguage = (name: string) => {
+export const useTextAreaWithLanguage = (
+  name: string,
+  language: 'Eng' | 'ქარ'
+) => {
   const { register } = useFormContext();
   const { errors } = useFormState({ name });
 
-  return { register, hasErrors: errors[name] };
+  const languageValidator = useLanguageValidator(language);
+
+  return { register, errors: errors[name], languageValidator };
 };

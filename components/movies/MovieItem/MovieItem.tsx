@@ -1,13 +1,16 @@
 import Image from 'next/image';
 import { PropsType } from './types';
-import { useLocale } from 'hooks';
 import { QuoteIcon } from 'components';
+import { useMovieItem } from './useMovieItem';
 
 const MovieItem = (props: PropsType) => {
-  const locale = useLocale();
+  const { locale, redirectToMovie } = useMovieItem(props.id);
 
   return (
-    <article className='flex flex-col rounded-xl gap-4'>
+    <article
+      className='flex flex-col rounded-xl gap-4 cursor-pointer hover:scale-105 hover:backdrop-blur-3xl duration-200'
+      onClick={redirectToMovie}
+    >
       <Image
         className='aspect-[20/17] rounded-xl object-cover w-[358px] h-[302px] lg:w-auto lg:h-auto 2xl:w-[440px] 2xl:h-[371px]'
         src={props.image}

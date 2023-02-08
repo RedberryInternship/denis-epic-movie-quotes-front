@@ -30,10 +30,11 @@ module.exports = {
         4.5: '1.125rem',
         5.5: '1.375rem',
         6.5: '1.625rem',
-        7.5: '2.875rem',
+        7.5: '1.875rem',
         8.5: '2.125rem',
         9.5: '2.375rem',
         10.5: '2.625rem',
+        11.5: '2.875rem',
         12.5: '3.125rem',
         13: '3.25rem',
         15: '3.75rem',
@@ -66,6 +67,20 @@ module.exports = {
       },
       borderRadius: {
         '1.5lg': '0.625rem',
+      },
+      animation: {
+        grow: 'grow 200ms ease-out forwards',
+        'grow-x': 'grow-x 200ms ease-out forwards',
+      },
+      keyframes: {
+        grow: {
+          '0%': { transform: 'scale(0)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+        'grow-x': {
+          '0%': { transform: 'scaleX(0)', opacity: 0 },
+          '100%': { transform: 'scaleX  (1)', opacity: 1 },
+        },
       },
     },
   },

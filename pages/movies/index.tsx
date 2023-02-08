@@ -5,7 +5,7 @@ import { cookiesObjToStr, getRequestOriginFromHeaders } from 'helpers';
 import { getGenres, getMovies, getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
-  AddMovieModal,
+  AddOrEditMovieModal,
   FormWrapper,
   MovieItem,
   PageWrapper,
@@ -39,10 +39,10 @@ const Movies = (props: {
 
       {addMovieModalIsOpen && (
         <FormWrapper>
-          <AddMovieModal
+          <AddOrEditMovieModal
             user={user}
             genres={props.genres}
-            setAddMovieModalIsOpen={setAddMovieModalIsOpen}
+            setModalIsOpen={setAddMovieModalIsOpen}
           />
         </FormWrapper>
       )}
@@ -51,7 +51,7 @@ const Movies = (props: {
         <section
           className={
             'px-[35px] lg:pl-12 2xl:pl-0 lg:pr-17.5 lg:w-full ' +
-            (addMovieModalIsOpen ? 'lg:opacity-50' : '')
+            (addMovieModalIsOpen ? 'lg:opacity-50 pointer-events-none' : '')
           }
         >
           <div className='-mt-4 flex justify-between items-center gap-4 max-w-[358px] lg:max-w-none mx-auto lg:mt-0'>
@@ -97,7 +97,7 @@ const Movies = (props: {
             {!movies?.length &&
               (searchQuery ? (
                 <div className='text-xl mt-10'>
-                  No quotes match your search query!
+                  No movies match your search query!
                 </div>
               ) : (
                 <div className='text-xl mt-10'>

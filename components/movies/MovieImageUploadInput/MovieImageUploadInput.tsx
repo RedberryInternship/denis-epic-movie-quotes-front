@@ -1,7 +1,7 @@
 import { PhotoCamera } from 'components';
 import { useMovieImageUploadInput } from './useMovieImageUploadInput';
 
-const MovieImageUploadInput = () => {
+const MovieImageUploadInput = (props: { isEditing: boolean | undefined }) => {
   const { register, imageValue, handleDrop, hasErrors } =
     useMovieImageUploadInput();
 
@@ -39,7 +39,7 @@ const MovieImageUploadInput = () => {
         id='image'
         className='hidden'
         {...register('image', {
-          required: true,
+          required: !props.isEditing,
         })}
       />
     </div>
