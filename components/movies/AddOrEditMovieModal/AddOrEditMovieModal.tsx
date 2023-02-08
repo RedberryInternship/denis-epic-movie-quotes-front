@@ -77,7 +77,6 @@ const AddOrEditMovieModal = (props: {
         <MovieTextInput
           name='release_year'
           placeholder='Release year'
-          displayErrors={true}
           validationRules={{
             validate: {
               validYear: (value: number) =>
@@ -94,7 +93,6 @@ const AddOrEditMovieModal = (props: {
         <MovieTextInput
           name='budget'
           placeholder='Budget in USD'
-          displayErrors={true}
           validationRules={{
             pattern: {
               value: /^[0-9]+$/,
