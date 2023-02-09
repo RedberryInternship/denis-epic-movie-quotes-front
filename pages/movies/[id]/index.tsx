@@ -6,6 +6,7 @@ import { getGenres, getMovie, getUser } from 'services';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   AddOrEditMovieModal,
+  AddOrEditQuoteModal,
   Bin,
   EditPencil,
   FormWrapper,
@@ -48,6 +49,16 @@ const Movie = (props: {
             closeModal={closeModal}
             movieID={movie?.id}
             isEditing={true}
+          />
+        </FormWrapper>
+      )}
+
+      {activeModal.modalType === 'add' && (
+        <FormWrapper>
+          <AddOrEditQuoteModal
+            user={user}
+            movie={movie}
+            closeModal={closeModal}
           />
         </FormWrapper>
       )}
@@ -136,14 +147,24 @@ const Movie = (props: {
               </div>
             </div>
 
-            <button
-              type='button'
-              className='flex items-center px-[13px] gap-2 bg-brand-red rounded min-h-[38px] h-full lg:text-xl lg:h-12 min-w-max transition hover:scale-105 active:text-brand-red active:bg-white'
-              onClick={() => {}}
-            >
-              <PlusButton />
-              Add quote
-            </button>
+            <div className='flex items-center gap-4 lg:mb-15'>
+              <span className='text-2xl hidden lg:inline'>
+                {quotes?.length
+                  ? `Quotes (total ${quotes.length})`
+                  : 'No quotes yet'}
+              </span>
+              <span className='hidden lg:inline bg-brand-subtitle h-6.5 mt-1 w-px'></span>
+              <button
+                type='button'
+                className='flex items-center px-[13px] gap-2 bg-brand-red rounded min-h-[38px] h-full lg:text-xl lg:h-12 min-w-max transition hover:scale-105 active:text-brand-red active:bg-white'
+                onClick={() =>
+                  dispatchActiveModal({ type: 'quote', modalType: 'add' })
+                }
+              >
+                <PlusButton />
+                Add quote
+              </button>
+            </div>
 
             <div className='lg:hidden'>
               <hr className='my-10 border-brand-divide border-t-1.5' />
