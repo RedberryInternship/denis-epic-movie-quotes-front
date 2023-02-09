@@ -63,6 +63,25 @@ const Movie = (props: {
         </FormWrapper>
       )}
 
+      {activeModal.modalType === 'edit' && (
+        <FormWrapper
+          defaultValues={{
+            body_en: activeModal.quote.body['en'],
+            body_ka: activeModal.quote.body['ka'],
+            image: null,
+          }}
+        >
+          <AddOrEditQuoteModal
+            user={user}
+            movie={movie}
+            quoteID={activeModal.quote.id}
+            isEditing={true}
+            quote={activeModal.quote}
+            closeModal={closeModal}
+          />
+        </FormWrapper>
+      )}
+
       <PageWrapper user={user}>
         <div
           className={
