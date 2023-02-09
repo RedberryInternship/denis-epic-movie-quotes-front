@@ -9,19 +9,13 @@ import {
   SelfProfilePicture,
   TextAreaWithLanguage,
 } from 'components';
-import { Genre, SetState, User } from 'types';
 import { useAddOrEditMovieModal } from './useAddOrEditMovieModal';
+import { PropsType } from './types';
 
-const AddOrEditMovieModal = (props: {
-  user: User;
-  genres: Genre[];
-  setModalIsOpen: SetState<boolean>;
-  isEditing?: boolean;
-  movieID?: number;
-}) => {
+const AddOrEditMovieModal = (props: PropsType) => {
   const { handleSubmit, isLoading } = useAddOrEditMovieModal(
     props.isEditing,
-    props.setModalIsOpen,
+    props.closeModal,
     props.movieID
   );
 
@@ -29,7 +23,7 @@ const AddOrEditMovieModal = (props: {
     <MovieModalWrapper
       title={props.isEditing ? 'Edit Movie' : 'Add Movie'}
       rightIcon={<Close />}
-      onRightIconClick={() => props.setModalIsOpen(false)}
+      onRightIconClick={props.closeModal}
     >
       <form onSubmit={handleSubmit}>
         <div className='flex gap-4 text-xl items-center mb-9 lg:mb-7'>
