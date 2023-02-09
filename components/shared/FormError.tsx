@@ -8,11 +8,9 @@ const FormError = (props: { error: string; animated?: boolean }) => {
       className={
         'text-brand-crimson text-sm ' +
         (props.error && props.animated
-          ? 'h-[1.25rem] -mt-3 mb-7 lg:mb-0'
+          ? '!h-[1.25rem] mb-2 -mt-2 opacity-100 '
           : '') +
-        (props.animated
-          ? 'transition-all duration-200 h-0 '
-          : 'min-h-[1.25rem]')
+        (props.animated ? 'transition-all duration-200 h-0' : 'min-h-[1.25rem]')
       }
     >
       {t(props.error)}
