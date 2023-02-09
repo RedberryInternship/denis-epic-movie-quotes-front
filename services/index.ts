@@ -3,6 +3,7 @@ import {
   AddEmailForm,
   ApiDataResponse,
   ApiResponse,
+  Comment,
   CursorPaginatedResponse,
   ForgotForm,
   FullMovieData,
@@ -12,6 +13,7 @@ import {
   MovieWithQuoteCount,
   NewsfeedQuote,
   ProfileForm,
+  QuoteForm,
   RegisterForm,
   ResetPasswordForm,
   UserFromDatabase,
@@ -157,16 +159,12 @@ export const deleteMovie = async (id: number) => {
   return await axios.delete(`/api/movie/${id}`);
 };
 
-export const deleteQuote = async (id: number) => {
-  return await axios.delete(`/api/quote/${id}`);
-};
-
 export const sendAddMovieRequest = async (formValues: MovieForm) => {
   try {
     const formData = new FormData();
     for (const [key, value] of Object.entries(formValues)) {
       if (key === 'image' && value) {
-        formData.append(key, value[0]);
+        formData.append(key, (value as FileList)[0]);
       } else if (key === 'genres') {
         formData.append(
           key,
@@ -195,7 +193,7 @@ export const sendEditMovieRequest = async (
     formData.append('_method', 'PUT');
     for (const [key, value] of Object.entries(formValues)) {
       if (key === 'image') {
-        if (value) formData.append(key, value[0]);
+        if (value) formData.append(key, (value as FileList)[0]);
       } else if (key === 'genres') {
         formData.append(
           key,
@@ -213,6 +211,58 @@ export const sendEditMovieRequest = async (
   } catch (error) {
     return error;
   }
+};
+
+export const sendAddQuoteRequest = async (
+  movieId: number,
+  formValues: QuoteForm
+) => {
+  try {
+    const formData = new FormData();
+    formData.append('movie_id', movieId);
+    for (const [key, value] of Object.entries(formValues)) {
+      if (key === 'image' && value) {
+        formData.append(key, (value as FileList)[0]);
+      } else {
+        formData.append(key, value);
+      }
+    }
+    return await axios.post('/api/quote', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const sendEditQuoteRequest = async (
+  quoteID: number,
+  formValues: QuoteForm
+) => {
+  try {
+    const formData = new FormData();
+    formData.append('_method', 'PUT');
+    for (const [key, value] of Object.entries(formValues)) {
+      if (key === 'image') {
+        if (value) formData.append(key, value as FileList);
+      } else {
+        formData.append(key, value);
+      }
+    }
+    return await axios.post(`/api/quote/${quoteID}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const deleteQuote = async (id: number) => {
+  return await axios.delete(`/api/quote/${id}`);
 };
 
 export const sendAddEmailRequest = async (formValues: AddEmailForm) => {
@@ -290,4 +340,10 @@ export const sendStoreCommentRequest = async (
     quote_id: quoteID,
     body: body,
   });
+};
+
+export const getQuoteComments = async (quoteID: number) => {
+  return (await axios.get(`/api/quote/${quoteID}/comments`)) as ApiDataResponse<
+    Comment[]
+  >;
 };
