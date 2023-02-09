@@ -27,3 +27,5 @@ export { default as QuoteIcon } from './QuoteIcon';
 export { default as PhotoCamera } from './PhotoCamera';
 export { default as Bin } from './Bin';
 export { default as EditPencil } from './EditPencil';
+export { default as ThreeDots } from './ThreeDots';
+export { default as Eye } from './Eye';
