@@ -23,8 +23,9 @@ const Movie = (props: {
 }) => {
   const {
     user,
-    isEditing,
-    setIsEditing,
+    activeModal,
+    dispatchActiveModal,
+    closeModal,
     movie,
     quotes,
     deleteHandler,
@@ -38,12 +39,12 @@ const Movie = (props: {
         <title>Movie List - Movie Quotes</title>
       </Head>
 
-      {isEditing && (
+      {activeModal.isEditingMovie && (
         <FormWrapper defaultValues={currentFormValues}>
           <AddOrEditMovieModal
             user={user}
             genres={props.genres}
-            setModalIsOpen={setIsEditing}
+            closeModal={closeModal}
             movieID={movie?.id}
             isEditing={true}
           />
@@ -53,7 +54,11 @@ const Movie = (props: {
       <PageWrapper user={user}>
         <div
           className={
-            'w-full ' + (isEditing ? 'lg:opacity-50 pointer-events-none' : '')
+            'w-full ' +
+            ((activeModal.quote || activeModal.isEditingMovie) &&
+            activeModal.modalType !== 'options'
+              ? 'lg:opacity-50 pointer-events-none'
+              : '')
           }
         >
           <section className='px-9 w-full'>
@@ -76,7 +81,9 @@ const Movie = (props: {
                   </h2>
                   <div className='hidden lg:flex bg-[#1F1C2A] items-center justify-evenly rounded-lg mr-1 min-w-[144px] w-36 h-10'>
                     <button
-                      onClick={() => setIsEditing(true)}
+                      onClick={() =>
+                        dispatchActiveModal({ type: 'edit_movie' })
+                      }
                       className='hover:text-brand-crimson w-full h-full flex justify-center items-center hover:scale-125 transition'
                     >
                       <EditPencil />
