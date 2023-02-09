@@ -10,8 +10,9 @@ import {
   Bin,
   EditPencil,
   FormWrapper,
-  PageWrapper,
+  FullQuoteView,
   MovieQuoteItem,
+  PageWrapper,
   PlusButton,
 } from 'components';
 import { useMoviePage } from 'hooks';
@@ -61,6 +62,14 @@ const Movie = (props: {
             closeModal={closeModal}
           />
         </FormWrapper>
+      )}
+
+      {activeModal.modalType === 'view' && (
+        <FullQuoteView
+          quote={activeModal.quote}
+          closeModal={closeModal}
+          dispatchActiveModal={dispatchActiveModal}
+        />
       )}
 
       {activeModal.modalType === 'edit' && (
