@@ -10,6 +10,7 @@ import {
   EditPencil,
   FormWrapper,
   PageWrapper,
+  MovieQuoteItem,
   PlusButton,
 } from 'components';
 import { useMoviePage } from 'hooks';
@@ -144,13 +145,30 @@ const Movie = (props: {
               Add quote
             </button>
 
-            <hr className='my-10 border-brand-divide border-t-1.5' />
-            <h4 className='text-2xl'>
-              {quotes?.length ? 'All Quotes' : 'No quotes yet'}
-            </h4>
-            <h5 className='mb-9'>
-              {quotes?.length ? `(Total ${quotes?.length})` : ''}
-            </h5>
+            <div className='lg:hidden'>
+              <hr className='my-10 border-brand-divide border-t-1.5' />
+              <h4 className='text-2xl'>
+                {quotes?.length ? 'All Quotes' : 'No quotes yet'}
+              </h4>
+              <h5 className='mb-9'>
+                {quotes?.length ? `(Total ${quotes?.length})` : ''}
+              </h5>
+            </div>
+          </section>
+
+          <section className='lg:px-9'>
+            {quotes?.map((quote) => (
+              <MovieQuoteItem
+                key={quote.id}
+                {...quote}
+                currentQuoteOptionsId={
+                  activeModal.modalType === 'options'
+                    ? activeModal.quote.id
+                    : null
+                }
+                dispatchActiveModal={dispatchActiveModal}
+              />
+            ))}
           </section>
         </div>
       </PageWrapper>
