@@ -21,3 +21,5 @@ export * from './movieForm';
 export * from './movieWithGenres';
 export * from './fullMovieData';
 export * from './movieQuote';
+export * from './quoteModalsReducer';
+export * from './quoteForm';

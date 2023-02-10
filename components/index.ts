@@ -4,3 +4,4 @@ export * from './shared';
 export * from './profile';
 export * from './newsfeed';
 export * from './movies';
+export * from './quotes';

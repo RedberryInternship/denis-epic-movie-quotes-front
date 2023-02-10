@@ -2,12 +2,14 @@ import { useLocale, useUserStore } from 'hooks';
 import { deleteMovie, getMovie } from 'services';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useReducer } from 'react';
 import {
   Genre,
   MovieForm,
   MovieQuote,
   MovieWithGenres,
+  QuoteModalsReducerAction,
+  QuoteModalsReducerState,
   UserFromDatabase,
 } from 'types';
 
@@ -18,13 +20,11 @@ export const useMoviePage = (
 ) => {
   const locale = useLocale();
   const user = useUserStore(initialUser);
-  const [isEditing, setIsEditing] = useState(false);
 
   const fetchMovie = async () => {
     const response = await getMovie(initialMovie.id);
     return response.data;
   };
-
   const { data } = useQuery(['movie', initialMovie.id], fetchMovie, {
     initialData: { movie: initialMovie, quotes: initialQuotes },
   });
@@ -32,8 +32,34 @@ export const useMoviePage = (
   const movie = data?.movie;
   const quotes = data?.quotes;
 
-  const router = useRouter();
+  const modalReducer = (
+    state: QuoteModalsReducerState,
+    action: QuoteModalsReducerAction
+  ) => {
+    switch (action.type) {
+      case 'close': {
+        return {};
+      }
+      case 'edit_movie': {
+        return { isEditingMovie: true };
+      }
+      case 'quote': {
+        return {
+          quote: quotes!.find(
+            (quote) => quote.id === action.quoteID
+          ) as MovieQuote,
+          modalType: action.modalType,
+        };
+      }
+      default: {
+        return {};
+      }
+    }
+  };
+  const [activeModal, dispatchActiveModal] = useReducer(modalReducer, {});
+  const closeModal = () => dispatchActiveModal({ type: 'close' });
 
+  const router = useRouter();
   const deleteHandler = async () => {
     await deleteMovie(movie?.id as number);
     await router.replace('/movies');
@@ -58,8 +84,9 @@ export const useMoviePage = (
 
   return {
     user,
-    isEditing,
-    setIsEditing,
+    activeModal,
+    dispatchActiveModal,
+    closeModal,
     movie,
     quotes,
     deleteHandler,
