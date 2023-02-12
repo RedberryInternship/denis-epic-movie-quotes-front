@@ -1,4 +1,3 @@
-import { Comment } from 'types';
 import {
   NewsfeedComment,
   ProfilePicture,
@@ -6,20 +5,10 @@ import {
   SelfProfilePicture,
 } from 'components';
 import Image from 'next/image';
-import { PropsWithChildren } from 'react';
 import { useQuote } from './useQuote';
+import { PropsType } from './types';
 
-const Quote = (
-  props: PropsWithChildren<{
-    id: number;
-    image: string;
-    isLiked: boolean;
-    likeCount: number;
-    refetchLikes: () => void;
-    refetchComments: () => void;
-    comments?: Comment[];
-  }>
-) => {
+const Quote = (props: PropsType) => {
   const {
     user,
     register,
