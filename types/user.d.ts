@@ -1,6 +1,7 @@
 import { Email, EmailFromDatabase } from 'types';
 
 export type User = {
+  id: number;
   username: string;
   emails: Email[];
   isGoogleUser: boolean;
@@ -8,6 +9,7 @@ export type User = {
 };
 
 export type UserFromDatabase = {
+  id: number;
   username: string;
   emails: EmailFromDatabase[];
   google_id: string | null;
