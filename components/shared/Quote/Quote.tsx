@@ -10,7 +10,6 @@ import { PropsType } from './types';
 
 const Quote = (props: PropsType) => {
   const {
-    user,
     register,
     setFocusOnComment,
     commentSubmitHandler,
@@ -28,9 +27,9 @@ const Quote = (props: PropsType) => {
         <ProfilePicture
           size={52}
           classNames='w-10 h-10 lg:w-13 lg:h-13'
-          image={user.profilePicture}
+          image={props.user.profile_picture}
         />
-        {user.username}
+        {props.user.username}
       </div>
       <div className='lg:text-xl'>
         {props.children}

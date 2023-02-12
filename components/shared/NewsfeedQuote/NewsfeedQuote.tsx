@@ -18,6 +18,7 @@ const NewsfeedQuote = (props: NewsfeedQuoteType & { page: number }) => {
       likeCount={props.likes_count}
       refetchLikes={refetchPage}
       refetchComments={refetchPage}
+      user={props.user}
     >
       {props.body[locale]} -
       <strong className='text-brand-khaki'>
