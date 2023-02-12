@@ -1,4 +1,5 @@
 import { Notification } from 'types';
+import { NotificationItem } from 'components';
 import { useNotificationsModal } from './useNotificationsModal';
 
 const NotificationsModal = (props: {
@@ -27,6 +28,11 @@ const NotificationsModal = (props: {
             >
               Mark all as read
             </button>
+          </div>
+          <div className='flex flex-col mt-6 gap-2 lg:gap-4 pb-36 lg:pb-0'>
+            {props.notifications?.map((notification) => (
+              <NotificationItem key={notification.id} {...notification} />
+            ))}
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ export * from './SearchBar';
 export * from './QuoteInteractions';
 export * from './Quote';
 export * from './NotificationsModal';
+export * from './NotificationItem';
 export { default as ModalWrapper } from './ModalWrapper';
 export { default as FormSubmitButton } from './FormSubmitButton';
 export { default as ModalButton } from './ModalButton';
