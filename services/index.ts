@@ -3,3 +3,4 @@ export * from './profileRequests';
 export * from './movieRequests';
 export * from './quoteRequests';
 export * from './notificationRequests';
+export * from './echo';
