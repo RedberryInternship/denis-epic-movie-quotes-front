@@ -28,6 +28,7 @@ export const useMoviesPage = (
   );
 
   const [addMovieModalIsOpen, setAddMovieModalIsOpen] = useState(false);
+  const closeModal = () => setAddMovieModalIsOpen(false);
 
   return {
     user,
@@ -39,5 +40,6 @@ export const useMoviesPage = (
     setSearchIsActive,
     addMovieModalIsOpen,
     setAddMovieModalIsOpen,
+    closeModal,
   };
 };

@@ -29,6 +29,7 @@ const Movies = (props: {
     searchIsActive,
     addMovieModalIsOpen,
     setAddMovieModalIsOpen,
+    closeModal,
   } = useMoviesPage(props.user, props.movies);
 
   return (
@@ -42,7 +43,7 @@ const Movies = (props: {
           <AddOrEditMovieModal
             user={user}
             genres={props.genres}
-            setModalIsOpen={setAddMovieModalIsOpen}
+            closeModal={closeModal}
           />
         </FormWrapper>
       )}
