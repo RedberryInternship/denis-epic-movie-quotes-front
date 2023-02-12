@@ -6,7 +6,7 @@ export const useSearchModal = (
   setSearchQuery: SetState<string>,
   setSearchIsActive: SetState<boolean>
 ) => {
-  useDisableBodyScroll();
+  useDisableBodyScroll(true);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
