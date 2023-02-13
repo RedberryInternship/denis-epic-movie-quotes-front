@@ -18,13 +18,6 @@ const AddEmailModal = (props: { setIsAddingEmail: SetState<boolean> }) => {
         label='New Email'
         placeholder='Enter new email'
         isBig={true}
-        validationRules={{
-          required: 'email_required',
-          pattern: {
-            value: /^(.+)@(.+)$/,
-            message: 'email_invalid',
-          },
-        }}
       />
     </ProfileModalWrapper>
   );

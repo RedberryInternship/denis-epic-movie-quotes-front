@@ -1,11 +1,6 @@
-import {
-  useProfileModalSubmit,
-  useToggle,
-  useValidatePasswordConfirmation,
-} from 'hooks';
+import { useProfileModalSubmit, useToggle } from 'hooks';
 import { sendUpdateProfileRequest } from 'services';
 import { SetState } from 'types';
-import { validationRules } from './validationRules';
 
 export const useChangePasswordModal = (
   setPasswordModalIsOpen: SetState<boolean>
@@ -18,9 +13,6 @@ export const useChangePasswordModal = (
   );
 
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-  const validatePasswordConfirmation = useValidatePasswordConfirmation(
-    validationRules.password_confirmation
-  );
 
   return {
     isLoading,
@@ -28,6 +20,5 @@ export const useChangePasswordModal = (
     closeModalCallback,
     passwordIsHidden,
     togglePasswordIsHidden,
-    validatePasswordConfirmation,
   };
 };

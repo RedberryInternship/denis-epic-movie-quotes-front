@@ -1,7 +1,6 @@
 import { PasswordInput, ProfileModalWrapper } from 'components';
 import { SetState } from 'types';
 import { useChangePasswordModal } from './useChangePasswordModal';
-import { validationRules } from './validationRules';
 
 const ChangePasswordModal = (props: {
   setPasswordModalIsOpen: SetState<boolean>;
@@ -12,7 +11,6 @@ const ChangePasswordModal = (props: {
     closeModalCallback,
     passwordIsHidden,
     togglePasswordIsHidden,
-    validatePasswordConfirmation,
   } = useChangePasswordModal(props.setPasswordModalIsOpen);
 
   return (
@@ -38,8 +36,6 @@ const ChangePasswordModal = (props: {
             placeholder='New password'
             isHidden={passwordIsHidden}
             toggleIsHidden={togglePasswordIsHidden}
-            onChange={validatePasswordConfirmation}
-            validationRules={validationRules.password}
             isBig={true}
           />
         </div>
@@ -50,7 +46,6 @@ const ChangePasswordModal = (props: {
           placeholder='Confirm new password'
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
-          validationRules={validationRules.password_confirmation}
           isBig={true}
         />
       </div>

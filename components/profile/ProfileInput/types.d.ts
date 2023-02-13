@@ -7,7 +7,6 @@ export type PropsType = PropsWithChildren<{
   placeholder?: string;
   isActive: boolean;
   onChange?: (arg0: ChangeEvent<HTMLInputElement>) => void;
-  validationRules?: object;
   type?: 'text' | 'password' | 'email';
   sideButtons?: ReactNode;
   additionalClassNames?: string;
