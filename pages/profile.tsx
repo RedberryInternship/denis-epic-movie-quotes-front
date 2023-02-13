@@ -14,6 +14,12 @@ import {
   ProfileForm,
   ProfileManageEmailsModal,
 } from 'components';
+import {
+  changePasswordSchema,
+  emailSchema,
+  profileSchema,
+  usernameSchema,
+} from 'schema';
 
 const Profile = (props: { user: UserFromDatabase }) => {
   const {
@@ -35,28 +41,26 @@ const Profile = (props: { user: UserFromDatabase }) => {
       </Head>
 
       {isManagingEmails && (
-        <FormWrapper>
-          <ProfileManageEmailsModal
-            emails={user.emails}
-            setIsAddingEmail={setIsAddingEmail}
-          />
-        </FormWrapper>
+        <ProfileManageEmailsModal
+          emails={user.emails}
+          setIsAddingEmail={setIsAddingEmail}
+        />
       )}
 
       {isAddingEmail && (
-        <FormWrapper>
+        <FormWrapper schema={emailSchema}>
           <AddEmailModal setIsAddingEmail={setIsAddingEmail} />
         </FormWrapper>
       )}
 
       {usernameModalIsOpen && (
-        <FormWrapper>
+        <FormWrapper schema={usernameSchema}>
           <EditUsernameModal setUsernameModalIsOpen={setUsernameModalIsOpen} />
         </FormWrapper>
       )}
 
       {passwordModalIsOpen && (
-        <FormWrapper>
+        <FormWrapper schema={changePasswordSchema}>
           <ChangePasswordModal
             setPasswordModalIsOpen={setPasswordModalIsOpen}
           />
@@ -66,6 +70,7 @@ const Profile = (props: { user: UserFromDatabase }) => {
       <div className={isAddingEmail ? 'lg:blur-sm lg:opacity-95' : ''}>
         <PageWrapper user={user}>
           <FormWrapper
+            schema={profileSchema}
             defaultValues={{ username: user.username, current_password: '' }}
           >
             <ProfileForm

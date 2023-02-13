@@ -4,11 +4,15 @@ import { useFormContext, useFormState } from 'react-hook-form';
 import { ApiResponse, ProfileForm, SetState } from 'types';
 import { useQueryClient } from 'react-query';
 import { sendUpdateProfileRequest } from 'services';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 export const useProfileForm = (
   isManagingEmails: boolean,
   setIsManagingEmails: SetState<boolean>
 ) => {
+  const user = useSelector((state: RootState) => state.user);
+
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -24,7 +28,8 @@ export const useProfileForm = (
     ? () => setIsManagingEmails(false)
     : router.back;
 
-  const { handleSubmit, setError } = useFormContext<ProfileForm>();
+  const { handleSubmit, setError, reset, setValue } =
+    useFormContext<ProfileForm>();
 
   const { dirtyFields } = useFormState<ProfileForm>();
 
@@ -54,6 +59,8 @@ export const useProfileForm = (
     } else {
       await queryClient.refetchQueries('user');
       disableEditing();
+      reset();
+      setValue('username', user.username);
     }
   };
 
