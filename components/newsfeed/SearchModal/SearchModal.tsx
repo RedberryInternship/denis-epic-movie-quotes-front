@@ -9,7 +9,7 @@ const SearchModal = (props: PropsType) => {
   );
 
   return (
-    <section className='lg:hidden absolute top-0 min-h-screen w-full bg-[#12101A] text-white'>
+    <section className='lg:hidden absolute z-50 top-0 min-h-screen w-full bg-[#12101A] text-white'>
       <div className='py-4 px-8 border-b border-brand-divide flex gap-4.5'>
         <button onClick={closeSearchModal}>
           <ArrowBack />
