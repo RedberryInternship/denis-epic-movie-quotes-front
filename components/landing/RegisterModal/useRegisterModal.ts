@@ -2,23 +2,14 @@ import { useFormContext } from 'react-hook-form';
 import { ApiResponse, Modals, RegisterForm, SetState } from 'types';
 import { useState } from 'react';
 import { postRegisterData } from 'services';
-import { validationRules } from './validationRules';
-import {
-  useHandleSubmit,
-  useToggle,
-  useValidatePasswordConfirmation,
-} from 'hooks';
+import { useHandleSubmit, useToggle } from 'hooks';
 import { useTranslation } from 'next-i18next';
 
 export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-
-  const validatePasswordConfirmation = useValidatePasswordConfirmation(
-    validationRules.password_confirmation
-  );
+  const [isLoading, setIsLoading] = useState(false);
 
   const { setError } = useFormContext<RegisterForm>();
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitSuccess = async () => {
     setActiveModal('confirm_sent');
@@ -44,8 +35,6 @@ export const useRegisterModal = (setActiveModal: SetState<Modals>) => {
   return {
     handleSubmit,
     isLoading,
-    validationRules,
-    validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
     t,

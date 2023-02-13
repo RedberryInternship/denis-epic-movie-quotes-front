@@ -1,22 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 import { ApiResponse, Modals, ResetPasswordForm, SetState } from 'types';
 import { postResetPassData } from 'services';
-import {
-  useHandleSubmit,
-  useToggle,
-  useValidatePasswordConfirmation,
-} from 'hooks';
-import { validationRules } from './validationRules';
+import { useHandleSubmit, useToggle } from 'hooks';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-
-  const validatePasswordConfirmation = useValidatePasswordConfirmation(
-    validationRules.password_confirmation
-  );
 
   const router = useRouter();
   const token = router.query.token as string;
@@ -54,8 +45,6 @@ export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
   return {
     handleSubmit,
     isLoading,
-    validationRules,
-    validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
     t,
