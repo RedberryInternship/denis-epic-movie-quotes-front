@@ -4,19 +4,25 @@ import {
   FeaturedQuote,
   ForgotPasswordModal,
   FormWrapper,
+  HeaderTitle,
   LanguageSelector,
   LoginModal,
   ModalButton,
   ModalSuccess,
-  RegisterModal,
-  SplashModalWrapper,
-  ResetPasswordModal,
   RedButton,
-  HeaderTitle,
+  RegisterModal,
+  ResetPasswordModal,
+  SplashModalWrapper,
 } from 'components';
 import { useIndexPage } from 'hooks';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import {
+  forgotSchema,
+  loginSchema,
+  passwordWithConfirmationSchema,
+  registerSchema,
+} from 'schema';
 
 const Landing = () => {
   const {
@@ -42,19 +48,19 @@ const Landing = () => {
       )}
 
       {activeModal === 'login' && (
-        <FormWrapper>
+        <FormWrapper schema={loginSchema}>
           <LoginModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
 
       {activeModal === 'register' && (
-        <FormWrapper>
+        <FormWrapper schema={registerSchema}>
           <RegisterModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
 
       {activeModal === 'forgot_pass' && (
-        <FormWrapper>
+        <FormWrapper schema={forgotSchema}>
           <ForgotPasswordModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
@@ -69,7 +75,7 @@ const Landing = () => {
       )}
 
       {activeModal === 'reset_pass' && (
-        <FormWrapper>
+        <FormWrapper schema={passwordWithConfirmationSchema}>
           <ResetPasswordModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}
