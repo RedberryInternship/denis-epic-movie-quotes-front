@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, UserFromDatabase } from 'types';
 
 const initialState: User = {
+  id: 0,
   username: '',
   emails: [],
   isGoogleUser: false,
@@ -13,6 +14,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<UserFromDatabase>) => {
+      state.id = action.payload.id;
       state.username = action.payload.username;
       action.payload.emails.sort((a) => (a.is_primary ? -1 : 1));
       state.emails = action.payload.emails.map((email) => {

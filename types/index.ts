@@ -23,3 +23,4 @@ export * from './fullMovieData';
 export * from './movieQuote';
 export * from './quoteModalsReducer';
 export * from './quoteForm';
+export * from './notification';

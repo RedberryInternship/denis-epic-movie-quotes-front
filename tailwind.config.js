@@ -71,6 +71,8 @@ module.exports = {
       animation: {
         grow: 'grow 200ms ease-out forwards',
         'grow-x': 'grow-x 200ms ease-out forwards',
+        'grow-y': 'grow-y 300ms ease-out forwards',
+        pulse: 'pulse 300ms ease-out forwards',
       },
       keyframes: {
         grow: {
@@ -79,7 +81,17 @@ module.exports = {
         },
         'grow-x': {
           '0%': { transform: 'scaleX(0)', opacity: 0 },
-          '100%': { transform: 'scaleX  (1)', opacity: 1 },
+          '100%': { transform: 'scaleX(1)', opacity: 1 },
+        },
+        'grow-y': {
+          '0%': { transform: 'scaleY(0)', opacity: 0 },
+          '100%': { transform: 'scaleY(1)', opacity: 1 },
+        },
+        pulse: {
+          '0%': { transform: 'scale(0)' },
+          '40%': { transform: 'scale(1.4)' },
+          '65%': { transform: 'scale(0.9)' },
+          '100%': { transform: 'scale(1)' },
         },
       },
     },
