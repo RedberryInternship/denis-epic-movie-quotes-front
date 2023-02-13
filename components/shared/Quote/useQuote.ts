@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-import { RootState } from 'store';
 import { sendLikeRequest, sendStoreCommentRequest } from 'services';
 import { useForm } from 'react-hook-form';
 
@@ -9,8 +7,6 @@ export const useQuote = (
   refetchLikes: () => void,
   refetchComments: () => void
 ) => {
-  const user = useSelector((state: RootState) => state.user);
-
   const submitLikeOrUnlike = async () => {
     await sendLikeRequest(isLiked, id);
     await refetchLikes();
@@ -35,7 +31,6 @@ export const useQuote = (
   const setFocusOnComment = () => setFocus('comment');
 
   return {
-    user,
     register,
     submitLikeOrUnlike,
     commentSubmitHandler,

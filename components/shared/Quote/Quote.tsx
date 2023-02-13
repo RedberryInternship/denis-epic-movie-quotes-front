@@ -1,4 +1,3 @@
-import { Comment } from 'types';
 import {
   NewsfeedComment,
   ProfilePicture,
@@ -6,22 +5,11 @@ import {
   SelfProfilePicture,
 } from 'components';
 import Image from 'next/image';
-import { PropsWithChildren } from 'react';
 import { useQuote } from './useQuote';
+import { PropsType } from './types';
 
-const Quote = (
-  props: PropsWithChildren<{
-    id: number;
-    image: string;
-    isLiked: boolean;
-    likeCount: number;
-    refetchLikes: () => void;
-    refetchComments: () => void;
-    comments?: Comment[];
-  }>
-) => {
+const Quote = (props: PropsType) => {
   const {
-    user,
     register,
     setFocusOnComment,
     commentSubmitHandler,
@@ -39,9 +27,9 @@ const Quote = (
         <ProfilePicture
           size={52}
           classNames='w-10 h-10 lg:w-13 lg:h-13'
-          image={user.profilePicture}
+          image={props.user.profile_picture}
         />
-        {user.username}
+        {props.user.username}
       </div>
       <div className='lg:text-xl'>
         {props.children}
