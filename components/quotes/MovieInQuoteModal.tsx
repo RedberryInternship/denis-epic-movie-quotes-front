@@ -6,7 +6,7 @@ const MovieInQuoteModal = (props: { movie: MovieWithGenres }) => {
   const locale = useLocale();
 
   return (
-    <article className='flex items-center mt-8 rounded bg-black min-h-[114px] px-2 py-4 gap-3'>
+    <article className='flex items-center rounded bg-black min-h-[114px] px-2 py-4 gap-3'>
       <Image
         src={props.movie?.image}
         width={290}
