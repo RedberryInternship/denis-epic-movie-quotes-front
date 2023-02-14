@@ -18,7 +18,7 @@ const ModalWrapper = (
         <section
           ref={modalRef}
           className={
-            'relative min-h-screen overflow-auto flex flex-col items-center text-white pb-30 px-8.5 w-full bg-brand-background bg-gradient-modal z-40 ' +
+            'animate-grow relative min-h-screen overflow-auto flex flex-col items-center text-white pb-30 px-8.5 w-full bg-brand-background bg-gradient-modal z-40 ' +
             ' lg:min-h-0 lg:w-[600px] lg:px-30 lg:py-14 lg:bg-brand-modal lg:bg-none lg:rounded-xl lg:scrollbar-thin lg:scrollbar-thumb-brand-subtitle ' +
             (props.headingIsBig ? 'pt-30' : 'pt-19')
           }
