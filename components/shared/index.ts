@@ -30,3 +30,4 @@ export { default as ProfilePicture } from './ProfilePicture';
 export { default as SelfProfilePicture } from './SelfProfilePicture';
 export { default as NewsfeedComment } from './NewsfeedComment';
 export { default as InputValidityIcon } from './InputValidityIcon';
+export { default as SelectDropdownIndicator } from './SelectDropdownIndicator';
