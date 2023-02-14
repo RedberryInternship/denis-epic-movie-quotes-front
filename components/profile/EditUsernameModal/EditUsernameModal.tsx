@@ -20,21 +20,6 @@ const EditUsernameModal = (props: {
         label='Enter new username'
         placeholder='Enter new username'
         isBig={true}
-        validationRules={{
-          required: 'username_required',
-          minLength: {
-            value: 3,
-            message: 'min_length_3',
-          },
-          maxLength: {
-            value: 15,
-            message: 'max_length_16',
-          },
-          pattern: {
-            value: /^[a-z0-9_\-]+$/,
-            message: 'only_lowercase_and_numbers',
-          },
-        }}
       />
     </ProfileModalWrapper>
   );

@@ -7,7 +7,6 @@ const ProfilePasswordInput = (props: PropsType) => {
       {...props}
       type={props.isHidden ? 'password' : 'text'}
       isActive={true}
-      validationRules={props.validationRules}
     >
       <button
         type='button'

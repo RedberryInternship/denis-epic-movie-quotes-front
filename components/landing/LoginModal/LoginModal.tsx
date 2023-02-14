@@ -31,21 +31,11 @@ const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
           name='username'
           label={t('email')}
           placeholder={t('credentials_placeholder')}
-          validationRules={{
-            required: t('credentials_required'),
-            minLength: {
-              value: 3,
-              message: t('credentials_length'),
-            },
-          }}
         />
         <PasswordInput
           name='password'
           label={t('password')}
           placeholder={t('password')}
-          validationRules={{
-            required: t('password_required'),
-          }}
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />

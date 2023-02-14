@@ -18,7 +18,6 @@ const TextInput = (props: PropsType) => {
       <div className='relative mb-1'>
         <input
           {...register(props.name, {
-            ...props.validationRules,
             ...{ onChange: props.onChange },
           })}
           id={props.name}
@@ -30,7 +29,10 @@ const TextInput = (props: PropsType) => {
             (props.isBig ? 'h-12' : 'h-9.5')
           }
         />
-        <InputValidityIcon isValid={inputIsValid} isInvalid={inputError} />
+        <InputValidityIcon
+          isValid={inputIsValid}
+          isInvalid={Boolean(inputError)}
+        />
       </div>
 
       <FormError error={(inputError || '') as string} />

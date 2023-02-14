@@ -12,8 +12,6 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
   const {
     handleSubmit,
     isLoading,
-    validationRules,
-    validatePasswordConfirmation,
     passwordIsHidden,
     togglePasswordIsHidden,
     t,
@@ -31,8 +29,6 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
           label={t('password')}
           placeholder={t('password_placeholder')}
           requiredAsterisk={true}
-          validationRules={validationRules.password}
-          onChange={validatePasswordConfirmation}
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />
@@ -41,7 +37,6 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
           label={t('password_confirmation')}
           placeholder={t('password')}
           requiredAsterisk={true}
-          validationRules={validationRules.password_confirmation}
           isHidden={passwordIsHidden}
           toggleIsHidden={togglePasswordIsHidden}
         />

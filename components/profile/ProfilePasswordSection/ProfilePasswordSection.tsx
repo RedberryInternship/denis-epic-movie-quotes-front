@@ -4,8 +4,7 @@ import {
   ProfilePasswordInput,
 } from 'components';
 import { SetState } from 'types';
-import { useToggle, useValidatePasswordConfirmation } from 'hooks';
-import { validationRules } from './validationRules';
+import { useToggle } from 'hooks';
 
 const ProfilePasswordSection = (props: {
   isEditingPassword: boolean;
@@ -13,9 +12,6 @@ const ProfilePasswordSection = (props: {
   setPasswordModalIsOpen: SetState<boolean>;
 }) => {
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-  const validatePasswordConfirmation = useValidatePasswordConfirmation(
-    validationRules.password_confirmation
-  );
 
   return (
     <div>
@@ -62,8 +58,6 @@ const ProfilePasswordSection = (props: {
             placeholder='New password'
             isHidden={passwordIsHidden}
             toggleIsHidden={togglePasswordIsHidden}
-            onChange={validatePasswordConfirmation}
-            validationRules={validationRules.password}
           />
           <ProfilePasswordInput
             name='password_confirmation'
@@ -71,7 +65,6 @@ const ProfilePasswordSection = (props: {
             placeholder='Confirm new password'
             isHidden={passwordIsHidden}
             toggleIsHidden={togglePasswordIsHidden}
-            validationRules={validationRules.password_confirmation}
           />
         </div>
       )}

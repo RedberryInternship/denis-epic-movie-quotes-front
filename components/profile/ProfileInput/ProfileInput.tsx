@@ -14,7 +14,6 @@ const ProfileInput = (props: PropsType) => {
           <input
             {...(!props.value &&
               register(props.name, {
-                ...props.validationRules,
                 ...{ onChange: props.onChange },
               }))}
             disabled={!props.isActive}
@@ -28,13 +27,16 @@ const ProfileInput = (props: PropsType) => {
               props.additionalClassNames
             }
           />
-          <InputValidityIcon isValid={inputIsValid} isInvalid={inputError} />
+          <InputValidityIcon
+            isValid={inputIsValid}
+            isInvalid={Boolean(inputError)}
+          />
           {props.children}
         </div>
         {props.sideButtons}
       </div>
       <div className='hidden lg:block mt-1'>
-        <FormError error={inputError || ''} />
+        <FormError error={(inputError || '') as string} />
       </div>
     </div>
   );

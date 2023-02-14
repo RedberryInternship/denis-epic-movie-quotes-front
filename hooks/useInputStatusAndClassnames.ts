@@ -3,7 +3,7 @@ import { useFormState } from 'react-hook-form';
 export const useInputStatusAndClassnames = (name: string) => {
   const { errors, dirtyFields } = useFormState({ name });
 
-  const inputError = dirtyFields[name] && errors[name]?.message;
+  const inputError = errors[name]?.message;
   const inputIsValid = dirtyFields[name] && !inputError;
 
   const inputClassNames =
