@@ -149,11 +149,11 @@ const Landing = () => {
 
       <main
         className={
-          'w-full bg-brand-background text-white ' +
+          'w-full bg-brand-background text-white snap-y ' +
           (activeModal || errorSplashMessage ? 'blur-sm' : '')
         }
       >
-        <div className='h-[66vh] w-2/3 flex flex-col items-center pt-[16vh] lg:pt-[26vh] lg:w-1/2 2xl:w-5/12 mx-auto gap-8 lg:h-screen lg:gap-6'>
+        <div className='snap-start snap-mandatory h-[66vh] w-2/3 flex flex-col items-center pt-[16vh] lg:pt-[26vh] lg:w-1/2 2xl:w-5/12 mx-auto gap-8 lg:h-screen lg:gap-6'>
           <h1 className='text-brand-khaki font-bold text-2xl leading-normal text-center lg:text-5xl 2xl:text-6xl lg:leading-normal 2xl:leading-normal'>
             {t('landing:heading')}
           </h1>
@@ -178,7 +178,7 @@ const Landing = () => {
           quote={t('lotr_quote')}
           caption='The Lord of the Rings, 2003'
         />
-        <footer className='flex items-center h-8 px-8.5 uppercase font-medium text-2xs text-brand-khaki lg:text-xs lg:h-12 lg:px-17.5'>
+        <footer className='snap-center flex items-center h-8 px-8.5 uppercase font-medium text-2xs text-brand-khaki lg:text-xs lg:h-12 lg:px-17.5'>
           © 2022 movie quotes. {t('copyright')}.
         </footer>
       </main>
