@@ -4,6 +4,7 @@ import {
   ProfileEmailSection,
   ProfileFormActions,
   ProfileImageInput,
+  ProfileInput,
   ProfilePasswordSection,
   ProfileUsernameSection,
 } from 'components';
@@ -51,25 +52,37 @@ const ProfileForm = (props: PropsType) => {
             setUsernameModalIsOpen={props.setUsernameModalIsOpen}
           />
           <hr className='hidden lg:block mt-6 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
-          <ProfileEmailSection
-            emails={props.user.emails}
-            setIsAddingEmail={props.setIsAddingEmail}
-          />
-          <hr className='hidden lg:block mt-9 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
-          <ProfilePasswordSection
-            isEditingPassword={isEditingPassword}
-            setIsEditingPassword={setIsEditingPassword}
-            setPasswordModalIsOpen={props.setPasswordModalIsOpen}
-          />
-          <div className='flex justify-between items-center uppercase lg:hidden'>
-            Email
-            <button
-              type='button'
-              onClick={() => props.setIsManagingEmails(true)}
-            >
-              <ArrowSmallRight />
-            </button>
-          </div>
+
+          {props.user.isGoogleUser ? (
+            <ProfileInput
+              label='Email'
+              name='email'
+              placeholder={props.user.emails[0].address}
+              isActive={false}
+            />
+          ) : (
+            <>
+              <ProfileEmailSection
+                emails={props.user.emails}
+                setIsAddingEmail={props.setIsAddingEmail}
+              />
+              <hr className='hidden lg:block mt-9 mb-10 border-brand-divide w-1/2 max-w-[528px]' />
+              <ProfilePasswordSection
+                isEditingPassword={isEditingPassword}
+                setIsEditingPassword={setIsEditingPassword}
+                setPasswordModalIsOpen={props.setPasswordModalIsOpen}
+              />
+              <div className='flex justify-between items-center uppercase lg:hidden'>
+                Email
+                <button
+                  type='button'
+                  onClick={() => props.setIsManagingEmails(true)}
+                >
+                  <ArrowSmallRight />
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </section>
       {(isEditingImage || isEditingUsername || isEditingPassword) && (
