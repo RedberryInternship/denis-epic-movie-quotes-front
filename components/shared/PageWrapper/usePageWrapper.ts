@@ -1,5 +1,6 @@
 import { useOutsideClickListener, useToggle } from 'hooks';
 import { useRef } from 'react';
+import { useToasterStore } from 'react-hot-toast';
 
 export const usePageWrapper = () => {
   const [sideMenuIsOpen, toggleSideMenuIsOpen] = useToggle(false);
@@ -8,9 +9,12 @@ export const usePageWrapper = () => {
     if (sideMenuIsOpen) toggleSideMenuIsOpen();
   });
 
+  const { toasts } = useToasterStore();
+
   return {
     sideMenuIsOpen,
     toggleSideMenuIsOpen,
     sideMenuRef,
+    toasts,
   };
 };

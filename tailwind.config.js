@@ -16,6 +16,7 @@ module.exports = {
         'brand-red': '#E31221',
         'brand-crimson': '#DC3545',
         'brand-green': '#198754',
+        'brand-lightgreen': '#D1E7DD',
         'brand-subtitle': '#6C757D',
         'brand-pale': '#CED4DA',
         'brand-blue': '#0D6EFD',
@@ -72,6 +73,7 @@ module.exports = {
         grow: 'grow 200ms ease-out forwards',
         'grow-x': 'grow-x 200ms ease-out forwards',
         'grow-y': 'grow-y 300ms ease-out forwards',
+        shrink: 'shrink 400ms ease-out forwards',
         pulse: 'pulse 300ms ease-out forwards',
       },
       keyframes: {
@@ -92,6 +94,10 @@ module.exports = {
           '40%': { transform: 'scale(1.4)' },
           '65%': { transform: 'scale(0.9)' },
           '100%': { transform: 'scale(1)' },
+        },
+        shrink: {
+          '0%': { transform: 'scale(1)', opacity: 1 },
+          '100%': { transform: 'scale(0)', opacity: 0.5 },
         },
       },
     },

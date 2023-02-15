@@ -14,3 +14,4 @@ export * from './ProfileFormActions';
 export { default as ProfileManageEmailsModal } from './ProfileManageEmailsModal';
 export { default as InputSideButton } from './InputSideButton';
 export { default as EmailStatusIcon } from './EmailStatusIcon';
+export { default as ProfileToast } from './ProfileToast';
