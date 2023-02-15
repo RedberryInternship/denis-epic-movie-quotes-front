@@ -1,5 +1,5 @@
 import { components, DropdownIndicatorProps } from 'react-select';
-import { DropdownIcon } from '../icons';
+import { DropdownIcon } from 'components';
 
 const SelectDropdownIndicator = (props: DropdownIndicatorProps) => {
   return (
