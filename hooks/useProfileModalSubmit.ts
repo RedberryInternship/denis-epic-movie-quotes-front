@@ -3,10 +3,13 @@ import { useQueryClient } from 'react-query';
 import { useState } from 'react';
 import { useHandleSubmit } from 'hooks';
 import { ApiResponse } from 'types';
+import { showToast } from 'helpers';
 
 export const useProfileModalSubmit = <T extends object>(
   submitRequest: (formValues: T) => Promise<unknown>,
-  closeModalCallback: () => void
+  closeModalCallback: () => void,
+  toastMessage: string,
+  toastTitle?: string
 ) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,6 +17,7 @@ export const useProfileModalSubmit = <T extends object>(
   const queryClient = useQueryClient();
 
   const onSubmitSuccess = async () => {
+    showToast(toastMessage, toastTitle);
     closeModalCallback();
     await queryClient.refetchQueries('user');
   };

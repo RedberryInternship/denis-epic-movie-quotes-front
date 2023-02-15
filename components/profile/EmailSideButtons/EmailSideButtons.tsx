@@ -1,12 +1,13 @@
 import { InputSideButton } from 'components';
 import { useEmailSideButtons } from './useEmailSideButtons';
+import { Email } from 'types';
 
 const EmailSideButtons = (props: {
-  emailID: number;
+  email: Email;
   isPrimary: boolean;
   isVerified: boolean;
 }) => {
-  const { makePrimary, removeEmail } = useEmailSideButtons(props.emailID);
+  const { makePrimary, removeEmail } = useEmailSideButtons(props.email);
 
   return (
     <>

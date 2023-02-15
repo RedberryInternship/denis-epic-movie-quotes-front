@@ -7,7 +7,9 @@ export const useAddEmailModal = (setIsAddingEmail: SetState<boolean>) => {
 
   const { isLoading, handleSubmit } = useProfileModalSubmit(
     sendAddEmailRequest,
-    closeModalCallback
+    closeModalCallback,
+    'Please check email to verify new address',
+    'New email Added successfully'
   );
 
   return { isLoading, handleSubmit, closeModalCallback };

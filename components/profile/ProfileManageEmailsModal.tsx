@@ -22,7 +22,7 @@ const ProfileManageEmailsModal = (props: {
                 <div key={index}>
                   <div className='text-xl'>{email.address}</div>
                   <EmailSideButtons
-                    emailID={email.id}
+                    email={email}
                     isPrimary={false}
                     isVerified={email.isVerified}
                   />

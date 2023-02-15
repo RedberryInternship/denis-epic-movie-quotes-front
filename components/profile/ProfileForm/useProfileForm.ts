@@ -6,6 +6,7 @@ import { useQueryClient } from 'react-query';
 import { sendUpdateProfileRequest } from 'services';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { showToast } from 'helpers';
 
 export const useProfileForm = (
   isManagingEmails: boolean,
@@ -58,6 +59,21 @@ export const useProfileForm = (
         });
     } else {
       await queryClient.refetchQueries('user');
+
+      if (
+        (['username', 'password', 'image'] as const).filter(
+          (field) => dirtyFields[field]
+        ).length > 1
+      ) {
+        showToast('Your profile has been updated');
+      } else if ('username' in dirtyFields) {
+        showToast('Username changed successfully');
+      } else if ('password' in dirtyFields) {
+        showToast('Password changed successfully');
+      } else if ('image' in dirtyFields) {
+        showToast('Profile picture changed successfully');
+      }
+
       disableEditing();
       reset();
       setValue('username', user.username);

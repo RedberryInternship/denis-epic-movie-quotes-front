@@ -23,7 +23,7 @@ const ProfileEmailSection = (props: {
               isActive={false}
               sideButtons={
                 <EmailSideButtons
-                  emailID={email.id}
+                  email={email}
                   isPrimary={email.isPrimary}
                   isVerified={email.isVerified}
                 />
