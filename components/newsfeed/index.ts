@@ -1,2 +1,3 @@
 export * from './SearchModal';
-export { default as NewsfeedInputs } from './NewsfeedInputs';
+export * from './MovieSelect';
+export * from './NewsfeedInputs'

@@ -1,5 +1,4 @@
 import { useLocale } from 'hooks';
-import { useFormState } from 'react-hook-form';
 import { Genre } from 'types';
 
 export const useGenreSelect = (fetchedGenres: Genre[]) => {
@@ -11,8 +10,5 @@ export const useGenreSelect = (fetchedGenres: Genre[]) => {
     id: genre.id,
   }));
 
-  const { errors } = useFormState();
-  const hasErrors = Boolean(errors.genres);
-
-  return { genres, hasErrors };
+  return { genres };
 };

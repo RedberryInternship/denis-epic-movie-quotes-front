@@ -12,8 +12,9 @@ import {
 
 export const useAddOrEditQuoteModal = (
   isEditing: boolean | undefined,
+  addingFromNewsfeed: boolean | undefined,
   closeModal: () => void,
-  movieID: number,
+  movieID?: number,
   quoteID?: number
 ) => {
   const { setError } = useFormContext();
@@ -23,7 +24,13 @@ export const useAddOrEditQuoteModal = (
   const [isLoading, setIsLoading] = useState(false);
   const onSubmitSuccess = async () => {
     closeModal();
-    await queryClient.refetchQueries(['movie', movieID]);
+    if (addingFromNewsfeed) {
+      await queryClient.invalidateQueries({
+        refetchPage: (page, index) => index === 0,
+      });
+    } else {
+      await queryClient.refetchQueries(['movie', movieID]);
+    }
   };
   const onSubmitError = (response: ApiResponse<QuoteForm>) => {
     if (response.errors) {

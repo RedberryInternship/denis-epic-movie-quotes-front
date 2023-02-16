@@ -12,25 +12,30 @@ export const theme = (theme: Theme) => ({
   },
 });
 
-export const getStyles = (isValid: boolean) => ({
+export const getStyles = (isValid: boolean, isMulti: boolean | undefined) => ({
   control: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
     borderColor: isValid ? '#6C757D' : '#E31221',
     borderWidth: isValid ? '1px' : '1.5px',
-    minHeight: '3rem',
+    minHeight: isMulti ? '3rem' : '5.125rem',
+    backgroundColor: 'transparent',
   }),
   container: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
-    minHeight: '3rem',
+    minHeight: isMulti ? '3rem' : '5.125rem',
   }),
   indicatorSeparator: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
     display: 'none',
   }),
+  dropdownIndicator: (baseStyles: CSSObjectWithLabel) => ({
+    ...baseStyles,
+    paddingRight: isMulti ? '1rem' : '1.75rem',
+  }),
   valueContainer: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
     padding: '0.625rem 1.0625rem',
-    minHeight: '3rem',
+    minHeight: isMulti ? '3rem' : '5.125rem',
   }),
   multiValue: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
@@ -55,9 +60,13 @@ export const getStyles = (isValid: boolean) => ({
     ...baseStyles,
     borderRadius: '0.25rem',
   }),
+  singleValue: (baseStyles: CSSObjectWithLabel) => ({
+    ...baseStyles,
+    display: 'none',
+  }),
   placeholder: (baseStyles: CSSObjectWithLabel) => ({
     ...baseStyles,
-    color: '#CCCCCC',
+    color: '#6C757D',
     margin: 0,
   }),
 });
