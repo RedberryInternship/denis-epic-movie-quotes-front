@@ -1,4 +1,4 @@
-import { UserFromDatabase } from 'types';
+import { ApiResponse, UserFromDatabase } from 'types';
 import { useUserStore } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { useQuery } from 'react-query';
@@ -6,6 +6,7 @@ import { getUser, verifyEmail } from 'services';
 import { useEffect, useState } from 'react';
 import { setUser } from 'store';
 import { useRouter } from 'next/router';
+import { showToast } from 'helpers';
 
 export const useProfilePage = (initialUser: UserFromDatabase) => {
   const user = useUserStore(initialUser);
@@ -28,8 +29,7 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
   useEffect(() => {
     if (emailVerifyURL) {
       const sendEmailVerifyRequest = async () => {
-        await verifyEmail(emailVerifyURL.toString());
-
+        const verifyRequest = await verifyEmail(emailVerifyURL.toString());
         setIsManagingEmails(true);
 
         delete router.query.verify_url;
@@ -37,6 +37,9 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
           shallow: true,
         });
 
+        if ((verifyRequest as ApiResponse<{}>).success) {
+          showToast('Email verified successfully');
+        }
         await refetch();
       };
       sendEmailVerifyRequest();

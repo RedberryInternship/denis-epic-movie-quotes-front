@@ -9,7 +9,8 @@ export const useEditUsernameModal = (
 
   const { isLoading, handleSubmit } = useProfileModalSubmit(
     sendUpdateProfileRequest,
-    closeModalCallback
+    closeModalCallback,
+    'Username changed successfully'
   );
 
   return { isLoading, handleSubmit, closeModalCallback };
