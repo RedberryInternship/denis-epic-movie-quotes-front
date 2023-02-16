@@ -27,9 +27,9 @@ const Quote = (props: PropsType) => {
         <ProfilePicture
           size={52}
           classNames='w-10 h-10 lg:w-13 lg:h-13'
-          image={props.user.profile_picture}
+          image={props.authorImage}
         />
-        {props.user.username}
+        {props.authorUsername}
       </div>
       <div className='lg:text-xl'>
         {props.children}

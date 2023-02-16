@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Comment, UserFromDatabase } from 'types';
+import { Comment } from 'types';
 
 export type PropsType = PropsWithChildren<{
   id: number;
@@ -9,5 +9,6 @@ export type PropsType = PropsWithChildren<{
   refetchLikes: () => void;
   refetchComments: () => void;
   comments?: Comment[];
-  user: Omit<UserFromDatabase, 'emails' | 'google_id'>;
+  authorUsername: string;
+  authorImage: string;
 }>;
