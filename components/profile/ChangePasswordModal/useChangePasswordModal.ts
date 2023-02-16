@@ -10,7 +10,8 @@ export const useChangePasswordModal = (
 
   const { isLoading, handleSubmit } = useProfileModalSubmit(
     sendUpdateProfileRequest,
-    closeModalCallback
+    closeModalCallback,
+    'Password changed successfully'
   );
 
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
