@@ -6,7 +6,7 @@ const initialState: User = {
   username: '',
   emails: [],
   isGoogleUser: false,
-  profilePicture: null,
+  profilePicture: '',
 };
 
 export const userSlice = createSlice({
