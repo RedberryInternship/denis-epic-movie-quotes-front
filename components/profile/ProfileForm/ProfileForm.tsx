@@ -34,7 +34,7 @@ const ProfileForm = (props: PropsType) => {
       <button type='button' className='ml-8 -mt-4 lg:hidden' onClick={goBack}>
         <ArrowBack />
       </button>
-      <h1 className='hidden text-2xl font-medium ml-7.5 lg:block'>
+      <h1 className='hidden text-2xl font-medium ml-11.5 lg:block'>
         My profile
       </h1>
       <section className='bg-brand-lightmodal pt-10 pb-22.5 px-8 rounded-xl mt-4 lg:bg-brand-article lg:mt-[5vh] 2xl:mt-[11.6vh] lg:pt-0 lg:pl-21 lg:pr-8'>
