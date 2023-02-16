@@ -22,6 +22,14 @@ const ChangePasswordModal = (props: {
       closeModalCallback={closeModalCallback}
     >
       <div>
+        <PasswordInput
+          name='current_password'
+          label='Current password'
+          placeholder='Current password'
+          isHidden={passwordIsHidden}
+          toggleIsHidden={togglePasswordIsHidden}
+          isBig={true}
+        />
         <div className='h-[134px] bg-brand-article p-6 border-[#373741] rounded border mb-8 lg:mb-4 lg:w-1/2 lg:max-w-[528px] mt-2'>
           Password should contain:
           <div
