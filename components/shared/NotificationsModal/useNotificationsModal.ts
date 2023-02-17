@@ -1,8 +1,8 @@
 import { useQueryClient } from 'react-query';
 import { markAllNotificationsAsSeen } from 'services';
-import { useModal } from 'hooks';
+import { useDisableBodyScroll } from 'hooks';
 
-export const useNotificationsModal = (toggleShowNotifications: () => void) => {
+export const useNotificationsModal = () => {
   const queryClient = useQueryClient();
 
   const markAllRead = async () => {
@@ -10,7 +10,7 @@ export const useNotificationsModal = (toggleShowNotifications: () => void) => {
     await queryClient.refetchQueries('notifications');
   };
 
-  const modalRef = useModal(() => toggleShowNotifications(), true);
+  useDisableBodyScroll(true);
 
-  return { modalRef, markAllRead };
+  return { markAllRead };
 };
