@@ -53,7 +53,7 @@ const ProfileModalWrapper = (
             <div className='pointer-events-auto h-min text-white w-full flex items-center justify-center'>
               <form
                 onSubmit={props.handleSubmit}
-                className='static min-h-[173px] lg:h-auto lg:fixed z-40 lg:top-[20vh] 2xl:top-[32vh] w-[615px] lg:bg-brand-article rounded-xl p-0 lg:pt-6 lg:pb-10'
+                className='static overflow-auto max-h-[80vh] min-h-[173px] lg:h-auto lg:fixed z-40 lg:top-[20vh] 2xl:top-[32vh] w-[615px] lg:bg-brand-article rounded-xl p-0 lg:pt-6 lg:pb-10 pb-20'
               >
                 <div className='hidden lg:block border-b border-brand-pale'>
                   <h2 className='text-2xl font-medium pr-14 pl-8 pb-6'>

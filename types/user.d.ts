@@ -5,7 +5,7 @@ export type User = {
   username: string;
   emails: Email[];
   isGoogleUser: boolean;
-  profilePicture: string | null;
+  profilePicture: string;
 };
 
 export type UserFromDatabase = {
@@ -13,5 +13,5 @@ export type UserFromDatabase = {
   username: string;
   emails: EmailFromDatabase[];
   google_id: string | null;
-  profile_picture: string | null;
+  profile_picture: string;
 };

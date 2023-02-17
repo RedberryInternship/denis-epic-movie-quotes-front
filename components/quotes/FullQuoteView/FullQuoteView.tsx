@@ -19,6 +19,7 @@ const FullQuoteView = (props: {
     refetchLikes,
     deleteHandler,
     editHandler,
+    user,
   } = useFullQuoteView(
     props.quote,
     props.closeModal,
@@ -47,6 +48,8 @@ const FullQuoteView = (props: {
         likeCount={props.quote.likes_count}
         refetchLikes={refetchLikes}
         refetchComments={refetchComments}
+        authorUsername={user.username}
+        authorImage={user.profilePicture}
       >
         <div className='relative'>
           <textarea

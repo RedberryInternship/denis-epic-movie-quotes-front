@@ -17,12 +17,7 @@ import {
 import { useIndexPage } from 'hooks';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import {
-  forgotSchema,
-  loginSchema,
-  passwordWithConfirmationSchema,
-  registerSchema,
-} from 'schema';
+import { forgotSchema, loginSchema, registerSchema, resetSchema } from 'schema';
 
 const Landing = () => {
   const {
@@ -75,7 +70,7 @@ const Landing = () => {
       )}
 
       {activeModal === 'reset_pass' && (
-        <FormWrapper schema={passwordWithConfirmationSchema}>
+        <FormWrapper schema={resetSchema}>
           <ResetPasswordModal setActiveModal={setActiveModal} />
         </FormWrapper>
       )}

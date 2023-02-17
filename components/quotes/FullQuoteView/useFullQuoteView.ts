@@ -2,12 +2,16 @@ import { deleteQuote, getQuoteComments } from 'services';
 import { useQuery, useQueryClient } from 'react-query';
 import { Dispatch } from 'react';
 import { MovieQuote, QuoteModalsReducerAction } from 'types';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 export const useFullQuoteView = (
   quote: MovieQuote,
   closeModal: () => void,
   dispatchActiveModal: Dispatch<QuoteModalsReducerAction>
 ) => {
+  const user = useSelector((state: RootState) => state.user);
+
   const fetchComments = async () => {
     const response = await getQuoteComments(quote.id);
     return response.data;
@@ -40,6 +44,7 @@ export const useFullQuoteView = (
   };
 
   return {
+    user,
     comments,
     refetchLikes,
     refetchComments,
