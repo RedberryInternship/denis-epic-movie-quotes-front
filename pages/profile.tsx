@@ -67,7 +67,11 @@ const Profile = (props: { user: UserFromDatabase }) => {
         </FormWrapper>
       )}
 
-      <div className={isAddingEmail ? 'lg:blur-sm lg:opacity-95' : ''}>
+      <div
+        className={
+          isAddingEmail ? 'lg:absolute lg:w-full lg:blur-sm lg:opacity-95' : ''
+        }
+      >
         <PageWrapper user={user}>
           <FormWrapper
             schema={profileSchema}

@@ -15,8 +15,8 @@ const MovieModalWrapper = (
 
   return (
     <>
-      <div className='fixed inset-0 z-[70] bg-gradient-modal opacity-70 '></div>
-      <div className='fixed inset-0 z-[100] overflow-y-auto'>
+      <div className='fixed inset-0 z-[450] bg-gradient-modal opacity-70 '></div>
+      <div className='fixed inset-0 z-[500] overflow-y-auto'>
         <section className='mx-auto lg:py-[10vh] 2xl:py-[15vh] animate-grow z-50 top-0 w-full text-white overflow-auto lg:overflow-hidden lg:top-[11.6vh] lg:z-50 lg:w-1/2 lg:mx-auto lg:pb-3.5 lg:rounded-xl lg:pb-56'>
           <div
             className='bg-brand-article rounded-xl pb-24 lg:pb-0'
