@@ -32,7 +32,7 @@ const Navbar = (props: PropsType) => {
         />
       )}
 
-      <header className='flex justify-between items-center h-22 bg-brand-lightmodal px-9 lg:px-17.5'>
+      <header className='fixed top-0 z-[200] w-full flex justify-between items-center h-22 bg-brand-lightmodal px-9 lg:px-17.5'>
         <div className='hidden lg:block'>
           <HeaderTitle />
         </div>
