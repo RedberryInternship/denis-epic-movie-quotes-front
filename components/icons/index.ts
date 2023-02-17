@@ -30,3 +30,4 @@ export { default as EditPencil } from './EditPencil';
 export { default as ThreeDots } from './ThreeDots';
 export { default as Eye } from './Eye';
 export { default as DropdownIcon } from './DropdownIcon';
+export { default as Loading } from './Loading';

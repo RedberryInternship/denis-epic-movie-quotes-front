@@ -1,4 +1,4 @@
-import { RedButton } from 'components';
+import { Loading, RedButton } from 'components';
 import { PropsWithChildren } from 'react';
 import { useProfileModalWrapper } from './useProfileModalWrapper';
 
@@ -41,7 +41,7 @@ const ProfileModalWrapper = (
                 </button>
                 <RedButton
                   onClick={() => setFormIsConfirmed(true)}
-                  label={props.isLoading ? 'Loading...' : 'Confirm'}
+                  label={props.isLoading ? <Loading /> : 'Confirm'}
                   classNames='px-4.5'
                 />
               </div>
@@ -86,7 +86,7 @@ const ProfileModalWrapper = (
                   />
                   <RedButton
                     onClick={props.handleSubmit}
-                    label={props.isLoading ? 'Loading...' : 'Add'}
+                    label={props.isLoading ? <Loading /> : 'Add'}
                     classNames='hidden lg:inline-block px-4.5'
                   />
                 </div>
