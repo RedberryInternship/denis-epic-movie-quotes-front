@@ -106,10 +106,14 @@ export const getServerSideProps = async (
       },
     };
   } catch (error) {
+    const { verify_url } = context.query;
+
     return {
       props: {},
       redirect: {
-        destination: '/403',
+        destination: verify_url
+          ? `/?verify_url=${encodeURIComponent(verify_url as string)}`
+          : '/403',
         permanent: false,
       },
     };
