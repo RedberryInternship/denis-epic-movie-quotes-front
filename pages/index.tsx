@@ -17,6 +17,7 @@ import {
 import { useIndexPage } from 'hooks';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// Changing absolute imports below to relative imports will fix the app
 import {
   forgotSchema,
   loginSchema,
