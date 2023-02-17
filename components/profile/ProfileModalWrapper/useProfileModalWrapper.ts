@@ -1,5 +1,6 @@
 import { useModal } from 'hooks';
 import { useEffect, useState } from 'react';
+import { useFormContext, useFormState } from 'react-hook-form';
 
 export const useProfileModalWrapper = (
   closeModalCallback: () => void,
@@ -8,8 +9,17 @@ export const useProfileModalWrapper = (
 ) => {
   const modalRef = useModal(closeModalCallback);
 
+  const { trigger } = useFormContext();
+  const { isValid } = useFormState();
   const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
   const [formIsConfirmed, setFormIsConfirmed] = useState(false);
+  const openConfirmIfValid = async () => {
+    if (isValid) {
+      setConfirmModalIsOpen(true);
+    } else {
+      await trigger();
+    }
+  };
 
   useEffect(() => {
     const submitForm = async () => {
@@ -26,6 +36,7 @@ export const useProfileModalWrapper = (
     modalRef,
     confirmModalIsOpen,
     setConfirmModalIsOpen,
+    openConfirmIfValid,
     setFormIsConfirmed,
   };
 };
