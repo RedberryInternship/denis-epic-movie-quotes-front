@@ -3,14 +3,14 @@ import { useGenreSelect } from './useGenreSelect';
 import { SelectInput } from 'components';
 
 const GenreSelect = (props: { genres: Genre[] }) => {
-  const { genres } = useGenreSelect(props.genres);
+  const { genres, t } = useGenreSelect(props.genres);
 
   return (
     <SelectInput
       name='genres'
       options={genres}
-      placeholder='Select genres...'
-      noOptionsMessageCallback={() => <div>No more genres!</div>}
+      placeholder={t('genre_placeholder')}
+      noOptionsMessageCallback={() => <div>{t('no_more_genres')}</div>}
       isMulti={true}
     />
   );
