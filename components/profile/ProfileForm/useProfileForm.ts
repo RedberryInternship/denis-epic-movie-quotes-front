@@ -7,11 +7,13 @@ import { sendUpdateProfileRequest } from 'services';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 import { showToast } from 'helpers';
+import { useTranslation } from 'next-i18next';
 
 export const useProfileForm = (
   isManagingEmails: boolean,
   setIsManagingEmails: SetState<boolean>
 ) => {
+  const { t } = useTranslation('profile');
   const user = useSelector((state: RootState) => state.user);
 
   const [isEditingImage, setIsEditingImage] = useState(false);
@@ -65,13 +67,13 @@ export const useProfileForm = (
           (field) => dirtyFields[field]
         ).length > 1
       ) {
-        showToast('Your profile has been updated');
+        showToast(t('toast_profile'));
       } else if ('username' in dirtyFields) {
-        showToast('Username changed successfully');
+        showToast(t('toast_username'));
       } else if ('password' in dirtyFields) {
-        showToast('Password changed successfully');
+        showToast(t('toast_password'));
       } else if ('image' in dirtyFields) {
-        showToast('Profile picture changed successfully');
+        showToast(t('toast_image'));
       }
 
       disableEditing();
@@ -91,5 +93,6 @@ export const useProfileForm = (
     isLoading,
     disableEditing,
     goBack,
+    t,
   };
 };

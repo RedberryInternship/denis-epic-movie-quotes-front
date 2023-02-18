@@ -1,6 +1,7 @@
 import { useFormContext, useWatch } from 'react-hook-form';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { SetState } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useProfileImageInput = (setIsEditingImage: SetState<boolean>) => {
   const { register } = useFormContext();
@@ -23,9 +24,12 @@ export const useProfileImageInput = (setIsEditingImage: SetState<boolean>) => {
     }
   };
 
+  const { t } = useTranslation('profile');
+
   return {
     register,
     uploadedImage,
     handleUpload,
+    t,
   };
 };

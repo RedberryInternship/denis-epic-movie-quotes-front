@@ -1,6 +1,7 @@
 import { useModal } from 'hooks';
 import { useEffect, useState } from 'react';
 import { useFormContext, useFormState } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
 export const useProfileModalWrapper = (
   closeModalCallback: () => void,
@@ -32,11 +33,14 @@ export const useProfileModalWrapper = (
     }
   }, [formIsConfirmed, handleSubmit, isLoading]);
 
+  const { t } = useTranslation('profile');
+
   return {
     modalRef,
     confirmModalIsOpen,
     setConfirmModalIsOpen,
     openConfirmIfValid,
     setFormIsConfirmed,
+    t,
   };
 };

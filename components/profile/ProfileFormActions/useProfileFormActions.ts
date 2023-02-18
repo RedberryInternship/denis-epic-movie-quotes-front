@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { useTranslation } from 'next-i18next';
 
 export const useProfileFormActions = (disableEditing: () => void) => {
   const { reset, setValue } = useFormContext();
@@ -13,5 +14,7 @@ export const useProfileFormActions = (disableEditing: () => void) => {
     setValue('username', user.username);
   };
 
-  return { onCancel };
+  const { t } = useTranslation('profile');
+
+  return { onCancel, t };
 };

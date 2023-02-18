@@ -5,9 +5,8 @@ import { useEditUsernameModal } from './useEditUsernameModal';
 const EditUsernameModal = (props: {
   setUsernameModalIsOpen: SetState<boolean>;
 }) => {
-  const { isLoading, handleSubmit, closeModalCallback } = useEditUsernameModal(
-    props.setUsernameModalIsOpen
-  );
+  const { isLoading, handleSubmit, closeModalCallback, t } =
+    useEditUsernameModal(props.setUsernameModalIsOpen);
 
   return (
     <ProfileModalWrapper
@@ -17,8 +16,8 @@ const EditUsernameModal = (props: {
     >
       <TextInput
         name='username'
-        label='Enter new username'
-        placeholder='Enter new username'
+        label={t('enter_username')}
+        placeholder={t('enter_username')}
         isBig={true}
       />
     </ProfileModalWrapper>

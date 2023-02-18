@@ -5,11 +5,14 @@ import {
   PlusButton,
   ProfileInput,
 } from 'components';
+import { useTranslation } from 'next-i18next';
 
 const ProfileEmailSection = (props: {
   emails: Email[];
   setIsAddingEmail: SetState<boolean>;
 }) => {
+  const { t } = useTranslation('profile');
+
   return (
     <div className='hidden lg:block'>
       <div>
@@ -17,7 +20,7 @@ const ProfileEmailSection = (props: {
           return (
             <ProfileInput
               key={index}
-              label='Email'
+              label={t('email')}
               value={email.address}
               name={`email_${index}`}
               isActive={false}
@@ -50,7 +53,7 @@ const ProfileEmailSection = (props: {
         onClick={() => props.setIsAddingEmail(true)}
       >
         <PlusButton />
-        Add new email
+        {t('add_email')}
       </button>
     </div>
   );

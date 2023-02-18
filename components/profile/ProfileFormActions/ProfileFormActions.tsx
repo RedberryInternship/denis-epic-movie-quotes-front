@@ -6,16 +6,16 @@ const ProfileFormActions = (props: {
   handleSubmit: () => void;
   isLoading: boolean;
 }) => {
-  const { onCancel } = useProfileFormActions(props.disableEditing);
+  const { onCancel, t } = useProfileFormActions(props.disableEditing);
 
   return (
     <div className='flex justify-end -mt-12 mr-8 lg:mr-0 lg:mt-12 gap-8 text-xl'>
       <button type='button' className='text-brand-pale' onClick={onCancel}>
-        Cancel
+        {t('cancel')}
       </button>
       <RedButton
         onClick={props.handleSubmit}
-        label={props.isLoading ? <Loading /> : 'Save changes'}
+        label={props.isLoading ? <Loading /> : t('save_changes')}
         classNames='px-4.5'
       />
     </div>
