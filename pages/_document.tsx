@@ -7,7 +7,9 @@ export default function Document(props: DocumentProps) {
       className='snap-y snap-mandatory'
       lang={props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale}
     >
-      <Head></Head>
+      <Head>
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+      </Head>
       <body>
         <Main />
         <NextScript />
