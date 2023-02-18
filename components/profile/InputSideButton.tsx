@@ -24,7 +24,7 @@ const InputSideButton = (props: {
         }
       >
         {props.warningAppearance && (
-          <span className='lg:hidden'>
+          <span className='lg:hidden flex w-3.5 h-3.5'>
             <InfoCircle />
           </span>
         )}
