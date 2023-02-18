@@ -14,5 +14,7 @@
   "number": "ჩაწერეთ რიცხვი",
   "field_should_be_written": "ეს ველი შეავსეთ ",
   "in_english": "ინლგისურად",
-  "in_georgian": "ქართულად"
+  "in_georgian": "ქართულად",
+  "credentials_required": "ჩაწერეთ მომხმარებლის სახელი ან ელ-ფოსტა",
+  "credentials_length": "ჩაწერეთ მინიმუმ 3 სიმბოლო"
 }

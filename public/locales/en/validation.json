@@ -14,5 +14,7 @@
   "number": "Please enter a number",
   "field_should_be_written": "This field should be written ",
   "in_english": "in English",
-  "in_georgian": "in Georgian"
+  "in_georgian": "in Georgian",
+  "credentials_required": "Please enter your username or email",
+  "credentials_length": "This field should contain at least 3 characters"
 }
