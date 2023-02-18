@@ -41,7 +41,8 @@
    ```
    
    Set the `NEXT_PUBLIC_API_URL` variable inside `.env.local` to the backend's base URL
-
+   
+   Set the `NEXT_PUBLIC_PUSHER_APP_KEY` and `NEXT_PUBLIC_PUSHER_APP_CLUSTER` variables to values provided by Pusher. 
 
 4. Run the development server:
    ```shell
