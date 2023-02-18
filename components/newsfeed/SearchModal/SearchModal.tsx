@@ -3,7 +3,7 @@ import { PropsType } from './types';
 import { useSearchModal } from './useSearchModal';
 
 const SearchModal = (props: PropsType) => {
-  const { closeSearchModal, inputRef } = useSearchModal(
+  const { closeSearchModal, inputRef, t } = useSearchModal(
     props.setSearchQuery,
     props.setSearchIsActive
   );
@@ -18,15 +18,17 @@ const SearchModal = (props: PropsType) => {
           ref={inputRef}
           defaultValue={props.searchQuery}
           className='bg-transparent placeholder:text-[#CCC] outline-none w-full'
-          placeholder='Search'
+          placeholder={t('search') as string}
         />
       </div>
       <div className='px-19 pt-6.5 text-[#969599] flex flex-col gap-5.5'>
         <div>
-          Enter <span className='text-white'>@</span> to search movies
+          {t('Enter')} <span className='text-white'>@</span>{' '}
+          {t('search_movies')}
         </div>
         <div>
-          Enter <span className='text-white'>#</span> to search quotes
+          {t('Enter')} <span className='text-white'>#</span>{' '}
+          {t('search_quotes')}
         </div>
       </div>
     </section>

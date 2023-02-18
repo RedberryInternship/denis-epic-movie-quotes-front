@@ -15,6 +15,7 @@ const NewsfeedInputs = (props: PropsType) => {
     isAddingQuote,
     closeQuoteModal,
     user,
+    t,
   } = useNewsfeedInputs(props.setSearchQuery, props.setSearchIsActive);
 
   return (
@@ -40,7 +41,7 @@ const NewsfeedInputs = (props: PropsType) => {
           }
         >
           <Pencil />
-          <span>Write new quote</span>
+          <span>{t('write_quote')}</span>
         </button>
         <SearchBar
           setSearchIsActive={props.setSearchIsActive}
@@ -48,7 +49,7 @@ const NewsfeedInputs = (props: PropsType) => {
           searchQuery={props.searchQuery}
           handleSearchInputChange={handleSearchInputChange}
           resetSearch={resetSearch}
-          placeholder='Enter @ to search movies, Enter # to search quotes'
+          placeholder={t('newsfeed_search_placeholder')}
         />
       </div>
     </>
