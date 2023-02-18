@@ -12,6 +12,7 @@ import {
   QuoteModalsReducerState,
   UserFromDatabase,
 } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useMoviePage = (
   initialUser: UserFromDatabase,
@@ -82,7 +83,10 @@ export const useMoviePage = (
     budget: movie?.budget,
   } as MovieForm;
 
+  const { t } = useTranslation('common');
+
   return {
+    t,
     user,
     activeModal,
     dispatchActiveModal,

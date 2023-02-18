@@ -7,6 +7,7 @@ import {
   UserFromDatabase,
 } from 'types';
 import { useUserStore } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useNewsfeedPage = (
   userData: UserFromDatabase,
@@ -64,6 +65,8 @@ export const useNewsfeedPage = (
     return () => observer.disconnect();
   }, [bottomRef, fetchNextPage, hasNextPage]);
 
+  const { t } = useTranslation('common');
+
   return {
     user,
     paginatedQuotes,
@@ -72,5 +75,6 @@ export const useNewsfeedPage = (
     setSearchIsActive,
     searchQuery,
     setSearchQuery,
+    t,
   };
 };
