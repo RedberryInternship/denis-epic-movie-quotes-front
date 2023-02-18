@@ -6,6 +6,7 @@
 * [Tech Stack](#tech-stack)
 * [Getting Started](#getting-started)
 * [Building for Production](#building-for-production)
+* [Live Deployment](#live-deployment)
 * [Resources](#resources)
 
 
@@ -56,6 +57,11 @@ Run the following command:
 ```shell
    npm run build
 ```
+
+
+## Live Deployment
+
+https://moviequotes.denis.redberryinternship.ge
 
 
 ## Resources
