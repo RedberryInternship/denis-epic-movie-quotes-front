@@ -9,5 +9,10 @@
   "password_length": "ჩაწერეთ მინიმუმ 8 სიმბოლო",
   "password_only_lowercase": "გამოიყენეთ მხოლოდ დაბალი რეგისტრის ასოები და რიცხვები",
   "password_confirmation_required": "გაიმეორეთ პაროლი",
-  "password_no_match": "პაროლები არ ემთხვევა ერთმანეთს"
+  "password_no_match": "პაროლები არ ემთხვევა ერთმანეთს",
+  "invalid_release_year": "ჩაწერეთ ვალიდური გამოშვების წელი",
+  "number": "ჩაწერეთ რიცხვი",
+  "field_should_be_written": "ეს ველი შეავსეთ ",
+  "in_english": "ინლგისურად",
+  "in_georgian": "ქართულად"
 }
