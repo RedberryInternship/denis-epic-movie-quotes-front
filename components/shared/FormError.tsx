@@ -3,6 +3,8 @@ import { useTranslation } from 'next-i18next';
 const FormError = (props: { error: string; animated?: boolean }) => {
   const { t } = useTranslation('validation');
 
+  console.log(props.error);
+
   return (
     <p
       className={

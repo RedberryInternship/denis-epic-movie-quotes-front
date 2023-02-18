@@ -17,6 +17,7 @@ const Navbar = (props: PropsType) => {
     showNotifications,
     toggleShowNotifications,
     notifications,
+    t,
   } = useNavbar();
 
   return (
@@ -63,10 +64,10 @@ const Navbar = (props: PropsType) => {
           <div className='hidden lg:flex text-white'>
             <LanguageSelector />
             <button
-              className='ml-4 h-9.5 px-6.5 border border-white rounded'
+              className='ml-4 h-9.5 px-6.5 border border-white rounded max-w-[109px] flex justify-center items-center'
               onClick={logout}
             >
-              Log out
+              {t('logout')}
             </button>
           </div>
         </div>

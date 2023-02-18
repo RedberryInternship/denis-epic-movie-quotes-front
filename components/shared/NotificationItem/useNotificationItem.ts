@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { markNotificationAsSeen } from 'services';
 import { Notification } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useNotificationItem = (notificationID: number) => {
   const queryClient = useQueryClient();
@@ -18,5 +19,7 @@ export const useNotificationItem = (notificationID: number) => {
     },
   });
 
-  return { markAsRead, isLoading };
+  const { t } = useTranslation('common');
+
+  return { markAsRead, isLoading, t };
 };

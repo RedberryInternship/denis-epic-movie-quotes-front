@@ -1,7 +1,10 @@
 import { Close, Search } from 'components';
 import { PropsType } from './types';
+import { useTranslation } from 'next-i18next';
 
 const SearchBar = (props: PropsType) => {
+  const { t } = useTranslation('common');
+
   return (
     <>
       {props.searchIsActive ? (
@@ -12,7 +15,7 @@ const SearchBar = (props: PropsType) => {
           <input
             defaultValue={props.searchQuery}
             onChange={props.handleSearchInputChange}
-            className='bg-transparent placeholder:text-white w-full outline-0'
+            className='bg-transparent placeholder:text-brand-placeholder w-full outline-0'
             placeholder={props.placeholder}
           />
           <button
@@ -30,7 +33,7 @@ const SearchBar = (props: PropsType) => {
           <div className='w-5 h-5'>
             <Search />
           </div>
-          Search by
+          {t('search_by')}
         </button>
       )}
     </>

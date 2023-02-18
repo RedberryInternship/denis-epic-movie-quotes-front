@@ -1,5 +1,6 @@
 import { sendLikeRequest, sendStoreCommentRequest } from 'services';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
 export const useQuote = (
   id: number,
@@ -30,10 +31,13 @@ export const useQuote = (
 
   const setFocusOnComment = () => setFocus('comment');
 
+  const { t } = useTranslation('common');
+
   return {
     register,
     submitLikeOrUnlike,
     commentSubmitHandler,
     setFocusOnComment,
+    t,
   };
 };
