@@ -7,25 +7,28 @@ const EmailSideButtons = (props: {
   isPrimary: boolean;
   isVerified: boolean;
 }) => {
-  const { makePrimary, removeEmail } = useEmailSideButtons(props.email);
+  const { makePrimary, removeEmail, t } = useEmailSideButtons(props.email);
 
   return (
     <>
       {props.isPrimary ? (
-        <InputSideButton label='Primary Email' />
+        <InputSideButton label={t('primary_email')} />
       ) : (
         <div className='mt-6 lg:mt-0 flex gap-5 items-center justify-between'>
           {props.isVerified ? (
             <InputSideButton
-              label='Make primary'
+              label={t('make_primary')}
               onClick={makePrimary}
               buttonAppearance={true}
             />
           ) : (
-            <InputSideButton label='Not verified' warningAppearance={true} />
+            <InputSideButton
+              label={t('not_verified')}
+              warningAppearance={true}
+            />
           )}
           <span className='hidden lg:block text-brand-subtitle'>|</span>
-          <InputSideButton label='Remove' onClick={removeEmail} />
+          <InputSideButton label={t('remove')} onClick={removeEmail} />
         </div>
       )}
     </>

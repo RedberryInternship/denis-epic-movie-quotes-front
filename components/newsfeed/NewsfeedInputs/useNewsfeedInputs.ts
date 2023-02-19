@@ -3,6 +3,7 @@ import { SetState } from 'types';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { useTranslation } from 'next-i18next';
 
 export const useNewsfeedInputs = (
   setSearchQuery: SetState<string>,
@@ -18,6 +19,8 @@ export const useNewsfeedInputs = (
   const [isAddingQuote, setIsAddingQuote] = useState(false);
   const closeQuoteModal = () => setIsAddingQuote(false);
 
+  const { t } = useTranslation('common');
+
   return {
     resetSearch,
     handleSearchInputChange,
@@ -25,5 +28,6 @@ export const useNewsfeedInputs = (
     setIsAddingQuote,
     closeQuoteModal,
     user,
+    t,
   };
 };

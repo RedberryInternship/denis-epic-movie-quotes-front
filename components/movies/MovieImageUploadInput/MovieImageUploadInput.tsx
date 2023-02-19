@@ -2,7 +2,7 @@ import { PhotoCamera } from 'components';
 import { useMovieImageUploadInput } from './useMovieImageUploadInput';
 
 const MovieImageUploadInput = (props: { isEditing: boolean | undefined }) => {
-  const { register, imageValue, handleDrop, hasErrors } =
+  const { register, imageValue, handleDrop, hasErrors, t } =
     useMovieImageUploadInput();
 
   return (
@@ -21,17 +21,17 @@ const MovieImageUploadInput = (props: { isEditing: boolean | undefined }) => {
           <PhotoCamera />
         </div>
         <span className='truncate hidden lg:block'>
-          {imageValue ? imageValue[0]?.name : 'Drag & drop your image here or'}
+          {imageValue ? imageValue[0]?.name : t('image_placeholder')}
         </span>
         <span className='truncate lg:hidden'>
-          {imageValue ? imageValue[0]?.name : 'Upload image'}
+          {imageValue ? imageValue[0]?.name : t('upload_image')}
         </span>
       </div>
       <label
         className='text-xl hover:cursor-pointer bg-brand-purple p-2.5 rounded-[2px] min-w-[100px]'
         htmlFor='image'
       >
-        Choose file
+        {t('choose_file')}
       </label>
       <input
         type='file'

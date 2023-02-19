@@ -4,7 +4,7 @@ import { useQuoteImageEdit } from './useQuoteImageEdit';
 import { PhotoCamera } from 'components';
 
 const QuoteImageEdit = (props: { quote: MovieQuote }) => {
-  const { register, uploadedImage, handleUpload } = useQuoteImageEdit();
+  const { register, uploadedImage, handleUpload, t } = useQuoteImageEdit();
 
   return (
     <div className='relative'>
@@ -12,7 +12,7 @@ const QuoteImageEdit = (props: { quote: MovieQuote }) => {
         src={uploadedImage || props.quote.image}
         width={897}
         height={513}
-        alt='Current quote image'
+        alt={t('current_quote_image')}
         className='rounded-1.5lg max-h-[302px] lg:max-h-[408px] 2xl:max-h-[513px] object-cover'
       />
       <label
@@ -20,7 +20,7 @@ const QuoteImageEdit = (props: { quote: MovieQuote }) => {
         htmlFor='image'
       >
         <PhotoCamera />
-        Change Photo
+        {t('change_photo')}
       </label>
       <input
         type='file'

@@ -3,6 +3,7 @@ import { useOutsideClickListener } from 'hooks';
 import { useQueryClient } from 'react-query';
 import { deleteQuote } from 'services';
 import { QuoteModalsReducerAction } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useQuoteOptions = (
   id: number,
@@ -30,10 +31,13 @@ export const useQuoteOptions = (
     dispatchActiveModal({ type: 'quote', quoteID: id, modalType: 'edit' });
   };
 
+  const { t } = useTranslation('common');
+
   return {
     optionsRef,
     deleteHandler,
     viewHandler,
     editHandler,
+    t,
   };
 };

@@ -17,6 +17,7 @@ const Navbar = (props: PropsType) => {
     showNotifications,
     toggleShowNotifications,
     notifications,
+    t,
   } = useNavbar();
 
   return (
@@ -32,7 +33,7 @@ const Navbar = (props: PropsType) => {
         />
       )}
 
-      <header className='flex justify-between items-center h-22 bg-brand-lightmodal px-9 lg:px-17.5'>
+      <header className='fixed top-0 z-[200] w-full flex justify-between items-center h-22 bg-brand-lightmodal px-9 lg:px-17.5'>
         <div className='hidden lg:block'>
           <HeaderTitle />
         </div>
@@ -63,10 +64,10 @@ const Navbar = (props: PropsType) => {
           <div className='hidden lg:flex text-white'>
             <LanguageSelector />
             <button
-              className='ml-4 h-9.5 px-6.5 border border-white rounded'
+              className='ml-4 h-9.5 px-6.5 border border-white rounded max-w-[109px] flex justify-center items-center'
               onClick={logout}
             >
-              Log out
+              {t('logout')}
             </button>
           </div>
         </div>

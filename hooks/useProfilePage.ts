@@ -7,8 +7,10 @@ import { useEffect, useState } from 'react';
 import { setUser } from 'store';
 import { useRouter } from 'next/router';
 import { showToast } from 'helpers';
+import { useTranslation } from 'next-i18next';
 
 export const useProfilePage = (initialUser: UserFromDatabase) => {
+  const { t } = useTranslation('auth');
   const user = useUserStore(initialUser);
   const { data: userData, refetch } = useQuery('user', () => getUser(), {
     initialData: initialUser,
@@ -38,7 +40,7 @@ export const useProfilePage = (initialUser: UserFromDatabase) => {
         });
 
         if ((verifyRequest as ApiResponse<{}>).success) {
-          showToast('Email verified successfully');
+          showToast(t('email_verified'));
         }
         await refetch();
       };

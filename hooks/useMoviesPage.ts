@@ -3,6 +3,7 @@ import { getMovies } from 'services';
 import { useQuery } from 'react-query';
 import { useSearchBar, useUserStore } from 'hooks';
 import { MovieWithQuoteCount, UserFromDatabase } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useMoviesPage = (
   userData: UserFromDatabase,
@@ -30,6 +31,8 @@ export const useMoviesPage = (
   const [addMovieModalIsOpen, setAddMovieModalIsOpen] = useState(false);
   const closeModal = () => setAddMovieModalIsOpen(false);
 
+  const { t } = useTranslation('common');
+
   return {
     user,
     movies,
@@ -41,5 +44,6 @@ export const useMoviesPage = (
     addMovieModalIsOpen,
     setAddMovieModalIsOpen,
     closeModal,
+    t,
   };
 };

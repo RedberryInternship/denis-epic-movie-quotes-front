@@ -4,6 +4,7 @@ import { Dispatch } from 'react';
 import { MovieQuote, QuoteModalsReducerAction } from 'types';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { useTranslation } from 'next-i18next';
 
 export const useFullQuoteView = (
   quote: MovieQuote,
@@ -43,6 +44,8 @@ export const useFullQuoteView = (
     });
   };
 
+  const { t } = useTranslation('common');
+
   return {
     user,
     comments,
@@ -50,5 +53,6 @@ export const useFullQuoteView = (
     refetchComments,
     deleteHandler,
     editHandler,
+    t,
   };
 };

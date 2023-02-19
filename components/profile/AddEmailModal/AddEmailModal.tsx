@@ -3,7 +3,7 @@ import { SetState } from 'types';
 import { useAddEmailModal } from './useAddEmailModal';
 
 const AddEmailModal = (props: { setIsAddingEmail: SetState<boolean> }) => {
-  const { isLoading, handleSubmit, closeModalCallback } = useAddEmailModal(
+  const { isLoading, handleSubmit, closeModalCallback, t } = useAddEmailModal(
     props.setIsAddingEmail
   );
 
@@ -15,8 +15,8 @@ const AddEmailModal = (props: { setIsAddingEmail: SetState<boolean> }) => {
     >
       <TextInput
         name='email'
-        label='New Email'
-        placeholder='Enter new email'
+        label={t('new_email')}
+        placeholder={t('enter_email')}
         isBig={true}
       />
     </ProfileModalWrapper>

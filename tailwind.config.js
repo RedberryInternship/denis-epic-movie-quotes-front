@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './hooks/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -42,6 +43,7 @@ module.exports = {
         17.5: '4.375rem',
         18: '4.5rem',
         19: '4.75rem',
+        19.5: '4.875rem',
         20.5: '5.125rem',
         21: '5.25rem',
         21.5: '5.375rem',
@@ -77,6 +79,7 @@ module.exports = {
         'grow-y': 'grow-y 300ms ease-out forwards',
         shrink: 'shrink 400ms ease-out forwards',
         pulse: 'pulse 300ms ease-out forwards',
+        'spin-inconsistent': 'spin-inconsistent 600ms ease-in-out infinite',
       },
       keyframes: {
         grow: {
@@ -100,6 +103,10 @@ module.exports = {
         shrink: {
           '0%': { transform: 'scale(1)', opacity: 1 },
           '100%': { transform: 'scale(0)', opacity: 0.5 },
+        },
+        'spin-inconsistent': {
+          '0%': { transform: 'rotate(-30deg)' },
+          '100%': { transform: 'rotate(330deg)' },
         },
       },
     },

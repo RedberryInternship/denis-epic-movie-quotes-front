@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
 export const useQuoteImageEdit = () => {
   const { register, setValue } = useFormContext();
@@ -14,9 +15,12 @@ export const useQuoteImageEdit = () => {
     }
   };
 
+  const { t } = useTranslation('common');
+
   return {
     register,
     uploadedImage,
     handleUpload,
+    t,
   };
 };

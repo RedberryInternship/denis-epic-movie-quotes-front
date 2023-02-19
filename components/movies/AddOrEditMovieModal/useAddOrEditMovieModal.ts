@@ -4,6 +4,7 @@ import { ApiResponse, MovieForm } from 'types';
 import { useHandleSubmit } from 'hooks';
 import { sendAddMovieRequest, sendEditMovieRequest } from 'services';
 import { useQueryClient } from 'react-query';
+import { useTranslation } from 'next-i18next';
 
 export const useAddOrEditMovieModal = (
   isEditing: boolean | undefined,
@@ -48,5 +49,7 @@ export const useAddOrEditMovieModal = (
     setIsLoading
   );
 
-  return { handleSubmit, isLoading };
+  const { t } = useTranslation(['common', 'validation']);
+
+  return { handleSubmit, isLoading, t };
 };

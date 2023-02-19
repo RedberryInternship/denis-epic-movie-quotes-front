@@ -30,12 +30,13 @@ const Movies = (props: {
     addMovieModalIsOpen,
     setAddMovieModalIsOpen,
     closeModal,
+    t,
   } = useMoviesPage(props.user, props.movies);
 
   return (
     <>
       <Head>
-        <title>Movie List - Movie Quotes</title>
+        <title>{t('movie_list')} - Movie Quotes</title>
       </Head>
 
       {addMovieModalIsOpen && (
@@ -57,9 +58,9 @@ const Movies = (props: {
         >
           <div className='-mt-4 flex justify-between items-center gap-4 max-w-[358px] lg:max-w-none mx-auto lg:mt-0'>
             <h1 className='text-2xl font-medium'>
-              My list of movies
+              {t('my_list_of_movies')}
               <span className='hidden lg:inline'>
-                {` (Total ${props.movies.length})`}
+                {` (${t('total')} ${props.movies.length})`}
               </span>
             </h1>
             <div className='flex gap-8 w-max'>
@@ -69,7 +70,7 @@ const Movies = (props: {
                 handleSearchInputChange={handleSearchInputChange}
                 searchQuery={searchQuery}
                 resetSearch={resetSearch}
-                placeholder='Enter movie title'
+                placeholder={t('movie_search_placeholder')}
               />
               <button
                 type='button'
@@ -77,12 +78,12 @@ const Movies = (props: {
                 onClick={() => setAddMovieModalIsOpen(true)}
               >
                 <PlusButton />
-                Add Movie
+                {t('add_movie')}
               </button>
             </div>
           </div>
           <div className='mt-2 font-medium max-w-[358px] mx-auto lg:hidden'>
-            (Total {props.movies.length})
+            ({t('total')} {props.movies.length})
           </div>
           <div className='flex flex-col items-center gap-15 mt-8.5 lg:flex-wrap lg:grid lg:grid-cols-2 2xl:grid-cols-3 lg:gap-10 2xl:gap-12.5 lg:items-start lg:justify-around'>
             {movies?.map((movie) => (
@@ -97,13 +98,9 @@ const Movies = (props: {
             ))}
             {!movies?.length &&
               (searchQuery ? (
-                <div className='text-xl mt-10'>
-                  No movies match your search query!
-                </div>
+                <div className='text-xl mt-10'>{t('search_no_movies')}</div>
               ) : (
-                <div className='text-xl mt-10'>
-                  You haven&apos;t added any movies yet!
-                </div>
+                <div className='text-xl mt-10'>{t('no_movies')}</div>
               ))}
           </div>
         </section>
@@ -130,6 +127,7 @@ export const getServerSideProps = async (
         ...(await serverSideTranslations(context.locale ?? 'en', [
           'common',
           'auth',
+          'validation',
         ])),
       },
     };

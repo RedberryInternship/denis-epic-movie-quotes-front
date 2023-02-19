@@ -20,6 +20,7 @@ const FullQuoteView = (props: {
     deleteHandler,
     editHandler,
     user,
+    t,
   } = useFullQuoteView(
     props.quote,
     props.closeModal,
@@ -28,7 +29,7 @@ const FullQuoteView = (props: {
 
   return (
     <MovieModalWrapper
-      title='View quote'
+      title={t('view_quote')}
       rightIcon={<Close />}
       onRightIconClick={props.closeModal}
       hideTitle={true}

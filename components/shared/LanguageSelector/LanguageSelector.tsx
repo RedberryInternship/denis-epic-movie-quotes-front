@@ -7,7 +7,7 @@ const LanguageSelector = () => {
   return (
     <span className='group relative flex items-center ' tabIndex={0}>
       <span className='hidden lg:flex items-center gap-2.5 px-6 cursor-pointer'>
-        {t('current_language_label')}
+        <div className='w-[26px]'>{t('current_language_label')}</div>
         <span className='h-4 w-4 flex justify-center items-center pt-1'>
           <ArrowDown />
         </span>

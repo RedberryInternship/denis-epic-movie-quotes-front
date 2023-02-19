@@ -2,16 +2,18 @@ import { useProfileModalSubmit, useToggle } from 'hooks';
 import { sendUpdateProfileRequest } from 'services';
 import { SetState } from 'types';
 import { useWatch } from 'react-hook-form';
+import { useTranslation } from 'next-i18next';
 
 export const useChangePasswordModal = (
   setPasswordModalIsOpen: SetState<boolean>
 ) => {
+  const { t } = useTranslation('profile');
   const closeModalCallback = () => setPasswordModalIsOpen(false);
 
   const { isLoading, handleSubmit } = useProfileModalSubmit(
     sendUpdateProfileRequest,
     closeModalCallback,
-    'Password changed successfully'
+    t('toast_password')
   );
 
   const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
@@ -28,5 +30,6 @@ export const useChangePasswordModal = (
     togglePasswordIsHidden,
     passwordMinLengthValid,
     passwordMaxLengthValid,
+    t,
   };
 };

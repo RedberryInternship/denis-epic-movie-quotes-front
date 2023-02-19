@@ -23,6 +23,7 @@ const ProfileForm = (props: PropsType) => {
     isEditingPassword,
     disableEditing,
     goBack,
+    t,
   } = useProfileForm(props.isManagingEmails, props.setIsManagingEmails);
 
   return (
@@ -35,7 +36,7 @@ const ProfileForm = (props: PropsType) => {
         <ArrowBack />
       </button>
       <h1 className='hidden text-2xl font-medium ml-11.5 lg:block'>
-        My profile
+        {t('my_profile')}
       </h1>
       <section className='max-h-[calc(100vh-10.5rem)] overflow-y-scroll lg:overflow-y-visible lg:max-h-max bg-brand-lightmodal pt-10 pb-22.5 px-8 rounded-xl mt-4 lg:bg-brand-article lg:mt-[5vh] 2xl:mt-[11.6vh] lg:pt-0 lg:pl-21 lg:pr-8'>
         <div className='flex flex-col items-center gap-2 lg:relative lg:-top-18'>
@@ -55,7 +56,7 @@ const ProfileForm = (props: PropsType) => {
 
           {props.user.isGoogleUser ? (
             <ProfileInput
-              label='Email'
+              label={t('email')}
               name='email'
               placeholder={props.user.emails[0].address}
               isActive={false}
@@ -73,7 +74,7 @@ const ProfileForm = (props: PropsType) => {
                 setPasswordModalIsOpen={props.setPasswordModalIsOpen}
               />
               <div className='flex justify-between items-center uppercase lg:hidden'>
-                Email
+                {t('email')}
                 <button
                   type='button'
                   onClick={() => props.setIsManagingEmails(true)}

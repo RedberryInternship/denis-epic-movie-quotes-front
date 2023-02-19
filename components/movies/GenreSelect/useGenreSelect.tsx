@@ -1,5 +1,6 @@
 import { useLocale } from 'hooks';
 import { Genre } from 'types';
+import { useTranslation } from 'next-i18next';
 
 export const useGenreSelect = (fetchedGenres: Genre[]) => {
   const locale = useLocale();
@@ -10,5 +11,7 @@ export const useGenreSelect = (fetchedGenres: Genre[]) => {
     id: genre.id,
   }));
 
-  return { genres };
+  const { t } = useTranslation('common');
+
+  return { genres, t };
 };
