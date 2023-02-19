@@ -11,6 +11,7 @@ export * from './ProfileModalWrapper';
 export * from './ProfileInput';
 export * from './ProfileImageInput';
 export * from './ProfileFormActions';
+export * from './PasswordHint';
 export { default as ProfileManageEmailsModal } from './ProfileManageEmailsModal';
 export { default as InputSideButton } from './InputSideButton';
 export { default as EmailStatusIcon } from './EmailStatusIcon';
