@@ -38,7 +38,7 @@ const ProfileForm = (props: PropsType) => {
       <h1 className='hidden text-2xl font-medium ml-11.5 lg:block'>
         {t('my_profile')}
       </h1>
-      <section className='max-h-[calc(100vh-10.5rem)] lg:overflow-y-visible lg:max-h-max overflow-y-scroll bg-brand-lightmodal pt-10 pb-22.5 px-8 rounded-xl mt-4 lg:bg-brand-article lg:mt-[5vh] 2xl:mt-[11.6vh] lg:pt-0 lg:pl-21 lg:pr-8'>
+      <section className='max-h-[calc(100vh-10.5rem)] overflow-y-scroll lg:overflow-y-visible lg:max-h-max bg-brand-lightmodal pt-10 pb-22.5 px-8 rounded-xl mt-4 lg:bg-brand-article lg:mt-[5vh] 2xl:mt-[11.6vh] lg:pt-0 lg:pl-21 lg:pr-8'>
         <div className='flex flex-col items-center gap-2 lg:relative lg:-top-18'>
           <ProfileImageInput
             isEditingImage={isEditingImage}
