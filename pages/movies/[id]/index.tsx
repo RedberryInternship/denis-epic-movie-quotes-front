@@ -205,7 +205,7 @@ const Movie = (props: {
             </div>
           </section>
 
-          <section className='lg:px-9'>
+          <section className='lg:px-9 pb-20'>
             {quotes?.map((quote) => (
               <MovieQuoteItem
                 key={quote.id}

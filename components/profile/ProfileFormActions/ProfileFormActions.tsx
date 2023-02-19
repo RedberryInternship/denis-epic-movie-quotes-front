@@ -1,4 +1,4 @@
-import { RedButton } from 'components';
+import { Loading, RedButton } from 'components';
 import { useProfileFormActions } from './useProfileFormActions';
 
 const ProfileFormActions = (props: {
@@ -15,7 +15,7 @@ const ProfileFormActions = (props: {
       </button>
       <RedButton
         onClick={props.handleSubmit}
-        label={props.isLoading ? 'Loading...' : 'Save changes'}
+        label={props.isLoading ? <Loading /> : 'Save changes'}
         classNames='px-4.5'
       />
     </div>
