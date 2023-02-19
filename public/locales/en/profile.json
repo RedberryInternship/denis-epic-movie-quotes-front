@@ -32,5 +32,6 @@
   "not_verified": "Not Verified",
   "enter_username": "Enter new username",
   "new_email": "New Email",
-  "enter_email": "Enter new email"
+  "enter_email": "Enter new email",
+  "verify_hint": "Please verify new email address"
 }
