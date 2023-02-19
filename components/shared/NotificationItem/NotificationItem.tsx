@@ -5,7 +5,7 @@ import { getRelativeTime } from 'helpers';
 import { useNotificationItem } from './useNotificationItem';
 
 const NotificationItem = (props: Notification) => {
-  const { markAsRead, isLoading } = useNotificationItem(props.id);
+  const { markAsRead, isLoading, t } = useNotificationItem(props.id);
 
   return (
     <article
@@ -27,7 +27,7 @@ const NotificationItem = (props: Notification) => {
         height={80}
       />
       <div className='col-start-1 row-start-3 lg:col-start-3 lg:row-start-2 justify-self-center text-brand-green lg:self-start'>
-        {props.is_read ? '' : 'New'}
+        {props.is_read ? '' : t('new')}
       </div>
       <div className='col-start-2 row-start-1 text-xl lg:pb-1 lg:self-end'>
         {props.from_user.username}
@@ -42,7 +42,9 @@ const NotificationItem = (props: Notification) => {
             <Heart isActive={true} />
           </div>
         )}
-        {props.is_comment ? 'Commented on your quote' : 'Reacted to your quote'}
+        {props.is_comment
+          ? t('notification_commented')
+          : t('notification_liked')}
       </div>
       <div className='col-start-2 row-start-3 lg:col-start-3 lg:row-start-1 text-brand-pale lg:pb-1 lg:self-end'>
         {getRelativeTime(new Date(props.created_at))}

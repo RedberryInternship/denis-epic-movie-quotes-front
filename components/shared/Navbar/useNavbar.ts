@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import Echo from 'laravel-echo';
 import { Notification } from 'types';
 import { useToggle } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useNavbar = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -50,11 +51,14 @@ export const useNavbar = () => {
     (notification) => !notification.is_read
   ).length;
 
+  const { t } = useTranslation('common');
+
   return {
     logout,
     showNotifications,
     toggleShowNotifications,
     unreadNotificationCount,
     notifications,
+    t,
   };
 };

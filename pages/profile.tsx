@@ -106,6 +106,8 @@ export const getServerSideProps = async (
         ...(await serverSideTranslations(context.locale ?? 'en', [
           'common',
           'auth',
+          'profile',
+          'validation',
         ])),
       },
     };

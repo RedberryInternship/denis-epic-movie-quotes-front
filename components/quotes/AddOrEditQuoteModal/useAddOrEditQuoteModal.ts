@@ -9,6 +9,7 @@ import {
   sendAddQuoteRequest,
   sendEditQuoteRequest,
 } from 'services';
+import { useTranslation } from 'next-i18next';
 
 export const useAddOrEditQuoteModal = (
   isEditing: boolean | undefined,
@@ -64,9 +65,12 @@ export const useAddOrEditQuoteModal = (
     await queryClient.refetchQueries(['movie', movieID]);
   };
 
+  const { t } = useTranslation('common');
+
   return {
     isLoading,
     handleSubmit,
     deleteHandler,
+    t,
   };
 };

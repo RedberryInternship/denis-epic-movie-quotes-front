@@ -34,12 +34,13 @@ const Movie = (props: {
     deleteHandler,
     currentFormValues,
     locale,
+    t,
   } = useMoviePage(props.user, props.movie, props.quotes);
 
   return (
     <>
       <Head>
-        <title>Movie List - Movie Quotes</title>
+        <title>{props.movie.title[locale]} - Movie Quotes</title>
       </Head>
 
       {activeModal.isEditingMovie && (
@@ -103,7 +104,7 @@ const Movie = (props: {
         >
           <section className='px-9 w-full'>
             <h1 className='hidden lg:block font-medium text-2xl mb-8'>
-              Movie description
+              {t('movie_description')}
             </h1>
             <div className='lg:flex gap-5 w-full'>
               <Image
@@ -111,7 +112,7 @@ const Movie = (props: {
                 src={movie!.image}
                 width={809}
                 height={441}
-                alt='Movie image'
+                alt={t('movie_image')}
                 priority
               />
               <div className='lg:pr-9 w-full'>
@@ -153,9 +154,11 @@ const Movie = (props: {
                   <div className='flex gap-3'>
                     <div className='flex flex-col gap-5 justify-between font-medium'>
                       <span className='font-bold text-brand-pale'>
-                        Director:
+                        {t('director')}:
                       </span>
-                      <span className='font-bold text-brand-pale'>Budget:</span>
+                      <span className='font-bold text-brand-pale'>
+                        {t('budget')}:
+                      </span>
                     </div>
                     <div className='flex flex-col gap-5'>
                       <span>{movie?.director[locale]}</span>
@@ -168,7 +171,7 @@ const Movie = (props: {
                       </span>
                     </div>
                   </div>
-                  <p className='text-brand-pale mt-5'>
+                  <p className='text-brand-pale mt-5 break-all'>
                     {movie?.description[locale]}
                   </p>
                 </div>
@@ -178,8 +181,8 @@ const Movie = (props: {
             <div className='flex items-center gap-4 lg:mb-15'>
               <span className='text-2xl hidden lg:inline'>
                 {quotes?.length
-                  ? `Quotes (total ${quotes.length})`
-                  : 'No quotes yet'}
+                  ? `${t('quotes')} (${t('total')} ${quotes.length})`
+                  : t('no_quotes')}
               </span>
               <span className='hidden lg:inline bg-brand-subtitle h-6.5 mt-1 w-px'></span>
               <button
@@ -190,17 +193,17 @@ const Movie = (props: {
                 }
               >
                 <PlusButton />
-                Add quote
+                {t('add_quote')}
               </button>
             </div>
 
             <div className='lg:hidden'>
               <hr className='my-10 border-brand-divide border-t-1.5' />
               <h4 className='text-2xl'>
-                {quotes?.length ? 'All Quotes' : 'No quotes yet'}
+                {quotes?.length ? t('all_quotes') : t('no_quotes')}
               </h4>
               <h5 className='mb-9'>
-                {quotes?.length ? `(Total ${quotes?.length})` : ''}
+                {quotes?.length ? `(${t('total')} ${quotes?.length})` : ''}
               </h5>
             </div>
           </section>
@@ -245,6 +248,7 @@ export const getServerSideProps = async (
         ...(await serverSideTranslations(context.locale ?? 'en', [
           'common',
           'auth',
+          'validation',
         ])),
       },
     };

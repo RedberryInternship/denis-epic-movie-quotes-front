@@ -6,7 +6,7 @@ const ProfileImageInput = (props: {
   setIsEditingImage: SetState<boolean>;
   isEditingImage: boolean;
 }) => {
-  const { register, uploadedImage, handleUpload } = useProfileImageInput(
+  const { register, uploadedImage, handleUpload, t } = useProfileImageInput(
     props.setIsEditingImage
   );
 
@@ -23,14 +23,14 @@ const ProfileImageInput = (props: {
       )}
 
       <label className='text-xl hover:cursor-pointer' htmlFor='image'>
-        Upload new photo
+        {t('upload_photo')}
       </label>
       <input
         type='file'
         accept='image/jpeg, image/png, image/webp'
         id='image'
         className='hidden'
-        alt='Profile Picture'
+        alt={t('profile_picture') as string}
         {...register('image', {
           onChange: handleUpload,
         })}

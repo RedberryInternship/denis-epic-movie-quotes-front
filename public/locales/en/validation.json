@@ -9,5 +9,12 @@
   "password_length": "The password should contain at least 8 characters",
   "password_only_lowercase": "The password can only contain lowercase characters and numbers",
   "password_confirmation_required": "Please confirm your password",
-  "password_no_match": "The passwords do not match"
+  "password_no_match": "The passwords do not match",
+  "invalid_release_year": "Please enter a valid release year",
+  "number": "Please enter a number",
+  "field_should_be_written": "This field should be written ",
+  "in_english": "in English",
+  "in_georgian": "in Georgian",
+  "credentials_required": "Please enter your username or email",
+  "credentials_length": "This field should contain at least 3 characters"
 }

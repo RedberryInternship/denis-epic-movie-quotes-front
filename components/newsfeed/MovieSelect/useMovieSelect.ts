@@ -3,6 +3,7 @@ import { getMovies } from 'services';
 import { useLocale } from 'hooks';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
 
 export const useMovieSelect = () => {
   const locale = useLocale();
@@ -21,5 +22,7 @@ export const useMovieSelect = () => {
     id: movie.id,
   }));
 
-  return { movieOptions, movieValue };
+  const { t } = useTranslation('common');
+
+  return { movieOptions, movieValue, t };
 };

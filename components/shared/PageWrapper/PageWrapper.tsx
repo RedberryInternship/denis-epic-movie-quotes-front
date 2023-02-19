@@ -9,7 +9,7 @@ const PageWrapper = (props: PropsType) => {
 
   return (
     <>
-      <div className='fixed top-[13.5vh] px-3.5 z-[100] w-full h-[86.5vh] pointer-events-none lg:top-[11.5vh] lg:pr-[7vw]'>
+      <div className='fixed top-[13.5vh] px-3.5 z-[500] w-full h-[86.5vh] pointer-events-none lg:top-[11.5vh] lg:pr-[7vw]'>
         <div className='relative w-full h-full'>
           <Toaster
             containerStyle={{

@@ -15,7 +15,7 @@ import { useAddOrEditQuoteModal } from './useAddOrEditQuoteModal';
 import { PropsType } from './types';
 
 const AddOrEditQuoteModal = (props: PropsType) => {
-  const { handleSubmit, isLoading, deleteHandler } = useAddOrEditQuoteModal(
+  const { handleSubmit, isLoading, deleteHandler, t } = useAddOrEditQuoteModal(
     props.isEditing,
     props.addingFromNewsfeed,
     props.closeModal,
@@ -27,10 +27,10 @@ const AddOrEditQuoteModal = (props: PropsType) => {
     <MovieModalWrapper
       title={
         props.addingFromNewsfeed
-          ? 'Write New Quote'
+          ? t('write_new_quote')
           : props.isEditing
-          ? 'Edit Quote'
-          : 'Add Quote'
+          ? t('edit_quote')
+          : t('add_quote')
       }
       rightIcon={<Close />}
       onRightIconClick={props.closeModal}
@@ -55,12 +55,12 @@ const AddOrEditQuoteModal = (props: PropsType) => {
 
         <TextAreaWithLanguage
           name='body_en'
-          placeholder='Create new quote'
+          placeholder={t('quote_in_english')}
           language='Eng'
         />
         <TextAreaWithLanguage
           name='body_ka'
-          placeholder='ახალი ციტატა'
+          placeholder={t('quote_in_georgian')}
           language='ქარ'
         />
 
@@ -79,10 +79,10 @@ const AddOrEditQuoteModal = (props: PropsType) => {
           <FormSubmitButton
             label={
               props.addingFromNewsfeed
-                ? 'Post'
+                ? t('post')
                 : props.isEditing
-                ? 'Save Changes'
-                : 'Add Quote'
+                ? t('save_changes')
+                : t('add_quote_title')
             }
             isLoading={isLoading}
           />

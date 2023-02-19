@@ -8,7 +8,7 @@ const SideMenu = (props: {
   sideMenuRef: MutableRefObject<null>;
   username: string;
 }) => {
-  const router = useSideMenu();
+  const { router, t } = useSideMenu();
 
   return (
     <aside
@@ -33,7 +33,7 @@ const SideMenu = (props: {
         <div className='lg:pr-11'>
           <div className='text-xl lg:text-2xl'>{props.username}</div>
           <div className='text-sm text-brand-pale lg:text-base lg:mt-2'>
-            Edit your profile
+            {t('edit_profile')}
           </div>
         </div>
       </button>
@@ -45,7 +45,7 @@ const SideMenu = (props: {
           }
           href='/home'
         >
-          <House isActive={router.pathname === '/home'} /> News feed
+          <House isActive={router.pathname === '/home'} /> {t('newsfeed')}
         </Link>
         <Link
           className={
@@ -54,7 +54,8 @@ const SideMenu = (props: {
           }
           href='/movies'
         >
-          <Camera isActive={router.pathname === '/movies'} /> List of movies
+          <Camera isActive={router.pathname === '/movies'} />
+          {t('list_of_movies')}
         </Link>
       </nav>
     </aside>

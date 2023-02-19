@@ -1,6 +1,7 @@
 import { useQueryClient } from 'react-query';
 import { markAllNotificationsAsSeen } from 'services';
 import { useDisableBodyScroll } from 'hooks';
+import { useTranslation } from 'next-i18next';
 
 export const useNotificationsModal = () => {
   const queryClient = useQueryClient();
@@ -12,5 +13,7 @@ export const useNotificationsModal = () => {
 
   useDisableBodyScroll(true);
 
-  return { markAllRead };
+  const { t } = useTranslation('common');
+
+  return { markAllRead, t };
 };

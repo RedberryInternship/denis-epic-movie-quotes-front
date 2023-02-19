@@ -1,5 +1,6 @@
 import { useFormContext, useFormState, useWatch } from 'react-hook-form';
 import { DragEvent } from 'react';
+import { useTranslation } from 'next-i18next';
 
 export const useMovieImageUploadInput = () => {
   const { register, setValue } = useFormContext();
@@ -16,5 +17,7 @@ export const useMovieImageUploadInput = () => {
 
   const { errors } = useFormState({ name: 'image' });
 
-  return { register, imageValue, handleDrop, hasErrors: errors['image'] };
+  const { t } = useTranslation('common');
+
+  return { register, imageValue, handleDrop, hasErrors: errors['image'], t };
 };

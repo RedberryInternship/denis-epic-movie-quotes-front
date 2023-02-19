@@ -13,7 +13,7 @@ import { useAddOrEditMovieModal } from './useAddOrEditMovieModal';
 import { PropsType } from './types';
 
 const AddOrEditMovieModal = (props: PropsType) => {
-  const { handleSubmit, isLoading } = useAddOrEditMovieModal(
+  const { handleSubmit, isLoading, t } = useAddOrEditMovieModal(
     props.isEditing,
     props.closeModal,
     props.movieID
@@ -21,7 +21,7 @@ const AddOrEditMovieModal = (props: PropsType) => {
 
   return (
     <MovieModalWrapper
-      title={props.isEditing ? 'Edit Movie' : 'Add Movie'}
+      title={props.isEditing ? t('edit_movie') : t('add_movie')}
       rightIcon={<Close />}
       onRightIconClick={props.closeModal}
     >
@@ -35,12 +35,12 @@ const AddOrEditMovieModal = (props: PropsType) => {
         </div>
         <InputWithLanguage
           name='title_en'
-          placeholder='Movie name'
+          placeholder={t('movie_name_en')}
           language='Eng'
         />
         <InputWithLanguage
           name='title_ka'
-          placeholder='ფილმის სახელი'
+          placeholder={t('movie_name_ka')}
           language='ქარ'
         />
 
@@ -48,49 +48,49 @@ const AddOrEditMovieModal = (props: PropsType) => {
 
         <InputWithLanguage
           name='director_en'
-          placeholder='Director'
+          placeholder={t('director_name_en')}
           language='Eng'
         />
         <InputWithLanguage
           name='director_ka'
-          placeholder='რეჟისორი'
+          placeholder={t('director_name_ka')}
           language='ქარ'
         />
 
         <TextAreaWithLanguage
           name='description_en'
-          placeholder='Movie description'
+          placeholder={t('description_en')}
           language='Eng'
         />
         <TextAreaWithLanguage
           name='description_ka'
-          placeholder='ფილმის აღწერა'
+          placeholder={t('description_ka')}
           language='ქარ'
         />
 
         <MovieTextInput
           name='release_year'
-          placeholder='Release year'
+          placeholder={t('release_year')}
           validationRules={{
             validate: {
               validYear: (value: number) =>
                 (value > 1888 && value <= new Date().getFullYear()) ||
-                'Please enter a valid release year',
+                t('validation:invalid_release_year'),
             },
             pattern: {
               value: /^[0-9]+$/,
-              message: 'Please enter a number',
+              message: t('validation:number'),
             },
           }}
         />
 
         <MovieTextInput
           name='budget'
-          placeholder='Budget in USD'
+          placeholder={t('budget_placeholder')}
           validationRules={{
             pattern: {
               value: /^[0-9]+$/,
-              message: 'Please enter a number',
+              message: t('validation:number'),
             },
           }}
         />
@@ -99,7 +99,7 @@ const AddOrEditMovieModal = (props: PropsType) => {
 
         <div className='mt-1'>
           <FormSubmitButton
-            label={props.isEditing ? 'Update Movie' : 'Add Movie'}
+            label={props.isEditing ? t('update_movie') : t('add_movie')}
             isLoading={isLoading}
           />
         </div>

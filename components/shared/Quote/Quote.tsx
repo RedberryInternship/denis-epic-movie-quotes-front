@@ -14,6 +14,7 @@ const Quote = (props: PropsType) => {
     setFocusOnComment,
     commentSubmitHandler,
     submitLikeOrUnlike,
+    t,
   } = useQuote(
     props.id,
     props.isLiked,
@@ -59,13 +60,13 @@ const Quote = (props: PropsType) => {
       <form className='flex gap-3 mt-4 lg:mt-6' onSubmit={commentSubmitHandler}>
         <SelfProfilePicture size={52} />
         <label className='sr-only' htmlFor='comment'>
-          Write a comment
+          {t('write_comment')}
         </label>
         <input
           {...register('comment', {
             required: true,
           })}
-          placeholder='Write a comment'
+          placeholder={t('write_comment') as string}
           className='bg-brand-darkblue placeholder:text-brand-pale pl-4 w-full rounded-1.5lg lg:pl-7'
         />
       </form>

@@ -24,12 +24,13 @@ const Home = (props: {
     setSearchIsActive,
     searchQuery,
     setSearchQuery,
+    t,
   } = useNewsfeedPage(props.user, props.initialQuotes);
 
   return (
     <>
       <Head>
-        <title>Newsfeed - Movie Quotes</title>
+        <title>{t('newsfeed')} - Movie Quotes</title>
       </Head>
 
       <PageWrapper
@@ -51,9 +52,7 @@ const Home = (props: {
           <div className='flex flex-col gap-8 lg:gap-10'>
             {!paginatedQuotes?.pages[0].data.length && (
               <div className='text-xl lg:text-3xl text-center mt-5 p-8 lg:p-12'>
-                {searchQuery
-                  ? 'No quotes match your search query!'
-                  : 'There are no quotes yet!'}
+                {searchQuery ? t('no_quotes_search') : t('newsfeed_no_quotes')}
               </div>
             )}
             {paginatedQuotes?.pages.map(({ data }, index) => (

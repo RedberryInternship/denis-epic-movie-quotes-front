@@ -3,7 +3,7 @@ import { PropsType } from './types';
 import { useQuoteOptions } from './useQuoteOptions';
 
 const QuoteOptions = (props: PropsType) => {
-  const { optionsRef, editHandler, viewHandler, deleteHandler } =
+  const { optionsRef, editHandler, viewHandler, deleteHandler, t } =
     useQuoteOptions(props.id, props.movieID, props.dispatchActiveModal);
 
   return (
@@ -17,21 +17,21 @@ const QuoteOptions = (props: PropsType) => {
         onClick={viewHandler}
       >
         <Eye />
-        <span>View Post</span>
+        <span>{t('view_post')}</span>
       </button>
       <button
         className='flex gap-4 items-center hover:text-brand-crimson hover:scale-105 hover:translate-x-2 transition'
         onClick={editHandler}
       >
         <EditPencil />
-        <span>Edit</span>
+        <span>{t('edit')}</span>
       </button>
       <button
         className='flex gap-4 items-center hover:text-brand-crimson hover:scale-105 hover:translate-x-2 transition'
         onClick={deleteHandler}
       >
         <Bin />
-        <span>Delete</span>
+        <span>{t('delete')}</span>
       </button>
     </div>
   );
