@@ -50,11 +50,11 @@ const ProfileModalWrapper = (
         </>
       ) : (
         <div
-          className='fixed z-[100] top-40 min-h-screen w-full rounded text-white pointer-events-none flex items-stretch lg:block lg:static lg:p-0 lg:min-h-0 lg:rounded-0 lg:pointer-events-auto'
+          className='fixed z-[100] top-40 min-h-screen w-full rounded text-white pointer-events-none flex items-stretch lg:absolute lg:top-0 lg:p-0 lg:min-h-0 lg:rounded-0 lg:pointer-events-auto'
           ref={modalRef}
         >
           <button
-            className='absolute z-[120] -top-10 left-8 w-8 h-8 pointer-events-auto'
+            className='absolute z-[120] -top-15 left-7 w-10 h-10 pointer-events-auto lg:hidden'
             onClick={props.closeModalCallback}
           ></button>
           <div className='bg-brand-lightbackground max-h-[calc(100vh-5.5rem)] w-full lg:bg-transparent z-30'>
