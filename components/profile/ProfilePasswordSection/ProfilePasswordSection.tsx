@@ -12,8 +12,7 @@ const ProfilePasswordSection = (props: {
   setIsEditingPassword: SetState<boolean>;
   setPasswordModalIsOpen: SetState<boolean>;
 }) => {
-  const { passwordIsHidden, togglePasswordIsHidden, t } =
-    useProfilePasswordSection();
+  const { t } = useProfilePasswordSection();
 
   return (
     <div>
@@ -52,15 +51,11 @@ const ProfilePasswordSection = (props: {
             name='password'
             label={t('new_password')}
             placeholder={t('new_password')}
-            isHidden={passwordIsHidden}
-            toggleIsHidden={togglePasswordIsHidden}
           />
           <ProfilePasswordInput
             name='password_confirmation'
             label={t('confirm_new_password')}
             placeholder={t('confirm_new_password')}
-            isHidden={passwordIsHidden}
-            toggleIsHidden={togglePasswordIsHidden}
           />
         </div>
       )}

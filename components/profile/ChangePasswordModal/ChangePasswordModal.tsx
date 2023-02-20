@@ -5,14 +5,8 @@ import { useChangePasswordModal } from './useChangePasswordModal';
 const ChangePasswordModal = (props: {
   setPasswordModalIsOpen: SetState<boolean>;
 }) => {
-  const {
-    isLoading,
-    handleSubmit,
-    closeModalCallback,
-    passwordIsHidden,
-    togglePasswordIsHidden,
-    t,
-  } = useChangePasswordModal(props.setPasswordModalIsOpen);
+  const { isLoading, handleSubmit, closeModalCallback, t } =
+    useChangePasswordModal(props.setPasswordModalIsOpen);
 
   return (
     <ProfileModalWrapper
@@ -25,8 +19,6 @@ const ChangePasswordModal = (props: {
           name='current_password'
           label={t('current_password')}
           placeholder={t('current_password')}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
           isBig={true}
         />
         <PasswordHint />
@@ -35,8 +27,6 @@ const ChangePasswordModal = (props: {
             name='password'
             label={t('new_password')}
             placeholder={t('new_password')}
-            isHidden={passwordIsHidden}
-            toggleIsHidden={togglePasswordIsHidden}
             isBig={true}
           />
         </div>
@@ -45,8 +35,6 @@ const ChangePasswordModal = (props: {
           name='password_confirmation'
           label={t('confirm_new_password')}
           placeholder={t('confirm_new_password')}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
           isBig={true}
         />
       </div>

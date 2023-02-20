@@ -1,4 +1,4 @@
-import { useProfileModalSubmit, useToggle } from 'hooks';
+import { useProfileModalSubmit } from 'hooks';
 import { sendUpdateProfileRequest } from 'services';
 import { SetState } from 'types';
 import { useTranslation } from 'next-i18next';
@@ -15,14 +15,10 @@ export const useChangePasswordModal = (
     t('toast_password')
   );
 
-  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-
   return {
     isLoading,
     handleSubmit,
     closeModalCallback,
-    passwordIsHidden,
-    togglePasswordIsHidden,
     t,
   };
 };

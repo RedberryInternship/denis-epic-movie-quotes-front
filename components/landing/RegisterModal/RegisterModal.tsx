@@ -11,13 +11,7 @@ import { useRegisterModal } from './useRegisterModal';
 import { Modals, SetState } from 'types';
 
 const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const {
-    handleSubmit,
-    isLoading,
-    passwordIsHidden,
-    togglePasswordIsHidden,
-    t,
-  } = useRegisterModal(props.setActiveModal);
+  const { handleSubmit, isLoading, t } = useRegisterModal(props.setActiveModal);
 
   return (
     <ModalWrapper
@@ -43,16 +37,12 @@ const RegisterModal = (props: { setActiveModal: SetState<Modals> }) => {
           label={t('password')}
           placeholder={t('password_placeholder')}
           requiredAsterisk={true}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
         />
         <PasswordInput
           name='password_confirmation'
           label={t('password_confirmation')}
           placeholder={t('password')}
           requiredAsterisk={true}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
         />
         <FormSubmitButton label={t('register_submit')} isLoading={isLoading} />
         <GoogleAuthButton label={t('google_register')} />
