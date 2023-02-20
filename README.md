@@ -22,6 +22,12 @@
 * Typescript _v4.9.3_
 * React _v18.2.0_
 * TailwindCSS _v3.2.4_
+* React Hook Form _v7.43.1_
+* React Query _v3.39.2_
+* Redux Toolkit _v1.9.1_
+* PusherJS _v8.0.1_
+* Zod _v3.20.6_
+* Next-i18next _v13.0.3_
 
 
 ## Getting Started
