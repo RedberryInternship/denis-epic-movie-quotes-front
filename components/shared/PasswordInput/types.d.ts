@@ -6,7 +6,5 @@ export type PropsType = {
   requiredAsterisk?: boolean;
   placeholder: string;
   onChange?: (arg0: ChangeEvent<HTMLInputElement>) => void;
-  isHidden: boolean;
-  toggleIsHidden: () => void;
   isBig?: true;
 };
