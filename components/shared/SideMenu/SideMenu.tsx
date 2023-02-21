@@ -19,10 +19,7 @@ const SideMenu = (props: {
       }
       ref={props.sideMenuRef}
     >
-      <button
-        className='flex w-full gap-5 text-left px-11 lg:pl-17.5 lg:pr-0 hover:bg-brand-lightmodal'
-        onClick={() => router.push('/profile')}
-      >
+      <div className='flex w-full gap-5 text-left px-11 lg:pl-17.5 lg:pr-0 hover:bg-brand-lightmodal pointer-events-none'>
         <SelfProfilePicture
           size={60}
           classNames={
@@ -32,11 +29,14 @@ const SideMenu = (props: {
         />
         <div className='lg:pr-11'>
           <div className='text-xl lg:text-2xl'>{props.username}</div>
-          <div className='text-sm text-brand-pale lg:text-base lg:mt-2'>
+          <Link
+            className='block text-sm text-brand-pale lg:text-base lg:mt-2 pointer-events-auto'
+            href='/profile'
+          >
             {t('edit_profile')}
-          </div>
+          </Link>
         </div>
-      </button>
+      </div>
       <nav className='text-xl'>
         <Link
           className={
