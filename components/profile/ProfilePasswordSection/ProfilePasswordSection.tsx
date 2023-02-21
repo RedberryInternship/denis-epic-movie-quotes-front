@@ -20,12 +20,8 @@ const ProfilePasswordSection = (props: {
         type='password'
         label={props.isEditingPassword ? t('current_password') : t('password')}
         name='current_password'
-        placeholder={
-          props.isEditingPassword
-            ? (t('current_password') as string)
-            : '••••••••••••'
-        }
-        isActive={props.isEditingPassword}
+        value='••••••••••••'
+        isActive={false}
         sideButtons={
           <>
             {!props.isEditingPassword && (
