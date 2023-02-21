@@ -1,14 +1,12 @@
 import { useFormContext } from 'react-hook-form';
 import { ApiResponse, Modals, ResetPasswordForm, SetState } from 'types';
 import { postResetPassData } from 'services';
-import { useHandleSubmit, useToggle } from 'hooks';
+import { useHandleSubmit } from 'hooks';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
-  const [passwordIsHidden, togglePasswordIsHidden] = useToggle(true);
-
   const router = useRouter();
   const token = router.query.token as string;
   const email = router.query.email as string;
@@ -45,8 +43,6 @@ export const useResetPasswordModal = (setActiveModal: SetState<Modals>) => {
   return {
     handleSubmit,
     isLoading,
-    passwordIsHidden,
-    togglePasswordIsHidden,
     t,
   };
 };

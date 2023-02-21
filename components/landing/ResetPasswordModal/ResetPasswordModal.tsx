@@ -9,13 +9,9 @@ import { Modals, SetState } from 'types';
 import { useResetPasswordModal } from './useResetPasswordModal';
 
 const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const {
-    handleSubmit,
-    isLoading,
-    passwordIsHidden,
-    togglePasswordIsHidden,
-    t,
-  } = useResetPasswordModal(props.setActiveModal);
+  const { handleSubmit, isLoading, t } = useResetPasswordModal(
+    props.setActiveModal
+  );
 
   return (
     <ModalWrapper
@@ -29,16 +25,12 @@ const ResetPasswordModal = (props: { setActiveModal: SetState<Modals> }) => {
           label={t('password')}
           placeholder={t('password_placeholder')}
           requiredAsterisk={true}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
         />
         <PasswordInput
           name='password_confirmation'
           label={t('password_confirmation')}
           placeholder={t('password')}
           requiredAsterisk={true}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
         />
         <FormSubmitButton
           label={t('reset_pass_submit')}

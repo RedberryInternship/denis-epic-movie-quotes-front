@@ -1,10 +1,13 @@
 import { PasswordEye, PasswordEyeCrossed, TextInput } from 'components';
 import { PropsType } from './types';
+import { useToggle } from 'hooks';
 
 const PasswordInput = (props: PropsType) => {
+  const [isHidden, toggleIsHidden] = useToggle(true);
+
   return (
     <div className='relative w-full'>
-      <TextInput {...props} type={props.isHidden ? 'password' : 'text'} />
+      <TextInput {...props} type={isHidden ? 'password' : 'text'} />
       <button
         type='button'
         tabIndex={-1}
@@ -12,9 +15,9 @@ const PasswordInput = (props: PropsType) => {
           'absolute top-8 right-12 h-9.5 lg:right-12 flex items-center ' +
           (props.isBig ? 'h-12' : 'h-9.5')
         }
-        onClick={props.toggleIsHidden}
+        onClick={toggleIsHidden}
       >
-        {props.isHidden ? <PasswordEyeCrossed /> : <PasswordEye />}
+        {isHidden ? <PasswordEyeCrossed /> : <PasswordEye />}
       </button>
     </div>
   );

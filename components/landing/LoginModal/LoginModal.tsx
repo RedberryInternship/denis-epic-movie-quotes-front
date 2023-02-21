@@ -11,14 +11,7 @@ import { useLoginModal } from './useLoginModal';
 import { Modals, SetState } from 'types';
 
 const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
-  const {
-    handleSubmit,
-    register,
-    isLoading,
-    passwordIsHidden,
-    togglePasswordIsHidden,
-    t,
-  } = useLoginModal();
+  const { handleSubmit, register, isLoading, t } = useLoginModal();
 
   return (
     <ModalWrapper
@@ -36,8 +29,6 @@ const LoginModal = (props: { setActiveModal: SetState<Modals> }) => {
           name='password'
           label={t('password')}
           placeholder={t('password')}
-          isHidden={passwordIsHidden}
-          toggleIsHidden={togglePasswordIsHidden}
         />
         <div className='flex items-center justify-start w-full gap-2 mb-3'>
           <input

@@ -6,6 +6,4 @@ export type PropsType = {
   placeholder: string;
   validationRules?: object;
   onChange?: (arg0: ChangeEvent<HTMLInputElement>) => void;
-  isHidden: boolean;
-  toggleIsHidden: () => void;
 };
