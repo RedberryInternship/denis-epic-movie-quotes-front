@@ -14,30 +14,22 @@ const ChangePasswordModal = (props: {
       handleSubmit={handleSubmit}
       closeModalCallback={closeModalCallback}
     >
-      <div>
+      <PasswordHint />
+      <div className='mb-4'>
         <PasswordInput
-          name='current_password'
-          label={t('current_password')}
-          placeholder={t('current_password')}
-          isBig={true}
-        />
-        <PasswordHint />
-        <div className='mb-4'>
-          <PasswordInput
-            name='password'
-            label={t('new_password')}
-            placeholder={t('new_password')}
-            isBig={true}
-          />
-        </div>
-
-        <PasswordInput
-          name='password_confirmation'
-          label={t('confirm_new_password')}
-          placeholder={t('confirm_new_password')}
+          name='password'
+          label={t('new_password')}
+          placeholder={t('new_password')}
           isBig={true}
         />
       </div>
+
+      <PasswordInput
+        name='password_confirmation'
+        label={t('confirm_new_password')}
+        placeholder={t('confirm_new_password')}
+        isBig={true}
+      />
     </ProfileModalWrapper>
   );
 };
