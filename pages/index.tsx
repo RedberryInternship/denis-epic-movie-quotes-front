@@ -15,9 +15,11 @@ import {
   SplashModalWrapper,
 } from 'components';
 import { useIndexPage } from 'hooks';
-import { GetStaticProps } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { forgotSchema, loginSchema, registerSchema, resetSchema } from 'schema';
+import { cookiesObjToStr, getRequestOriginFromHeaders } from '../helpers';
+import { getUser } from 'services';
 
 const Landing = () => {
   const {
@@ -181,15 +183,33 @@ const Landing = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'en', [
-      'landing',
-      'common',
-      'auth',
-      'validation',
-    ])),
-  },
-});
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const cookies = cookiesObjToStr(context.req.cookies);
+  const origin = getRequestOriginFromHeaders(context.req.headers);
+
+  try {
+    await getUser(cookies, origin);
+    return {
+      props: {},
+      redirect: {
+        destination: '/home',
+        permanent: false,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        ...(await serverSideTranslations(context.locale ?? 'en', [
+          'landing',
+          'common',
+          'auth',
+          'validation',
+        ])),
+      },
+    };
+  }
+};
 
 export default Landing;
