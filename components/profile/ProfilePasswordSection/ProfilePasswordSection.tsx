@@ -29,12 +29,14 @@ const ProfilePasswordSection = (props: {
         isActive={props.isEditingPassword}
         sideButtons={
           <>
-            <div className='hidden lg:flex'>
-              <InputSideButton
-                label={t('edit')}
-                onClick={() => props.setIsEditingPassword(true)}
-              />
-            </div>
+            {!props.isEditingPassword && (
+              <div className='hidden lg:flex'>
+                <InputSideButton
+                  label={t('edit')}
+                  onClick={() => props.setIsEditingPassword(true)}
+                />
+              </div>
+            )}
             <div className='flex lg:hidden'>
               <InputSideButton
                 label={t('edit')}
