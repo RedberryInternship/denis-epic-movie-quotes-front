@@ -66,7 +66,22 @@ const Landing = () => {
           title={t('auth:check_email')}
           subtitle={t('auth:reset_sent')}
           closeModalCallback={() => setActiveModal('')}
-        />
+        >
+          <a
+            target='_blank'
+            href='https://mail.google.com'
+            className='block min-w-full px-2 lg:w-full bg-brand-red min-h-[2.375rem] mt-1 mb-8 rounded flex justify-center items-center'
+            rel='noreferrer'
+          >
+            {t('go_to_email')}
+          </a>
+          <button
+            className='w-full mb-6 text-brand-subtitle text-center'
+            onClick={() => setActiveModal('')}
+          >
+            {t('skip_recover')}
+          </button>
+        </SplashModalWrapper>
       )}
 
       {activeModal === 'reset_pass' && (
@@ -81,7 +96,18 @@ const Landing = () => {
           title={t('common:thanks')}
           subtitle={t('auth:confirm_sent')}
           closeModalCallback={() => setActiveModal('')}
-        />
+        >
+          <>
+            <a
+              target='_blank'
+              href='https://mail.google.com'
+              className='block min-w-[50%] px-2 lg:w-full bg-brand-red min-h-[2.375rem] mt-1 mb-8 rounded flex justify-center items-center'
+              rel='noreferrer'
+            >
+              {t('go_to_email')}
+            </a>
+          </>
+        </SplashModalWrapper>
       )}
 
       {activeModal === 'verified' && (
