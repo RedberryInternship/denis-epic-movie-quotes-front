@@ -12,12 +12,14 @@ const ProfileUsernameSection = (props: PropsType) => {
       isActive={props.isEditingUsername}
       sideButtons={
         <>
-          <div className='hidden lg:flex'>
-            <InputSideButton
-              label={t('edit')}
-              onClick={() => props.setIsEditingUsername(true)}
-            />
-          </div>
+          {!props.isEditingUsername && (
+            <div className='hidden lg:flex'>
+              <InputSideButton
+                label={t('edit')}
+                onClick={() => props.setIsEditingUsername(true)}
+              />
+            </div>
+          )}
           <div className='flex lg:hidden'>
             <InputSideButton
               label={t('edit')}
