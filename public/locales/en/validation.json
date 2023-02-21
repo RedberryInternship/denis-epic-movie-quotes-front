@@ -16,5 +16,6 @@
   "in_english": "in English",
   "in_georgian": "in Georgian",
   "credentials_required": "Please enter your username or email",
-  "credentials_length": "This field should contain at least 3 characters"
+  "credentials_length": "This field should contain at least 3 characters",
+  "credentials_alphanumeric": "You can only use alphanumeric characters"
 }
