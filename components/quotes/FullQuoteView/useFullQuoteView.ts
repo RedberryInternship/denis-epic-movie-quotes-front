@@ -25,7 +25,13 @@ export const useFullQuoteView = (
   const queryClient = useQueryClient();
   const refetchLikes = async () => {
     await queryClient.refetchQueries(['movie', quote.movie_id]);
+    dispatchActiveModal({
+      type: 'quote',
+      quoteID: quote.id,
+      modalType: 'view',
+    });
   };
+
   const refetchComments = async () => {
     await queryClient.refetchQueries(['comments', quote.id]);
   };
