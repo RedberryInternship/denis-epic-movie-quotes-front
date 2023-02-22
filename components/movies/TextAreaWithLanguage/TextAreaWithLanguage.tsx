@@ -19,7 +19,7 @@ const TextAreaWithLanguage = (props: {
           ...languageValidator,
         })}
         className={
-          'h-21.5 pr-12 overflow-hidden border border-brand-subtitle bg-transparent rounded px-[17px] w-full mb-4 lg:mb-5 placeholder:text-brand-subtitle focus:outline-[#A9B4BE] focus:outline-[#A9B4BE] focus:ring-[#A9B4BE] focus:ring-offset-0 focus:outline-offset-0 focus:outline-4 focus:border-brand-subtitle ' +
+          'h-21.5 pr-12 overflow-hidden border border-brand-subtitle bg-transparent rounded px-[17px] w-full mb-2 placeholder:text-brand-subtitle focus:outline-[#A9B4BE] focus:outline-[#A9B4BE] focus:ring-[#A9B4BE] focus:ring-offset-0 focus:outline-offset-0 focus:outline-4 focus:border-brand-subtitle ' +
           (errors
             ? '!border-brand-red border-1.5 focus:border-1.5 focus:border-brand-red'
             : '')
@@ -29,8 +29,8 @@ const TextAreaWithLanguage = (props: {
       <span className='absolute h-12 flex items-center top-0 right-[17px] text-brand-subtitle'>
         {props.language}
       </span>
-      <div className='-mt-3 mb-4'>
-        <FormError error={errors?.message as string} animated={true} />
+      <div className='mb-3'>
+        <FormError error={errors?.message as string} />
       </div>
     </div>
   );
