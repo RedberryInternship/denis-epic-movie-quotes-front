@@ -42,7 +42,7 @@ const Home = (props: {
           setSearchQuery,
         }}
       >
-        <section className='lg:w-1/2'>
+        <section className='lg:w-[50vw]'>
           <NewsfeedInputs
             searchIsActive={searchIsActive}
             setSearchIsActive={setSearchIsActive}
