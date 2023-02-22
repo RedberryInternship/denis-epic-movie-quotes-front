@@ -86,7 +86,10 @@ export const getServerSideProps = async (
       props: {
         user,
         initialQuotes,
-        ...(await serverSideTranslations(context.locale ?? 'en', ['common'])),
+        ...(await serverSideTranslations(context.locale ?? 'en', [
+          'common',
+          'validation',
+        ])),
       },
     };
   } catch (error) {
