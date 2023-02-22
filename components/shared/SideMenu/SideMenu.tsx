@@ -14,7 +14,7 @@ const SideMenu = (props: {
     <aside
       className={
         'fixed z-[400] lg:z-[150] top-0 w-[87vw] h-screen pt-11 bg-brand-article text-white rounded-r-xl ' +
-        'lg:block lg:static lg:w-[28vw] lg:bg-transparent lg:pt-0 lg:px-0 z-50 shrink-0 animate-grow-x origin-left lg:animate-none' +
+        'lg:block lg:left-0 lg:top-30 lg:w-[28vw] lg:bg-transparent lg:pt-0 lg:px-0 z-50 shrink-0 animate-grow-x origin-left lg:animate-none' +
         (props.sideMenuIsOpen ? '' : ' hidden')
       }
       ref={props.sideMenuRef}

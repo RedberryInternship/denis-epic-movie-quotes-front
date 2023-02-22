@@ -28,7 +28,7 @@ const ProfileForm = (props: PropsType) => {
 
   return (
     <form
-      className='lg:w-2/3 2xl:w-1/2'
+      className='lg:w-[66.6vw] 2xl:w-[50vw]'
       onSubmit={handleSubmit}
       encType='multipart/form-data'
     >

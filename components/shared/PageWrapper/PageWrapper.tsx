@@ -32,7 +32,7 @@ const PageWrapper = (props: PropsType) => {
         searchBarProps={props.searchBarProps}
       />
 
-      <main className='mt-22 bg-brand-lightbackground bg-gradient-newsfeed text-white min-h-[calc(100vh-5.5rem)] pt-8 lg:flex lg:pb-32'>
+      <main className='mt-22 bg-brand-lightbackground bg-gradient-newsfeed text-white min-h-[calc(100vh-5.5rem)] pt-8 lg:flex lg:pl-[28vw] lg:pb-32'>
         <SideMenu
           sideMenuIsOpen={sideMenuIsOpen}
           sideMenuRef={sideMenuRef}
