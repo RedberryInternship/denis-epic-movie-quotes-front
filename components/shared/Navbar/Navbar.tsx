@@ -15,7 +15,8 @@ const Navbar = (props: PropsType) => {
     logout,
     unreadNotificationCount,
     showNotifications,
-    toggleShowNotifications,
+    notificationButtonRef,
+    notificationModalRef,
     notifications,
     t,
   } = useNavbar();
@@ -29,7 +30,7 @@ const Navbar = (props: PropsType) => {
       {showNotifications && (
         <NotificationsModal
           notifications={notifications}
-          toggleShowNotifications={toggleShowNotifications}
+          notificationModalRef={notificationModalRef}
         />
       )}
 
@@ -51,7 +52,7 @@ const Navbar = (props: PropsType) => {
           )}
           <button
             className='relative left-2 p-2 text-white hover:text-brand-crimson'
-            onClick={toggleShowNotifications}
+            ref={notificationButtonRef}
           >
             {unreadNotificationCount ? (
               <span className='animate-pulse absolute text-white top-0 w-[25px] h-[25px] bg-[#E33812] rounded-full'>
