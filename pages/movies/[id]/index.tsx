@@ -181,9 +181,7 @@ const Movie = (props: {
 
             <div className='flex items-center gap-4 lg:mb-15'>
               <span className='text-2xl hidden lg:inline'>
-                {quotes?.length
-                  ? `${t('quotes')} (${t('total')} ${quotes.length})`
-                  : t('no_quotes')}
+                {`${t('quotes')} (${t('total')} ${quotes?.length})`}
               </span>
               <span className='hidden lg:inline bg-brand-subtitle h-6.5 mt-1 w-px'></span>
               <button

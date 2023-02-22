@@ -40,14 +40,17 @@ const AddOrEditQuoteModal = (props: PropsType) => {
         ) : undefined
       }
     >
-      <form className='-mr-2 lg:-mr-1 pl-1' onSubmit={handleSubmit}>
+      <form
+        className='-mr-2 lg:-mr-1 pl-1 lg:grid lg:grid-cols-[100%]'
+        onSubmit={handleSubmit}
+      >
         <div className='flex items-center gap-4 -mt-1 mb-8'>
           <SelfProfilePicture size={60} />
           <span className='text-xl'>{props.user.username}</span>
         </div>
         {props.movie && <MovieInQuoteModal movie={props.movie} />}
 
-        <div className='mt-4'>
+        <div className='mt-4 lg:row-start-5'>
           {!props.isEditing && !props.addingFromNewsfeed && (
             <MovieImageUploadInput isEditing={props.isEditing} />
           )}
