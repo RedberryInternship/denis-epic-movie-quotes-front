@@ -3,18 +3,22 @@ import Image from 'next/image';
 import { Heart, QuoteIcon } from 'components';
 import { getRelativeTime } from 'helpers';
 import { useNotificationItem } from './useNotificationItem';
+import { markNotificationAsSeen } from 'services';
 
 const NotificationItem = (props: Notification) => {
-  const { markAsRead, isLoading, t } = useNotificationItem(props.id);
+  const { redirectToViewQuote, t } = useNotificationItem(props.quote);
 
   return (
     <article
-      onClick={props.is_read ? undefined : () => markAsRead()}
-      className={
-        'grid grid-rows-[min-content_min-content_min-content] grid-cols-[min-content_1fr] lg:grid-rows-2 lg:grid-cols[min-content_1fr_min-content] border border-[#6C757DAA] min-h-[121px] rounded w-full p-4 gap-x-3 gap-y-1 lg:gap-x-6 lg:gap-y-1.5 lg:min-h-[117px] transition animate-grow ' +
-        (props.is_read ? '' : 'cursor-pointer hover:bg-brand-lightmodal ') +
-        (isLoading ? 'opacity-50' : '')
+      onClick={
+        props.is_read
+          ? redirectToViewQuote
+          : async () => {
+              await markNotificationAsSeen(props.id);
+              await redirectToViewQuote();
+            }
       }
+      className='grid grid-rows-[min-content_min-content_min-content] grid-cols-[min-content_1fr] lg:grid-rows-2 cursor-pointer hover:bg-brand-lightmodal lg:grid-cols[min-content_1fr_min-content] border border-[#6C757DAA] min-h-[121px] rounded w-full p-4 gap-x-3 gap-y-1 lg:gap-x-6 lg:gap-y-1.5 lg:min-h-[117px] transition animate-grow'
     >
       <Image
         src={props.from_user.profile_picture as string}

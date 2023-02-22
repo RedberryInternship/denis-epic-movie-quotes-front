@@ -1,25 +1,15 @@
-import { useMutation, useQueryClient } from 'react-query';
-import { markNotificationAsSeen } from 'services';
-import { Notification } from 'types';
+import { MovieQuote } from 'types';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
-export const useNotificationItem = (notificationID: number) => {
-  const queryClient = useQueryClient();
+export const useNotificationItem = (quote: MovieQuote) => {
+  const router = useRouter();
 
-  const { mutate: markAsRead, isLoading } = useMutation({
-    mutationFn: () => markNotificationAsSeen(notificationID),
-    onSuccess: (updatedNotification) => {
-      queryClient.setQueryData('notifications', (currentItems) => [
-        ...(currentItems as Notification[]).map((item) => {
-          return item.id === updatedNotification.id
-            ? updatedNotification
-            : item;
-        }),
-      ]);
-    },
-  });
+  const redirectToViewQuote = async () => {
+    await router.push(`/movies/${quote.movie_id}?view_quote_id=${quote.id}`);
+  };
 
   const { t } = useTranslation('common');
 
-  return { markAsRead, isLoading, t };
+  return { redirectToViewQuote, t };
 };
