@@ -82,7 +82,7 @@ const AddOrEditQuoteModal = (props: PropsType) => {
           <FormSubmitButton
             label={
               props.addingFromNewsfeed
-                ? t('post')
+                ? t('post_quote')
                 : props.isEditing
                 ? t('save_changes')
                 : t('add_quote_title')
