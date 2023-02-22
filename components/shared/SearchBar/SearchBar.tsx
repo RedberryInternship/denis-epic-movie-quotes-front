@@ -15,7 +15,7 @@ const SearchBar = (props: PropsType) => {
           <input
             defaultValue={props.searchQuery}
             onChange={props.handleSearchInputChange}
-            className='bg-transparent placeholder:text-brand-placeholder w-full outline-0'
+            className='bg-transparent placeholder:text-brand-placeholder w-full outline-0 focus:outline-none focus-visible:outline-none focus:!border-0 focus:!ring-0'
             placeholder={props.placeholder}
           />
           <button
