@@ -16,5 +16,6 @@
   "in_english": "ინლგისურად",
   "in_georgian": "ქართულად",
   "credentials_required": "ჩაწერეთ მომხმარებლის სახელი ან ელ-ფოსტა",
-  "credentials_length": "ჩაწერეთ მინიმუმ 3 სიმბოლო"
+  "credentials_length": "ჩაწერეთ მინიმუმ 3 სიმბოლო",
+  "credentials_alphanumeric": "გამოიყენეთ ლათინური ასოები და ციფრები"
 }
