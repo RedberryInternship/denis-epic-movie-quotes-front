@@ -2,7 +2,7 @@ import { useLocale, useUserStore } from 'hooks';
 import { deleteMovie, getMovie } from 'services';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import {
   Genre,
   MovieForm,
@@ -65,6 +65,22 @@ export const useMoviePage = (
     await deleteMovie(movie?.id as number);
     await router.replace('/movies');
   };
+
+  useEffect(() => {
+    const viewQuoteID = router.query.view_quote_id;
+    if (viewQuoteID) {
+      dispatchActiveModal({
+        type: 'quote',
+        quoteID: Number(viewQuoteID),
+        modalType: 'view',
+      });
+
+      delete router.query.view_quote_id;
+      router.replace({ query: router.query }, undefined, {
+        shallow: true,
+      });
+    }
+  }, [router]);
 
   const currentFormValues = {
     title_en: movie?.title.en,
