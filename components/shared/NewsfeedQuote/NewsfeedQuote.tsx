@@ -20,6 +20,7 @@ const NewsfeedQuote = (props: NewsfeedQuoteType & { page: number }) => {
       refetchComments={refetchPage}
       authorUsername={props.user.username}
       authorImage={props.user.profile_picture}
+      hasPadding={true}
     >
       {props.body[locale]} -
       <strong className='text-brand-khaki'>
