@@ -3,16 +3,34 @@ import { echo, getNotifications, sendLogoutRequest } from 'services';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 import { useQuery, useQueryClient } from 'react-query';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Echo from 'laravel-echo';
 import { Notification } from 'types';
-import { useToggle } from 'hooks';
 import { useTranslation } from 'next-i18next';
 
 export const useNavbar = () => {
   const user = useSelector((state: RootState) => state.user);
   const queryClient = useQueryClient();
-  const [showNotifications, toggleShowNotifications] = useToggle(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const notificationButtonRef = useRef<HTMLButtonElement>(null);
+  const notificationModalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const toggleNotificationModal = (e: MouseEvent) => {
+      if (notificationButtonRef.current?.contains(e.target as Node)) {
+        setShowNotifications((prev) => !prev);
+      } else if (
+        showNotifications &&
+        !notificationModalRef.current?.contains(e.target as Node)
+      ) {
+        setShowNotifications(false);
+      }
+    };
+    window.addEventListener('pointerup', toggleNotificationModal);
+
+    return () =>
+      window.removeEventListener('pointerup', toggleNotificationModal);
+  }, [showNotifications]);
 
   const router = useRouter();
   const logout = async () => {
@@ -56,7 +74,9 @@ export const useNavbar = () => {
   return {
     logout,
     showNotifications,
-    toggleShowNotifications,
+    setShowNotifications,
+    notificationButtonRef,
+    notificationModalRef,
     unreadNotificationCount,
     notifications,
     t,
