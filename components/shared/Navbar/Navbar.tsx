@@ -40,7 +40,7 @@ const Navbar = (props: PropsType) => {
         <button className='lg:hidden' onClick={props.toggleSideMenuIsOpen}>
           <Burger />
         </button>
-        <div className='flex gap-3 lg:gap-5 items-center'>
+        <div className='flex gap-3 lg:gap-5 items-center w-[16.5rem] lg:justify-between lg:gap-0'>
           {props.searchBarProps && (
             <button
               className='lg:hidden w-6 h-6'
@@ -61,10 +61,10 @@ const Navbar = (props: PropsType) => {
 
             <Bell />
           </button>
-          <div className='hidden lg:flex text-white'>
+          <div className='hidden lg:flex text-white lg:min-w-[75%] lg:justify-end'>
             <LanguageSelector />
             <button
-              className='ml-4 h-9.5 px-6.5 border border-white rounded max-w-[109px] flex justify-center items-center'
+              className='ml-4 h-9.5 px-2.5 min-w-[6rem] border border-white rounded flex justify-center items-center lg:ml-0'
               onClick={logout}
             >
               {t('logout')}
