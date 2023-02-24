@@ -4,10 +4,15 @@ import { useQuoteImageEdit } from './useQuoteImageEdit';
 import { PhotoCamera } from 'components';
 
 const QuoteImageEdit = (props: { quote: MovieQuote }) => {
-  const { register, uploadedImage, handleUpload, t } = useQuoteImageEdit();
+  const { register, uploadedImage, handleUpload, handleDrop, t } =
+    useQuoteImageEdit();
 
   return (
-    <div className='relative'>
+    <div
+      className='relative'
+      onDrop={handleDrop}
+      onDragOver={(event) => event.preventDefault()}
+    >
       <Image
         src={uploadedImage || props.quote.image}
         width={897}

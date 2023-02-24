@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, DragEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 
@@ -15,12 +15,23 @@ export const useQuoteImageEdit = () => {
     }
   };
 
+  const handleDrop = (event: DragEvent) => {
+    event.preventDefault();
+    const image = event.dataTransfer.items
+      ? event.dataTransfer.items[0].getAsFile()
+      : event.dataTransfer.files[0];
+
+    setUploadedImage(URL.createObjectURL(image as File));
+    setValue('image', [image]);
+  };
+
   const { t } = useTranslation('common');
 
   return {
     register,
     uploadedImage,
     handleUpload,
+    handleDrop,
     t,
   };
 };
