@@ -11,4 +11,5 @@ export type PropsType = PropsWithChildren<{
   comments?: Comment[];
   authorUsername: string;
   authorImage: string;
+  hasPadding: boolean;
 }>;

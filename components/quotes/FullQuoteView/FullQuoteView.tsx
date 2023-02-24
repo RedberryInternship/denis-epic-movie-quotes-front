@@ -51,6 +51,7 @@ const FullQuoteView = (props: {
         refetchComments={refetchComments}
         authorUsername={user.username}
         authorImage={user.profilePicture}
+        hasPadding={false}
       >
         <div className='relative'>
           <textarea

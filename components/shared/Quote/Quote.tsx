@@ -23,7 +23,12 @@ const Quote = (props: PropsType) => {
   );
 
   return (
-    <article className='bg-brand-article py-7 px-9 lg:px-6 lg:pt-6 lg:pb-10 lg:rounded-xl'>
+    <article
+      className={
+        'bg-brand-article py-7 px-9 lg:rounded-xl ' +
+        (props.hasPadding ? 'lg:px-6 lg:pt-6 lg:pb-10' : 'lg:p-0')
+      }
+    >
       <div className='flex items-center gap-4 mb-3.5 lg:mb-4 lg:text-xl'>
         <ProfilePicture
           size={52}
