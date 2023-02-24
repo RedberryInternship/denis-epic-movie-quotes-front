@@ -1,4 +1,4 @@
-import { Notification } from 'types';
+import { Notification, SetState } from 'types';
 import { NotificationItem } from 'components';
 import { useNotificationsModal } from './useNotificationsModal';
 import { MutableRefObject } from 'react';
@@ -6,6 +6,7 @@ import { MutableRefObject } from 'react';
 const NotificationsModal = (props: {
   notifications?: Notification[];
   notificationModalRef: MutableRefObject<HTMLDivElement | null>;
+  setShowNotifications: SetState<boolean>;
 }) => {
   const { markAllRead, t } = useNotificationsModal();
 
@@ -30,7 +31,11 @@ const NotificationsModal = (props: {
           </div>
           <div className='flex flex-col mt-6 gap-2 lg:gap-4 pb-36 lg:pb-0'>
             {props.notifications?.map((notification) => (
-              <NotificationItem key={notification.id} {...notification} />
+              <NotificationItem
+                key={notification.id}
+                {...notification}
+                setShowNotifications={props.setShowNotifications}
+              />
             ))}
           </div>
         </div>

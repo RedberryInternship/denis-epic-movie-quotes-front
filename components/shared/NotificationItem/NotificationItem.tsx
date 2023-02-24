@@ -1,12 +1,17 @@
-import { Notification } from 'types';
+import { Notification, SetState } from 'types';
 import Image from 'next/image';
 import { Heart, QuoteIcon } from 'components';
 import { getRelativeTime } from 'helpers';
 import { useNotificationItem } from './useNotificationItem';
 import { markNotificationAsSeen } from 'services';
 
-const NotificationItem = (props: Notification) => {
-  const { redirectToViewQuote, t } = useNotificationItem(props.quote);
+const NotificationItem = (
+  props: Notification & { setShowNotifications: SetState<boolean> }
+) => {
+  const { redirectToViewQuote, t } = useNotificationItem(
+    props.quote,
+    props.setShowNotifications
+  );
 
   return (
     <article
