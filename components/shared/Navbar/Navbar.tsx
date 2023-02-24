@@ -15,6 +15,7 @@ const Navbar = (props: PropsType) => {
     logout,
     unreadNotificationCount,
     showNotifications,
+    setShowNotifications,
     notificationButtonRef,
     notificationModalRef,
     notifications,
@@ -31,6 +32,7 @@ const Navbar = (props: PropsType) => {
         <NotificationsModal
           notifications={notifications}
           notificationModalRef={notificationModalRef}
+          setShowNotifications={setShowNotifications}
         />
       )}
 
